@@ -1,0 +1,170 @@
+% thesis.tex
+%
+% This file is root file for an example thesis written using the
+% University of Wisconsin-Madison LaTeX Style file.
+%
+% It is provided without warranty on an AS IS basis.
+
+
+%=====================================================================
+% Document Style
+%=====================================================================
+% Choose only one of the following document classes:
+%
+% for a 12 Point UW PhD Thesis without Margin Check
+\documentclass[12pt]{withesis}
+%
+% for a 10 Point UW PhD Thesis with Margin Check
+%\documentclass[10pt,margincheck]{withesis}
+%
+% The margincheck option flags lines which overflow their hbox with a black
+%  box at the end of the line.  This usually (but not always) indicates a
+%  margin violation on the right margin.  Left margin violations aren't
+%  indicated and if the margin violation is large enough, there isn't room
+%  for the black box to be visiable.  
+%
+% This option can be also used in conjunction with the msthesis option.
+%
+% or for a 12 Point UW Masters Thesis
+%\documentclass[12pt,msthesis]{withesis}
+%
+% or for a 10 Point UW Masters Thesis
+%\documentclass[10pt,msthesis]{withesis}
+%
+% The msthesis option changes the page margins from 1" all around
+% (the PhD format) to 1.25" left and 1" remaining margins (MS format).
+% The defaults for degree and thesis are changed to be MS and thesis.
+% These defaults can be overridden if the margins for the MS thesis
+% are desired for other documents.
+
+% To include optional packages, use the \usepackage command.
+%  The package epsfig is used to bring in the Encapsulated PostScript
+%    figures into the document.
+%  The package times is used to change the fonts to Times Roman; however
+%    because the times typewriter font looks odd, the original LaTeX
+%    Computer Modern font is kept for the typewriter font using
+%      \renewcommand{\ttdefault}{cmtt}
+%    Note that Times Roman is a PostScript font and therefore, the document
+%    cannot be correctly viewed from the *.dvi file.  It should be converted
+%    to a *.ps file first and then viewed with a PostScript previewer...
+%\usepackage{epsfig}
+%\usepackage{times}
+%\renewcommand{\ttdefault}{cmtt}
+
+%========================================================================
+%  Draft Control Commands:
+%========================================================================
+%
+% \psdraft causes the \psfig or \epsfig commands to draw a box and label
+% the box with the postscript file name instead of reading in the full
+% postscript figure.  This can save time and toner when printing drafts.
+%
+%\psdraft
+%
+%
+% \psfull causes the inclusion of the postscript figures.
+%\psfull
+%
+%
+%\pagestyle{thesisdraft} causes the footer text to become:
+% DRAFT: Do Not Distribute        <time><Date>        <input file name>
+%
+%\pagestyle{thesisdraft}
+%
+%\pagestyle{thesis} causes the header and footers to be the correct format
+%
+\pagestyle{thesis}
+%
+%
+%  The page margins can be marked with a post-script box using the
+%  \draftmargins command.  This command uses dvips's end-of-page hook
+%  This is only visible in the *.ps file (NOT the *.dvi file)!
+%
+%\draftmargins
+%
+%
+%  The word ``DRAFT'' can be diagonally printed across the page using
+%  the \draftscreen command.  This command uses dvip's beginning-of-page
+%  hook.  This is only visible in the *.ps file (NOT the *.dvi file)!
+%
+%\draftscreen
+
+
+%=======================================================================
+% Remove the following lines if appendix tables or figures are present.
+% The suppress writing the auxiliary information which appears in the
+% list of tables or list of figures.
+%
+\noappendixtables                % Don't have appendix tables
+\noappendixfigures               % Don't have appendix figures
+
+
+%=======================================================================
+% End of Preamble, start of document
+%
+%% The graphicx and color packages should give you all the color,
+%% figure inclusion, and text/figure resizing capabilities you need.
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[authoryear,round,longnamesfirst]{natbib}
+%\usepackage{savetrees}
+
+%% You should not need more than this for fancy math.
+\usepackage{amsmath}   % Extra math commands and environments from the AMS
+\usepackage{amssymb}   % Special symbols from the AMS
+\usepackage{amsthm}    % Enhanced theorem and proof environments from the AMS
+\usepackage{latexsym}  % A few extra LaTeX symbols
+\usepackage{paralist}
+\usepackage{booktabs}
+%\usepackage[colorlinks=true,citecolor=blue]{hyperref}
+
+%\numberwithin{equation}{chapter}
+
+%\usepackage{endfloat}
+\usepackage{fourier}
+%\usepackage{times}
+\usepackage{subfig}
+\usepackage[stable]{footmisc}
+
+%\usepackage[noend]{algorithmic}
+%\usepackage[ruled]{algorithm}
+\usepackage{algorithm2e}
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}[assumption]{Theorem}
+\theoremstyle{definition}
+\newtheorem{algo}[assumption]{Algorithm}
+\newtheorem{definition}[assumption]{Definition}
+\newtheorem{proposition}[assumption]{Proposition}
+\newtheorem{remark}[assumption]{Remark}
+\newcommand{\norm}[1]{\vert #1 \vert}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\eg}{e.g.,}
+
+\begin{document}
+
+% Choose your bibliography style
+% plain is the basic style, others include ieeetr, siam, asm, etc
+%\singlespace
+
+
+\include{prelude}                % Title page, abstract, table of% contents, etc
+\include{introduction/introduction}
+\include{mpc/mpc}
+\include{scheduling/scheduling}
+\include{sc/sc}
+\include{esc/esc}
+\include{conclusions/conclusions}
+\bibliographystyle{plainnat}
+\bibliography{abbreviations,articles,books,proceedings,unpub}
+
+%\begin{appendices}
+%\end{appendices}
+\newpage
+\begin{umiabstract}
+  \pagestyle{empty}
+  \addtocounter{page}{-1}
+  \input{abstract}
+\end{umiabstract}
+
+\end{document}

@@ -1,0 +1,9 @@
+# Created by Octave 3.4.3, Wed Apr 25 09:20:31 2012 CDT <jbraw@kraft-singles>
+# name: lines
+# type: matrix
+# rows: 2
+# columns: 6
+ -2 1 0.1 0.4 0.7 0.03480714086278418
+ 2 30 0.1 0.4 0.7 0.03480714086278418
+
+

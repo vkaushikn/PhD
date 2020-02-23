@@ -1,0 +1,187 @@
+#! /usr/bin/perl
+
+## USAGE:
+##
+##   bibextract auxfile
+##
+##   Extraxts bib entries cited in the given LaTeX .aux file and write
+##   them to the standard output.  The auxfile may be a top-level .aux
+##   file that includes other .aux files.
+##
+## BUGS:
+##
+##   Assumes that the top-level aux file is the only one that might
+##   \@input other .aux files.
+##
+##   Doesn't handle searching $BIBINPUTS recursively (using trailing //).
+##
+##   Doesn't know anything about the texmf.cnf file.
+
+use Text::BibTeX;
+use POSIX;
+
+&process_command_line ();
+
+&process_aux_files ();
+
+&get_bib_data_file_names ();
+
+&process_citations ();
+
+## Subroutines we use:
+
+sub process_command_line ()
+{
+  if ($#ARGV == 0)
+    {
+      ($main_aux = $ARGV[0]) =~ s/.aux$//;
+      $main_aux .= ".aux";
+    }
+  else
+    {
+      die "usage: bibextract auxfile\n";
+    }
+}
+
+sub get_bib_data_file_names
+{
+  my $bibfiles;
+
+  foreach $file (@bib_data)
+    {
+      my $fullfile = `kpsewhich $file.bib`;
+
+      chop ($fullfile);
+
+      if ($fullfile)
+	{
+	  $add_file_name = 1;
+
+	  foreach $file (@bib_data_files)
+	    {
+	      if ($file eq $fullfile)
+		{
+		  $add_file_name = 0;
+		  break;
+		}
+	    }
+
+	  if ($add_file_name)
+	    {
+	      push (@bib_data_files, $fullfile);
+	    }
+	}
+    }
+}
+
+sub get_bib_info
+{
+  if (/^\\citation{(.*)}/)
+    {
+      my $cite_keys = $1;
+
+      if ($1 =~ /,/)
+        {
+          my $key;
+
+          foreach $key (split (/,[ \t\n]*/, $cite_keys))
+            {
+              $citations{$key}++;
+            }
+        }
+      else
+        {
+          $citations{$1}++;
+        }
+    }
+  elsif (/^\\bibdata{(.*)}/)
+    {
+      my $file;
+
+      foreach $file (split (/,[ \t\n]*/, $1))
+        {
+          push (@bib_data, "$file");
+        }
+    }
+}
+
+sub get_bib_and_input_info
+{
+  if (/^\\\@input{(.*\.aux)}/)
+    {
+      $sub_aux_files{$1}++;
+    }
+
+  &get_bib_info ();
+}
+
+sub process_aux_files
+{
+  open (MAIN_AUX, $main_aux) || die "fatal: unable to open $main_aux\n";
+
+  while (<MAIN_AUX>)
+    {
+      chop;
+      &get_bib_and_input_info ();
+    }
+
+  close (MAIN_AUX);
+
+  foreach $aux_file (keys (%sub_aux_files))
+    {
+      open (AUX_FILE, $aux_file) || warn "warning: unable to open $aux_file\n";
+
+      while (<AUX_FILE>)
+	{
+	  &get_bib_info ();
+	}
+
+      close (AUX_FILE);
+    }
+}
+
+sub process_bib_entry
+{
+  my $entry = shift;
+
+  if ($entry->metatype == BTE_REGULAR)
+    {
+      foreach $key (keys (%citations))
+	{
+	  if ($key eq $entry->key)
+	    {
+	      return 1;
+	    }
+	}
+    }
+
+  return 0;
+}
+
+sub process_citations
+{
+  $tmp_file = POSIX::tmpnam ();
+
+  if (! @bib_data_files)
+    {
+      die "fatal: no bib data files\n";
+    }
+
+  $bib_files = join (' ', @bib_data_files);
+
+  system ("cat $bib_files > $tmp_file");
+
+  my $bib = new Text::BibTeX::File $tmp_file;
+
+  while ($entry = new Text::BibTeX::Entry $bib)
+    {
+      next unless $entry->parse_ok;
+
+      if (&process_bib_entry ($entry))
+	{
+	  print $entry->print_s ();
+	}
+    }
+
+  system ("rm -f $tmp_file");
+}

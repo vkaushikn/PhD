@@ -1,0 +1,542 @@
+\documentclass{article}
+%\documentclass[letterpaper, 10pt, conference]{ieeeconf}
+%\IEEEoverridecommandlockouts                          
+%\overrideIEEEmargins
+%\bibliographystyle{IEEEtran}
+
+% Packages
+\usepackage{hyperref} % clickable links
+\usepackage{url}
+%\usepackage{rxn}
+\usepackage{natbib}
+\usepackage{graphicx,color,amsmath,amssymb}
+%\usepackage{mathptmx}
+%\usepackage{times}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{balance}
+\usepackage{verbatim} % \begin and \end {comment}
+
+% Environments
+\newtheorem{theorem}{Theorem} 
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newtheorem{algorithm}{Algorithm}
+\newenvironment{proof}{\noindent {\em Proof}.\ }{\hspace*{\fill}$\Box$\medskip\\}
+
+% Commands
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\lev}{\text{lev}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\eqbyd}{:=}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\useq}{\mathbf{u}}
+
+
+\title{On the inherent robustness of suboptimal MPC}
+
+\author{Cuyler N. Bates and James B. Rawlings
+  \thanks{C. N. Bates and J. B. Rawlings are with Dept. of Chemical and
+    Biological Engineering, Univ. of Wisconsin, Madison, WI 53706, USA
+    \texttt{\footnotesize (cnbates@wisc.edu,rawlings@engr.wisc.edu)}}} 
+
+\begin{document}
+
+\maketitle
+
+Notation. The symbols $\mathbb{I}_{\geq 0}$ and $\mathbb{R}_{\geq 0}$ denote
+the nonnegative integers and reals, respectively. The symbol $\mathbb{I}_{
+0:N}$ denotes the set $\{0,1,\dots,N\}$.
+The symbol $\abs{\cdot}$ denotes the Euclidean norm and 
+$\mathbb{B}$ denotes the closed ball of radius 1 centered at the origin.
+%The relation $A \subseteq B$ denotes $A$ is a subset of $B$ while the 
+%relation $A \subset B$ denotes $A$ is a proper subset of $B$. 
+Bold symbols, e.g., $\mathbf{d}$, denote sequences, $d(k)$ denotes the element of $\mathbf{d}$ at time $k \in \mathbb{I}_{\geq{0}}$ and 
+$\mathbf{d}_k$ denotes the truncation of the sequence up to time $k$, i.e.
+$\mathbf{d}_k = \{d(0),d(1),\dots,d(k)\}$.
+We define $\norm{\mathbf{d}} = \sup_{k \geq 0}\abs{d(k)}$. 
+
+%Given time $k$, initial state $x$ and input sequence $\mathbf{u}$, $\phi(k;x,\mathbf{u})$ denotes 
+%the open-loop state solution to the system \eqref{eq:system}.
+%Given time $k$, initial state $x$ and initial warm start $\tilde{\mathbf{u}}$, $\psi(k;x,\tilde{\mathbf{u}})$ denotes 
+%an arbitrary closed-loop extended state solution
+%to the difference inclusion \eqref{eq:nominc}
+%and $\phi(k;x,\tilde{\mathbf{u}})$ denotes the resulting state component trajectory. 
+%Given time $k$, initial state $x$, initial warm start $\tilde{\mathbf{u}}$ and disturbance and measurement
+%error sequences $\mathbf{d}$ and $\mathbf{e}$, $\psi_{ed}(k;x,\tilde{\mathbf{u}})$ denotes 
+%an arbitrary closed-loop extended state solution
+%to the perturbed difference inclusion \eqref{eq:perturbedinc}
+%and $\phi_{ed}(k;x,\tilde{\mathbf{u}})$ denotes the resulting state component trajectory. 
+
+\section{Basic definitions and assumptions}
+\subsection{MPC problem}
+\label{sec:mpc}
+We consider autonomous discrete-time systems without state constraints
+\begin{equation}
+\label{eq:system}
+x^+=f(x,u), \quad u \in \mathbb{U}, \quad x \in \mathbb{R}^n, \quad
+(x,u) \in \mathbb{Z} = \mathbb{R}^n \times \mathbb{U} 
+\end{equation}
+%\begin{equation*}
+%u \in \mathbb{U}, \quad x \in \mathbb{R}^n, \quad (x,u) \in \mathbb{Z} = \mathbb{R}^n \times \mathbb{U}
+%\end{equation*}
+\begin{comment}
+The state and input are 
+subject to the constraints
+\begin{equation*}
+%\label{eq:constraints}
+(x,u) \in \mathbb{X} \times \mathbb{U}
+\end{equation*}
+\end{comment}
+Given time $k$, initial state $x$ and input sequence $\mathbf{u}$, $\phi(k;x,\mathbf{u})$ denotes 
+the open-loop state solution to the system \eqref{eq:system}.
+For model predictive control with a horizon of $N$, initial condition $x$ 
+and a terminal constraint, we define the set of admissible 
+$(x,\mathbf{u})$ pairs \eqref{eq:admissiblepairs}, admissible inputs
+\eqref{eq:admissibleinputs}, admissible states
+\eqref{eq:admissiblestates} and objective function \eqref{eq:objective} by
+\begin{align}
+\label{eq:admissiblepairs}
+\mathcal{Z}_N &= \{ (x,\mathbf{u}) \mid
+x^+=f(x,u), \; (x(k),u(k)) \in \mathbb{Z} \; \forall k \in \mathbb{I}_{0:N-1}, \nonumber \\
+              &\phantom{= \{ (x,\mathbf{u}) \mid x} x(N) \in \mathbb{X}_f, \; x(0)=x \} \\
+\label{eq:admissibleinputs}
+\mathcal{U}_N(x) &= \{\mathbf{u} \mid (x,\mathbf{u}) \in \mathcal{Z}_N \}
+\\
+\label{eq:admissiblestates}
+\mathcal{X}_N &= \{x \mid 
+\exists \, \mathbf{u} \text{ such that  } (x,\mathbf{u}) \in \mathcal{Z}_N \}
+\\
+\label{eq:objective}
+ V_N ( x, \mathbf{u} ) &= \sum_{k=0}^{N-1} \ell ( x(k),u(k) ) + V_f(x(N))
+\end{align}
+\begin{assumption}[Continuity of system and cost]
+\label{as:continuity}
+The model $f:\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n$, 
+stage cost $\ell: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}_
+{\geq 0}$ and terminal cost $V_f:\mathbb{R}^n \rightarrow \mathbb{R}_{\geq 0}$
+are continuous. Furthermore, we have $f(0,0) = 0$, $\ell(0,0)=0$
+and $V_f(0) = 0$.
+\end{assumption}
+\begin{assumption}[Properties of constraint set]
+\label{as:constraints}
+The set $\mathbb{U}$ is compact and contains the origin. 
+%The sets $\mathbb{X}$ and $\mathbb{X}_f$ are closed, contain the origin in their interiors and $\mathbb{X}_f \subset \mathbb{X}$.
+%The set $\mathbb{X}_f$ is closed and contains the origin in its interior.
+% We define X_f to be a level set of V_f
+The set $\mathbb{X}_f$ is defined by  $\mathbb{X}_f= \lev_\alpha V_f = \{x \in \mathbb{R}^n \ | \ 
+V_f(x) \leq \alpha\}$, with $\alpha > 0$.
+\end{assumption}
+\begin{assumption}[Stability assumption]
+\label{as:terminalstability}
+There exists a terminal control law $\kappa_f:\mathbb{X}_f \rightarrow
+\mathbb{U}$ such that for all $x \in \mathbb{X}_f$, we have that $f(x,\kappa_f(x)) \in \mathbb{X}_f$ and 
+\begin{equation*}
+V_f(f(x,\kappa_f(x))) \leq V_f(x)-\ell(x,\kappa_f(x))
+\end{equation*}
+\end{assumption}
+\begin{assumption}[Cost function bound]
+\label{as:pdstagecost}
+There exists $\alpha_\ell \in \mathcal{K}_\infty$ such that
+\begin{equation*}
+%\label{eq:pdstagecost}
+\ell(x,u) \geq \alpha_\ell(\abs{(x,u)}) \quad \quad \forall (x,u) \in \mathbb{Z}
+\end{equation*}
+\end{assumption}
+
+%From Assumption \ref{as:continuity} and Lemma \ref{lem:overbound}, there exists $\alpha_V,\alpha_f \in \mathcal{K}_\infty$
+%such that
+%\begin{align}
+%\label{eq:vnbound}
+%V_N(x,\mathbf{u}) &\leq \alpha_V(\abs{(x,\mathbf{u})}) &\forall (x,\mathbf{u}) \in \mathbb{R}^{n+mN} \\
+%\label{eq:vfbound}
+%V_f(x) &\leq \alpha_f(\abs{x}) &\forall x \in \mathbb{R}^n
+%\end{align}
+
+\subsection{Suboptimal MPC}
+Suboptimal MPC refers to the two-step process of solving the MPC problem
+approximately given a warm start, and then using the approximate solution to build a warm start 
+for the MPC problem at the next time step. Given a state $x$ and warm start 
+$\tilde{\mathbf{u}} \in \mathcal{U}_N(x)$, we consider the following three conditions
+\begin{align}
+\label{eq:feasible}
+\mathbf{u} &\in \mathcal{U}_N(x) \\
+\label{eq:improved}
+V_N(x,\mathbf{u}) &\leq V_N(x,\tilde{\mathbf{u}})  \\
+\label{eq:terminal}
+V_N(x,\mathbf{u}) &\leq V_f(x) \ \text{if} \ x \in r\mathbb{B}
+\end{align}
+where $r>0$ is sufficiently small so that $r\mathbb{B} \subset \mathbb{X}_f$. Conditions 
+\eqref{eq:feasible} and \eqref{eq:terminal} define the set of feasible warm starts
+\begin{equation}
+\label{eq:feaswarm}
+\tilde{\mathcal{U}}_r(x) = \{ \tilde{\mathbf{u}} \mid \tilde{\mathbf{u}} \in \mathcal{U}_N(x) \ 
+\text{and} \ V_N(x,\tilde{\mathbf{u}}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B} \}
+\end{equation}
+and all three conditions together define the suboptimal controller's feasible set
+\begin{align}
+\label{eq:subcontrol}
+\mathcal{U}_r(x,\tilde{\mathbf{u}}) 
+= \{ \mathbf{u} \mid &\mathbf{u} \in \mathcal{U}_N(x), \
+V_N(x,\mathbf{u}) \leq V_N(x,\tilde{\mathbf{u}}), \nonumber \\
+& V_N(x,\mathbf{u}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B} \}
+\end{align}
+The
+suboptimal control law $\kappa_N(x,\tilde{\mathbf{u}})$ is a function of both the state $x$ and the
+warm start $\tilde{\mathbf{u}}$, and may select any element of $\mathcal{U}_r(x,\tilde{\mathbf{u}})$.
+
+Given any suboptimal input $\mathbf{u} \in \mathcal{U}_r(x,\tilde{\mathbf{u}})$,
+we construct the warm start for the successor state $x^+=f(x,u(0))$ as follows
+
+\begin{align}
+\tilde{\mathbf{u}}^+ 
+&=
+\{u(1),u(2),\dots,u(N-1),\kappa_f(\phi(N;x,\mathbf{u}))\}  \notag  \\
+&:= \zeta(x,\mathbf{u}) \label{eq:warm}
+\end{align}
+We now summarize the suboptimal MPC algorithm. 
+\begin{algorithm}[Suboptimal MPC] .\\
+\label{alg:suboptimal}
+\begin{itemize}
+\item Construct $\mathbb{X}_f$ and $V_f(\cdot)$ satisfying Assumption \ref{as:terminalstability}
+\item Select $r > 0$ such that $r\mathbb{B} \subset \mathbb{X}_f$
+\item Provide initial state $x(0) \in \mathcal{X}_N$ 
+and any initial warm start $\tilde{\mathbf{u}}(0) \in \tilde{\mathcal{U}}_r(x(0))$
+\item Repeat for $k = 0,1,\dots$
+\begin{enumerate}
+\item Record current state $x(k)$
+\item Compute any input $\mathbf{u} \in \mathcal{U}_r(x(k),\tilde{\mathbf{u}}(k))$
+%\item Perform zero or more optimization iterations of the MPC problem \eqref{eq:mpc} subject to 
+%\eqref{eq:feasible} - \eqref{eq:terminal} to obtain $\mathbf{u}$
+\item Compute the next warm start $\tilde{\mathbf{u}}(k+1)$ according to \eqref{eq:warm}
+\item Inject the first element of the input sequence $\mathbf{u}$ and set $k \leftarrow k+1$  
+\end{enumerate}
+\end{itemize}
+\end{algorithm}
+
+\section{Asymptotic stability of suboptimal MPC}
+Because the control law $\kappa_N(x,\tilde{\mathbf{u}})$ is a function of the warm start, which is
+itself a function of the previous state and warm start, we subsequently analyze the behavior of the
+extended state $z = (x,\tilde{\mathbf{u}})$. 
+The extended state evolves according to
+\begin{equation}
+\label{eq:nominc}
+z^+ \in H(z) = \{(x^+,\tilde{\mathbf{u}}^+) \ | \ x^+ = f(x,u(0)), \tilde{\mathbf{u}}^+ = \zeta(x,\mathbf{u}), 
+\mathbf{u} \in \mathcal{U}_r(z)\}
+\end{equation}
+where $\zeta(\cdot)$ is defined in \eqref{eq:warm}. 
+We denote by $\psi(k;z)$ an arbitrary solution of 
+\eqref{eq:nominc} with initial extended state $z$ and denote by $\psi_x(k;z)$ the accompanying state 
+component of the trajectory. Since the initial warm start is specified only as a function of $x$, 
+$\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x)$,
+we can define a state evolution equation in $x$ by
+\begin{equation}
+\label{eq:nomincx}
+\psi_x(k;z) = \psi_x(k;x,\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x)) := \phi(k;x)
+\end{equation}
+%We also define the restriction of $\mathcal{Z}_N$ satisfying \eqref{eq:terminal} by
+%\begin{equation*}
+%\mathcal{Z}_r = \{(x,\mathbf{u}) \mid (x,\mathbf{u}) \in \mathcal{Z}_N \ \text{and} \
+%V_N(x,\mathbf{u}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B}\}
+%\mathcal{Z}_r = \{(x,\mathbf{u}) \mid x \in \mathcal{X}_N \ \text{and} \
+%\mathbf{u} \in \tilde{\mathcal{U}}_r(x)\}
+%\end{equation*}
+%\vspace{-5mm}
+\begin{definition}[Asymptotic Stability of Difference Inclusions]
+\label{def:as}
+We say the origin of the difference inclusion $z^+ \in H(z)$ is 
+asymptotically stable on the positive invariant set $\mathcal{Z}$ if there exists a function
+$\beta \in \mathcal{KL}$ such that for any $z \in \mathcal{Z}$, all solutions
+$\psi(k;z)$ satisfy
+\begin{equation*}
+%\psi(k;z) \in \mathcal{Z} \quad \text{and} \quad \abs{\psi(k;z)} \leq 
+\abs{\psi(k;z)} \leq \beta(\abs{z},k) \quad \forall k \in \mathbb{I}_{\geq 0}
+\end{equation*}
+\end{definition}
+\begin{proposition}[Nominal Asymptotic Extended State Stability]
+\label{pp:nominalstability}
+Under Assumptions \ref{as:continuity} -- \ref{as:pdstagecost}, the origin of the closed-loop extended state
+system \eqref{eq:nominc} is asymptotically stable on any compact invariant
+subset of $\mathcal{Z}_N$.
+\end{proposition}
+\begin{theorem}[Nominal Asymptotic Stability]
+\label{th:nominalstability}
+Under Assumptions \ref{as:continuity} -- \ref{as:pdstagecost}, the origin of the closed-loop
+system \eqref{eq:nomincx} is asymptotically stable on any compact
+invariant subset of $\mathcal{X}_N$.
+\end{theorem}
+
+\section{Robust asymptotic stability of suboptimal MPC}
+\subsection{Disturbances and robust stability definitions}
+For robustness analysis, we consider the following modification to \eqref{eq:system}
+\begin{align*}
+\label{eq:disturbed}
+x^+ &= f(x,u) + d \\
+x_m &= x + e
+\end{align*}
+which we choose to rewrite as
+\begin{equation}
+\label{eq:disturbed}
+x_m^+ = f(x_m-e,u) + d + e^+
+\end{equation}
+The predicted successor state is defined as
+\begin{equation*}
+\tilde{x}^+ = f(x_m,u)
+\end{equation*}
+The warm start \eqref{eq:warm}, suboptimal controller \eqref{eq:subcontrol} and Algorithm \ref{alg:suboptimal} now rely
+on the measured state $x_m$ instead of the true state $x$, but are otherwise unchanged.
+We redefine the extended state by
+\begin{equation*}
+z_m = (x_m,\tilde{\mathbf{u}})
+\end{equation*}
+The perturbed extended system then evolves as
+\begin{align}
+z_m^+ \in H_{ed}(z_m) 
+= \{(x_m^+,\tilde{\mathbf{u}}^+) \mid 
+&x_m^+ = f(x_m-e,u(0))+d+e^+, \notag \\
+&\tilde{\mathbf{u}}^+ = \zeta(x_m,\mathbf{u}), \mathbf{u} \in
+\mathcal{U}_r(z_m)\} \label{eq:perturbedinc}  
+\end{align}
+For given disturbance sequences $\mathbf{d}$ and $\mathbf{e}$
+and initial extended state $z_m$ we denote an arbitrary solution of 
+\eqref{eq:perturbedinc}
+by $\psi_{ed}(k;z_m)$ and the corresponding state trajectory by $\psi_{x,ed}(k;z_m)$. As before,
+since the initial warm start is specified only as a function of $x_m$, 
+$\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x_m)$,
+we can define a state evolution equation in $x_m$ by
+\begin{equation}
+\label{eq:perturbedincx}
+\psi_{x,ed}(k;z_m) = \psi_{x,ed}(k;x_m,\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x_m)) := \phi_{ed}(k;x_m)
+\end{equation}
+\begin{definition}[Robust Asymptotic Stability]
+\label{def:ras}
+The origin of the closed-loop system $z_m^+ \in H_{ed}(z_m)$ is robustly asymptotically stable
+(RAS) on the positive invariant set $\mathcal{C}$
+if there exists $\beta \in \mathcal{KL}$, $\sigma_d,\sigma_e \in \mathcal{K}$ and $\delta > 0$ such that
+for each $z_m \in \mathcal{C}$
+%, for all $\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x_m)$ 
+and for all disturbance sequences $\mathbf{d}$ and $\mathbf{e}$
+satisfying $\norm{\mathbf{d}} \leq \delta$ and $\norm{\mathbf{e}} \leq \delta$, we have that
+\begin{equation}
+\label{eq:ras}
+%\abs{\phi_{ed}(k;x,\tilde{\mathbf{u}},\mathbf{d}_i,\mathbf{e}_i)} \leq \beta(\abs{x},k) + \sigma_d(\norm{
+%\mathbf{d}_{i-1}})+ \sigma_e(\norm{\mathbf{e}_i})
+%\abs{\phi_{ed}(k;x_m,\tilde{\mathbf{u}})} \leq \beta(\abs{x_m},k) + \sigma_d(\norm{
+%\mathbf{d}_{k-1}})+ \sigma_e(\norm{\mathbf{e}_k})
+\abs{\psi_{ed}(k;z_m)} \leq \beta(\abs{z_m},k) + \sigma_d(\norm{
+\mathbf{d}_{k-1}})+ \sigma_e(\norm{\mathbf{e}_k})
+\end{equation}
+for all $k \in \mathbb{I}_{\geq 0}$.
+\end{definition}
+
+\subsection{Main results}
+\begin{proposition}[Robust Asymptotic Extended State Stability]
+\label{prop:mainiss}
+Under Assumptions \ref{as:continuity}--\ref{as:pdstagecost}, 
+the origin of the perturbed closed-loop extended state system 
+\eqref{eq:perturbedinc} is RAS on any compact invariant subset of $\mathcal{Z}_N$.
+\end{proposition}
+\begin{theorem}[Robust Asymptotic Stability]
+\label{th:mainiss}
+Under Assumptions \ref{as:continuity}--\ref{as:pdstagecost}, 
+the origin of the perturbed closed-loop system 
+\eqref{eq:perturbedincx} is RAS on any compact invariant subset of $\mathcal{X}_N$.
+\end{theorem}
+\begin{remark}
+If the admissible set $\mathcal{X}_N$ is \textit{bounded}, then the
+result holds for all $\mathcal{X}_N$ since the admissible set is closed and also an
+invariant set. If the admissible set is unbounded,
+then the result holds for the intersection of $\mathcal{X}_N$ with any
+closed, invariant set, such as the level set of the optimal MPC
+controller, $\lev_{\alpha}V_N^0$ for $\alpha > 0$ as large as one pleases.
+\end{remark}
+\begin{figure}
+\scalebox{.6}{\input{feasibility}}
+\caption{The terminal control law computed based on the terminal state $\phi(N-1,\tilde{x}^+,\tilde{\mathbf{u}}^+)$ takes the system
+to the interior of the terminal set. By uniform continuity, the actual and measured trajectories reach the interior as well.}
+\label{fig:feasibility}
+\end{figure} 
+
+\begin{remark}[Comparisons with Pannocchia et al., 2011]
+The assumptions and robust stability definition are essentially unchanged. 
+The primary difference is that robust stability is proven for (essentially)
+all of $\mathcal{X}_N$ without changing the terminal penalty, whereas in the preceding paper the terminal penalty was increased and stability 
+was proven for state trajectories such that $\phi(N-1,\tilde{x}^+,\tilde{\mathbf{u}}^+)$ was in the interior of $\mathbb{X}_f$. 
+The proposed new proof is based on Figure \ref{fig:feasibility};
+the successor warm start $\tilde{\mathbf{u}}^+$, constructed from the predicted successor state $\tilde{x}^+$, brings the predicted successor 
+terminal state $\phi(N,\tilde{x}^+,\tilde{\mathbf{u}}^+)$ to the interior of $\mathbb{X}_f$, thereby guaranteeing recursive feasibility and
+robust stability.
+%The key step in the robustness proof is still showing that the predicted 
+%successor terminal state $\phi^N$ lies in the interior of $\mathbb{X}_f$. However, 
+\end{remark}
+
+\begin{remark}
+Discussion for Gabriele and Steve. Recall that these results include
+\textit{optimal} MPC as a special case.  So Theorem \ref{th:mainiss}
+tells us that optimal MPC is RAS. An interesting issue that has been debated
+recently is whether we require \textit{continuity} of $V_N^0(\cdot)$
+and/or $\kappa_N(\cdot)$ to obtain robustness.  The standard
+robustness arguments tend to break down if $\kappa_N(\cdot)$ is not
+continuous. So, what about Assumptions
+\ref{as:continuity}--\ref{as:pdstagecost}, coupled with the lack of 
+state constraints. Does that imply $\kappa_N(\cdot)$ continuous? 
+If so, then we should bring that fact to the reader's attention.
+If not, then we have proved robustness for discontinuous
+$\kappa_N(\cdot)$, which is worth pointing out in the talk and full
+paper.
+\end{remark}
+
+
+\section{Discontinuous MPC Example}
+
+Consider the nonlinear system defined  by
+\begin{alignat*}{1}
+    x_1^+ &= x_1+u\\
+    x_2^+ &= x_2+u^3
+\end{alignat*}
+with stage cost $\ell(\cdot)$ given by 
+\begin{equation*}
+  \ell(x,u) \eqbyd |x|^2 + u^2
+\end{equation*}
+The constraint sets are $\bbX=\bbR^2$, $\bbU=\bbR$,
+and $\bbX_f\eqbyd\{0\}$, i.e., there are no state and control
+constraints, and the terminal state must satisfy the constraint
+$x(N)=0$. 
+
+\begin{figure}
+\centering
+\resizebox{0.9\textwidth}{!}{\input{feasibility_set}}
+\caption{Feasibility sets $\mathcal{X}_1$, $\mathcal{X}_2$, and
+  $\mathcal{X}_3$.}
+\label{fig:feasibility_set}
+\end{figure} 
+
+Next we consider the feasibility sets $\mathcal{X}_N$ for $N \geq 1$. For
+$N=1$, the terminal constraint $x(N)=0$ gives
+\begin{equation*}
+x_1(1) = x_1(0) + u(0) = 0 \qquad
+x_2(1) = x_2(0) + u(0)^3 = 0
+\end{equation*}
+These equations have a solution only for $x_2(0)= x_1(0)^3$, which
+defines the feasibility set $\mathcal{X}_1$, depicted in Figure
+\ref{fig:feasibility_set}. Next consider $N=2$.  The terminal
+constraint can now be expressed as
+\begin{equation*}
+x_1(2) = x_1(0) + u(0) + u(1)= 0 \qquad
+x_2(1) = x_2(0) + u(0)^3 + u(1)^3 = 0
+\end{equation*}
+Solving the first equation for $u(1)$ and substituting into the second
+equation gives
+\begin{equation*}
+0 = 3x(1)u(0)^2 + 3 x(1)^2 u(0) + x(1)^3 - x(2)
+\end{equation*}
+For $u(0)$ to be real, we require the discriminant of this quadratic
+equation to be nonnegative, which reduces to
+\begin{equation*}
+-3x(1)^4 + 12 x(1)x(2) \geq 0
+\end{equation*}
+This inequality defines the feasibility region $\bbX_2$
+\begin{equation*}
+\bbX_2 = \left\{ (x_1, x_2) \mid 
+\begin{cases}
+x_2 \geq (1/4)x_1^3, \quad &x_1 > 0 \\
+x_2 = \bbR, \quad &x_1 = 0 \\
+x_2 \leq (1/4)x_1^3, \quad &x_1 < 0
+\end{cases} \right\}
+\end{equation*}
+which is also depicted as the shaded region in Figure \ref{fig:feasibility_set}.
+
+We next show that $\mathcal{X}_3 = \bbR^2$ so that the shortest
+horizon that we can use to stabilize all of $\bbR^2$ is $N=3$. 
+
+
+Hence, although there are three control actions, $u(0)$, $u(1)$, and
+$u(2)$, 
+two must be employed to satisfy the terminal constraint, leaving only
+one degree of freedom. Choosing $u(0)$ to be the free decision
+variable automatically constrains $u(1)$ and $u(2)$ to be functions
+of the initial state $x$ and the first control action $u(0)$. Solving
+the equation
+\begin{alignat*}{2}
+  x_1(3) &=  x_1+u(0)+u(1)+u(2) &= 0\\
+  x_2(3) &=  x_2+u(0)^3+u(1)^3+u(2)^3 &=0 
+\end{alignat*}
+for $u(1)$ and $u(2)$ yields
+\begin{alignat*}{2}
+  u(1) &= -x_1/2-u(0)/2 \pm \sqrt{b}\\
+  u(2) &= -x_1/2-u(0)/2 \mp \sqrt{b}
+\end{alignat*}
+in which
+\begin{equation*}
+  b =\frac
+  {3u(0)^3 - 3u(0)^2x_1 - 3u(0)x_1^2 -x_1^3 + 4x_2}{12(u(0)+x_1)}
+\end{equation*}
+Clearly a real solution exists only if $b$ is positive, i.e., if both
+the numerator and denominator in the expression for $b$ have the same
+sign.  The optimal control problem is defined by
+\begin{equation*}
+  V_3^0(x) = \min_{\useq} \{V_3(x,\useq) \mid \phi(3;x,\useq)=0\}
+\end{equation*}
+
+
+We wish to find the bifurcation points of the nonlinear constraint
+$x(3)=0$.  That has been reduced to finding the points where $b$
+passes through zero, which is equivalent to the cubic equation
+\begin{equation*}
+3u(0)^3 - 3u(0)^2x_1 - 3u(0)x_1^2 -x_1^3 + 4x_2 = 0
+\end{equation*}
+From the theory of cubic equations, we know that changes in the number
+of real roots to the equation $au^3+bu^2+cu+d=0$ are determined by the
+sign of the discriminant 
+\begin{equation*}
+\Delta = 18 abcd - 4b^3d + b^2c^2 -4ac^3 -27 a^2 d^2
+\end{equation*}
+For $\Delta>0$, the equation has three distinct real roots, and when
+$\Delta<0$, one root is real and the other two are complex
+conjugates.  Substituting $a=3$, $b=-3x_1$, $c=-3x_1^2$, and
+$d=-x_1^3+4x_2$ into the expression for the discriminant and factoring
+gives 
+\begin{align*}
+\Delta &= 432 (-x_1^6 + 10 x_1^3x_2 - 9 x_2^2)\\
+       &= -432 (x_1^3 - 9 x_2)(x_1^3 -x_2)
+\end{align*}
+Setting $\Delta=0$ gives two $(x_1, x_2)$ lines at which the number
+of real roots changes from one to three. The line that generates a discontinuity in
+$V_3^0(x)$ corresponds to setting the first factor to zero giving
+\begin{equation*}
+x_2 = (1/9) x_1^3
+\end{equation*}
+Note also that $V_3^0(\cdot)$ is not discontinuous at the origin
+because $V_3^0(\cdot)$ on both sides of the line of  discontinuity
+go to zero at the origin. Let the set of points of discontinuity be denoted by
+\begin{equation*}
+\bbD \eqbyd \{ (x_1, x_2) \mid x_2 = (1/9) x_1^3, \quad x_1 \neq 0 \}
+\end{equation*}
+The set $\bbD$ is shown along with the invariant set $\mathcal{X}_2$
+in Figure \ref{fig:discontinuities}.  Note that these two sets do not
+intersect, which is the key reason why the closed-loop system is
+\textit{robustly} stable.
+\begin{figure}
+\centering
+\resizebox{0.9\textwidth}{!}{\input{discontinuities}}
+\caption{The set $\bbD$, points of discontinuity in cost $V_3^0(\cdot)$,
+  and invariant set $\mathcal{X}_2$. Note that the two sets
+  do not intersect (the origin is not an element of $\bbD$).}
+\label{fig:discontinuities}
+\end{figure} 
+
+
+
+% \bibliographystyle{abbrvnat}
+% \bibliography{abbreviations,articles,books,unpub,proceedings}
+
+\end{document}

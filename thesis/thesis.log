@@ -1,0 +1,1427 @@
+This is pdfTeX, Version 3.1415926-1.40.11 (TeX Live 2010) (format=pdflatex 2010.7.21)  16 FEB 2013 12:54
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**thesis
+(./thesis.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, dumylang, nohyphenation, ge
+rman-x-2009-06-19, ngerman-x-2009-06-19, ancientgreek, ibycus, arabic, armenian
+, basque, bulgarian, catalan, pinyin, coptic, croatian, czech, danish, dutch, u
+kenglish, usenglishmax, esperanto, estonian, farsi, finnish, french, galician, 
+german, ngerman, swissgerman, monogreek, greek, hungarian, icelandic, assamese,
+ bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, panjabi, tamil, 
+telugu, indonesian, interlingua, irish, italian, kurmanji, lao, latin, latvian,
+ lithuanian, mongolian, mongolianlmc, bokmal, nynorsk, polish, portuguese, roma
+nian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, turkish,
+ turkmen, ukrainian, uppersorbian, welsh, loaded.
+(./withesis.cls
+Document Class: withesis 2000/07/24 Univ. of Wisconsin-Madison Thesis Format
+Document Class `withesis' v2.0 <24 July 00>
+(./withe12.sty
+Style Option `mythe12' v1.0 <24 May 00>
+\majorheadskip=\skip41
+\@appendlen=\skip42
+\@appendnumlen=\skip43
+)
+\descriptionmargin=\dimen102
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@tocpage=\count86
+\c@lofpage=\count87
+\c@lotpage=\count88
+\c@listofheading=\count89
+\c@figure=\count90
+\c@table=\count91
+\c@@ipfilectr=\count92
+\c@@includefilectr=\count93
+\c@currenthour=\count94
+\c@currentminute=\count95
+\@testday=\count96
+) (/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/02/14 v0.04n Graphics/color for pdfTeX
+\Gread@gobject=\count97
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/natbib/natbib.sty
+Package: natbib 2009/11/07 8.31a (PWD, AO)
+\bibhang=\skip44
+\bibsep=\skip45
+LaTeX Info: Redefining \cite on input line 694.
+\c@NAT@ctr=\count98
+
+Local config file natbib.cfg used
+
+(/Users/kaushik/Library/texmf/tex/latex/jbr-tex-local/local/latex209/misc/natbi
+b.cfg)) (/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen105
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count99
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count100
+\leftroot@=\count101
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count102
+\DOTSCASE@=\count103
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count104
+\c@MaxMatrixCols=\count105
+\dotsspace@=\muskip10
+\c@parentequation=\count106
+\dspbrk@lvl=\count107
+\tag@help=\toks16
+\row@=\count108
+\column@=\count109
+\maxfields@=\count110
+\andhelp@=\toks17
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks18
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2004/08/06 v2.20
+\thm@style=\toks20
+\thm@bodyfont=\toks21
+\thm@headfont=\toks22
+\thm@notefont=\toks23
+\thm@headpunct=\toks24
+\thm@preskip=\skip49
+\thm@postskip=\skip50
+\thm@headsep=\skip51
+\dth@everypar=\toks25
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup6
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/paralist/paralist.sty
+Package: paralist 2002/03/18 v2.3b Extended list environments (BS)
+\pltopsep=\skip52
+\plpartopsep=\skip53
+\plitemsep=\skip54
+\plparsep=\skip55
+\pl@lab=\toks26
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/booktabs/booktabs.sty
+Package: booktabs 2005/04/14 v1.61803 publication quality tables
+\heavyrulewidth=\dimen114
+\lightrulewidth=\dimen115
+\cmidrulewidth=\dimen116
+\belowrulesep=\dimen117
+\belowbottomsep=\dimen118
+\aboverulesep=\dimen119
+\abovetopsep=\dimen120
+\cmidrulesep=\dimen121
+\cmidrulekern=\dimen122
+\defaultaddspace=\dimen123
+\@cmidla=\count111
+\@cmidlb=\count112
+\@aboverulesep=\dimen124
+\@belowrulesep=\dimen125
+\@thisruleclass=\count113
+\@lastruleclass=\count114
+\@thisrulewidth=\dimen126
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fourier.sty
+Package: fourier 2005/01/01 1.4 fourier-GUTenberg package
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+)
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 311.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 312.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 313.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 314.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 315.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 316.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 317.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 318.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 319.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 320.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 321.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 322.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 323.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 324.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 326.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fourier-orns.sty
+Package: fourier-orns 2004/01/30 1.1 fourier-ornaments package
+)
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 50.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `normal' on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> T1/futs/m/n on input line 50.
+LaTeX Font Info:    Encoding `OT1' has changed to `T1' for symbol font
+(Font)              `operators' in the math version `bold' on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> T1/futs/m/n on input line 50.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  T1/futs/m/n --> T1/futs/b/n on input line 51.
+LaTeX Font Info:    Redeclaring symbol font `letters' on input line 59.
+LaTeX Font Info:    Encoding `OML' has changed to `FML' for symbol font
+(Font)              `letters' in the math version `normal' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> FML/futmi/m/it on input line 59.
+LaTeX Font Info:    Encoding `OML' has changed to `FML' for symbol font
+(Font)              `letters' in the math version `bold' on input line 59.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> FML/futmi/m/it on input line 59.
+\symotherletters=\mathgroup7
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  FML/futmi/m/it --> FML/futmi/b/it on input line 61.
+LaTeX Font Info:    Overwriting symbol font `otherletters' in version `bold'
+(Font)                  FML/futm/m/it --> FML/futm/b/it on input line 62.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 63.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 64.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 65.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 66.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 67.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 68.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 69.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 70.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 71.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 72.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 73.
+LaTeX Font Info:    Redeclaring symbol font `symbols' on input line 113.
+LaTeX Font Info:    Encoding `OMS' has changed to `FMS' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 113.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> FMS/futm/m/n on input line 113.
+LaTeX Font Info:    Encoding `OMS' has changed to `FMS' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 113.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> FMS/futm/m/n on input line 113.
+LaTeX Font Info:    Redeclaring symbol font `largesymbols' on input line 114.
+LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 1
+14.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
+LaTeX Font Info:    Encoding `OMX' has changed to `FMX' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 114
+.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> FMX/futm/m/n on input line 114.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 115.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> T1/futs/bx/n on input line 115.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> T1/futs/bx/n on input line 115.
+LaTeX Font Info:    Redeclaring math alphabet \mathrm on input line 116.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 117.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> T1/futs/m/it on input line 117.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> T1/futs/m/it on input line 117.
+LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 118.
+LaTeX Font Info:    Redeclaring math symbol \varkappa on input line 119.
+LaTeX Font Info:    Redeclaring math symbol \leqslant on input line 125.
+LaTeX Font Info:    Redeclaring math symbol \geqslant on input line 126.
+LaTeX Font Info:    Redeclaring math symbol \vDash on input line 129.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleleft on input line 13
+0.
+LaTeX Font Info:    Redeclaring math symbol \blacktriangleright on input line 1
+31.
+LaTeX Font Info:    Redeclaring math symbol \nleqslant on input line 132.
+LaTeX Font Info:    Redeclaring math symbol \ngeqslant on input line 133.
+LaTeX Font Info:    Redeclaring math symbol \parallel on input line 134.
+LaTeX Font Info:    Redeclaring math symbol \nparallel on input line 135.
+LaTeX Font Info:    Redeclaring math symbol \nvDash on input line 137.
+LaTeX Font Info:    Redeclaring math symbol \intercal on input line 138.
+LaTeX Font Info:    Redeclaring math symbol \hslash on input line 139.
+LaTeX Font Info:    Redeclaring math symbol \nexists on input line 140.
+LaTeX Font Info:    Redeclaring math symbol \complement on input line 141.
+LaTeX Font Info:    Redeclaring math symbol \varsubsetneq on input line 142.
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 148.
+LaTeX Font Info:    Redeclaring math symbol \smallsetminus on input line 149.
+LaTeX Font Info:    Redeclaring math symbol \subsetneqq on input line 150.
+LaTeX Font Info:    Redeclaring math symbol \rightrightarrows on input line 151
+.
+LaTeX Font Info:    Redeclaring math symbol \leftleftarrows on input line 152.
+LaTeX Font Info:    Redeclaring math symbol \square on input line 153.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowleft on input line 154.
+LaTeX Font Info:    Redeclaring math symbol \curvearrowright on input line 155.
+
+LaTeX Font Info:    Redeclaring math symbol \blacksquare on input line 156.
+LaTeX Font Info:    Redeclaring math symbol \varkappa on input line 186.
+LaTeX Font Info:    Redeclaring math symbol \varvarrho on input line 187.
+LaTeX Font Info:    Redeclaring math delimiter \Vert on input line 210.
+LaTeX Font Info:    Redeclaring math delimiter \vert on input line 215.
+LaTeX Font Info:    Redeclaring math delimiter \lvert on input line 217.
+LaTeX Font Info:    Redeclaring math delimiter \rvert on input line 219.
+LaTeX Font Info:    Redeclaring math delimiter \lVert on input line 221.
+LaTeX Font Info:    Redeclaring math delimiter \rVert on input line 223.
+LaTeX Font Info:    Redeclaring math delimiter \Downarrow on input line 225.
+LaTeX Font Info:    Redeclaring math delimiter \backslash on input line 227.
+LaTeX Font Info:    Redeclaring math delimiter \rangle on input line 229.
+LaTeX Font Info:    Redeclaring math delimiter \langle on input line 231.
+LaTeX Font Info:    Redeclaring math delimiter \rbrace on input line 233.
+LaTeX Font Info:    Redeclaring math delimiter \lbrace on input line 235.
+LaTeX Font Info:    Redeclaring math delimiter \rceil on input line 237.
+LaTeX Font Info:    Redeclaring math delimiter \lceil on input line 239.
+LaTeX Font Info:    Redeclaring math delimiter \rfloor on input line 241.
+LaTeX Font Info:    Redeclaring math delimiter \lfloor on input line 243.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 247.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 248.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 249.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 250.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 251.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 252.
+LaTeX Font Info:    Redeclaring math accent \check on input line 253.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 254.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 255.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 256.
+\symUfutm=\mathgroup8
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+
+
+Package subfig Warning: Your document class has a bad definition
+ of \endfigure, most likely
+ \let\endfigure=\end@float
+ which has now been changed to
+ \def\endfigure{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endfigure.
+ Please complain to your document class author.
+
+
+Package subfig Warning: Your document class has a bad definition
+ of \endtable, most likely
+ \let\endtable=\end@float
+ which has now been changed to
+ \def\endtable{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endtable.
+ Please complain to your document class author.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2010/01/09 v3.1m Customizing captions (AR)
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2010/01/14 v3.1m caption3 kernel (AR)
+\captionmargin=\dimen127
+\captionmargin@=\dimen128
+\captionwidth=\dimen129
+\caption@indent=\dimen130
+\caption@parindent=\dimen131
+\caption@hangindent=\dimen132
+\abovecaptionskip=\skip56
+\belowcaptionskip=\skip57
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used on input line 1084.
+)
+
+Package caption Warning: Unsupported document class (or package) detected,
+(caption)                usage of the caption package is not recommended.
+See the caption package documentation for explanation.
+
+Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \singlespa
+ce \centering #1\ \ #2.
+\c@ContinuedFloat=\count115
+)
+\c@KVtest=\count116
+\sf@farskip=\skip58
+\sf@captopadj=\dimen133
+\sf@capskip=\skip59
+\sf@nearskip=\skip60
+\c@subfigure=\count117
+\c@subfigure@save=\count118
+\c@lofdepth=\count119
+\c@subtable=\count120
+\c@subtable@save=\count121
+\c@lotdepth=\count122
+\sf@top=\skip61
+\sf@bottom=\skip62
+) (/usr/local/texlive/2010/texmf-dist/tex/latex/footmisc/footmisc.sty
+Package: footmisc 2009/09/15 v5.5a a miscellany of footnote facilities
+\FN@temptoken=\toks27
+\footnotemargin=\dimen134
+\c@pp@next@reset=\count123
+Package footmisc Info: Declaring symbol style bringhurst on input line 855.
+Package footmisc Info: Declaring symbol style chicago on input line 863.
+Package footmisc Info: Declaring symbol style wiley on input line 872.
+Package footmisc Info: Declaring symbol style lamport-robust on input line 883.
+
+Package footmisc Info: Declaring symbol style lamport* on input line 903.
+Package footmisc Info: Declaring symbol style lamport*-robust on input line 924
+.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
+Package: algorithm2e 2008/00/00 v3.10 algorithms environments
+\c@AlgoLine=\count124
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/relsize/relsize.sty
+Package: relsize 2003/07/04 ver 3.1
+
+
+Package relsize Warning: Failed to get list of font sizes.
+(relsize)                Falling back to old definition. on input line 81.
+
+)
+********************************************************
+Package `algorithm2e' Release 4.01 -- december 14 2009 --
+- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
+- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
+subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
+- Author: Christophe Fiorio (fiorio@lirmm.fr)
+********************************************************
+\skiptotal=\skip63
+\skiplinenumber=\skip64
+\skiprule=\skip65
+\skiphlne=\skip66
+\skiptext=\skip67
+\skiplength=\skip68
+\algomargin=\skip69
+\skipalgocfslide=\skip70
+\algowidth=\dimen135
+\inoutsize=\dimen136
+\inoutline=\dimen137
+\interspacetitleruled=\dimen138
+\interspacealgoruled=\dimen139
+\interspacetitleboxruled=\dimen140
+\algocf@inoutbox=\box28
+\algocf@inputbox=\box29
+\AlCapSkip=\skip71
+\AlCapHSkip=\skip72
+\algocf@nlbox=\box30
+\algocf@hangingbox=\box31
+\algocf@capbox=\box32
+\algoheightruledefault=\skip73
+\algoheightrule=\skip74
+\algotitleheightruledefault=\skip75
+\algotitleheightrule=\skip76
+\c@algocfline=\count125
+\c@algocfproc=\count126
+\c@algocf=\count127
+\algocf@algoframe=\box33
+\algocf@algobox=\box34
+)
+\c@assumption=\count128
+ (./thesis.aux (./prelude.aux) (./introduction/introduction.aux)
+(./mpc/mpc.aux) (./scheduling/scheduling.aux) (./sc/sc.aux) (./esc/esc.aux)
+(./conclusions/conclusions.aux))
+\openout1 = `thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 144.
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for FML/futm/m/it on input line 144.
+LaTeX Font Info:    Try loading font information for FML+futm on input line 144
+.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fmlfutm.fd
+File: fmlfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futm.
+)
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for FMS/futm/m/n on input line 144.
+LaTeX Font Info:    Try loading font information for FMS+futm on input line 144
+.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fmsfutm.fd
+File: fmsfutm.fd 2004/10/30 Fontinst v1.926 font definitions for FMS/futm.
+)
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for FMX/futm/m/n on input line 144.
+LaTeX Font Info:    Try loading font information for FMX+futm on input line 144
+.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fmxfutm.fd
+File: fmxfutm.fd futm-extension
+)
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 144.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 144.
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 144.
+LaTeX Font Info:    Try loading font information for T1+futs on input line 144.
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/t1futs.fd
+File: t1futs.fd 2004/03/02 Fontinst v1.926 font definitions for T1/futs.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count129
+\scratchdimen=\dimen141
+\scratchbox=\box35
+\nofMPsegments=\count130
+\nofMParguments=\count131
+\everyMPshowfont=\toks28
+\MPscratchCnt=\count132
+\MPscratchDim=\dimen142
+\MPnumerator=\count133
+\everyMPtoPDFconversion=\toks29
+) (/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2010/04/01 v0.9 Utility functions of pdfTeX for LuaTeX (HO)
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2010/04/26 v1.7 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2007/09/30 v1.0 Managing graphics extensions (HO)
+)
+(/usr/local/texlive/2010/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2010/02/22 v3.7 Keyval support for LaTeX options (HO)
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2010/03/01 v1.9 Key value parser (HO)
+
+(/usr/local/texlive/2010/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2010/01/28 v1.3 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 436.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption3 Info: subfig package 1.2 or 1.3 is loaded.
+LaTeX Info: Redefining \subref on input line 144.
+Package caption Info: End \AtBeginDocument code.
+\openout2 = `prelude.aux'.
+
+
+(./prelude.tex
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 41.
+ [1
+
+
+
+{/Users/kaushik/Library/texlive/2010/texmf-var/fonts/map/pdftex/updmap/pdftex.m
+ap}]
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <17> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 45.
+LaTeX Font Info:    Try loading font information for TS1+futs on input line 45.
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/ts1futs.fd
+File: ts1futs.fd 2004/03/26 Fontinst v1.926 font definitions for TS1/futs.
+) [0
+
+] [1]
+[2
+
+] [3] (./thesis.toc
+LaTeX Font Info:    Try loading font information for FML+futmi on input line 1.
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/fourier/fmlfutmi.fd
+File: fmlfutmi.fd 2004/10/30 Fontinst v1.926 font definitions for FML/futmi.
+)
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 11.03998pt on input line 1.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 1.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 1.
+LaTeX Font Info:    Try loading font information for U+msa on input line 1.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 1.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+)
+LaTeX Font Info:    Try loading font information for U+lasy on input line 1.
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 11.03998pt on input line 1.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 8.27998pt on input line 1.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.43999pt on input line 1.
+ [4
+
+]
+Overfull \hbox (1.19994pt too wide) detected at line 100
+ []\T1/futs/m/n/12 102
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 102
+ []\T1/futs/m/n/12 106
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 103
+ []\T1/futs/m/n/12 107
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 105
+ []\T1/futs/m/n/12 115
+ []
+
+)
+\tf@toc=\write3
+\openout3 = `thesis.toc'.
+
+ [5] (./thesis.lot
+Overfull \hbox (1.19994pt too wide) detected at line 2
+ []\T1/futs/m/n/12 102
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 3
+ []\T1/futs/m/n/12 103
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 4
+ []\T1/futs/m/n/12 103
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 5
+ []\T1/futs/m/n/12 103
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 6
+ []\T1/futs/m/n/12 103
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 7
+ []\T1/futs/m/n/12 104
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 8
+ []\T1/futs/m/n/12 104
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 9
+ []\T1/futs/m/n/12 104
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 10
+ []\T1/futs/m/n/12 104
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 11
+ []\T1/futs/m/n/12 106
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 12
+ []\T1/futs/m/n/12 106
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 13
+ []\T1/futs/m/n/12 107
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 14
+ []\T1/futs/m/n/12 110
+ []
+
+)
+\tf@lot=\write4
+\openout4 = `thesis.lot'.
+
+ [6
+
+] (./thesis.lof
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <9> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 5.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <7> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 5.
+ [7
+
+]
+Overfull \hbox (1.19994pt too wide) detected at line 33
+ []\T1/futs/m/n/12 100
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 34
+ []\T1/futs/m/n/12 101
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 35
+ []\T1/futs/m/n/12 105
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 36
+ []\T1/futs/m/n/12 108
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 37
+ []\T1/futs/m/n/12 108
+ []
+
+[8]
+Overfull \hbox (1.19994pt too wide) detected at line 38
+ []\T1/futs/m/n/12 109
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 39
+ []\T1/futs/m/n/12 112
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 40
+ []\T1/futs/m/n/12 112
+ []
+
+
+Overfull \hbox (1.19994pt too wide) detected at line 41
+ []\T1/futs/m/n/12 113
+ []
+
+)
+\tf@lof=\write5
+\openout5 = `thesis.lof'.
+
+ [9] (./abstract.tex) [10
+
+])
+\openout2 = `introduction/introduction.aux'.
+
+ (./introduction/introduction.tex
+CHAPTER 1. Introduction
+[1
+
+
+
+
+]
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <14> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 85.
+ [2]) [3]
+\openout2 = `mpc/mpc.aux'.
+
+ (./mpc/mpc.tex
+CHAPTER 2. Model predictive control
+
+Overfull \hbox (2.84868pt too wide) in paragraph at lines 6--20
+[]\T1/futs/m/n/12 Model Pre-dic-tive Con-trol (MPC) is an op-ti-miza-tion based
+ con-trol al-go-rithm in which a model
+ []
+
+(./mpc/MPC_gen.tex <mpc/MPC_gen.pdf, id=55, 383.4325pt x 241.90375pt>
+File: mpc/MPC_gen.pdf Graphic file (type pdf)
+
+<use mpc/MPC_gen.pdf>
+LaTeX Font Info:    Calculating math sizes for size <20> on input line 16.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 18.39996pt on input line 16.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 13.98386pt on input line 16.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 11.04008pt on input line 16.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <20> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <15.19989> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 16.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12.00012> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 16.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <20> not available
+(Font)              size <20.74> substituted on input line 16.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <15.19989> not available
+(Font)              size <14.4> substituted on input line 16.
+
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 18.39996pt on input line 16.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 13.98386pt on input line 16.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 11.04008pt on input line 16.
+) [4
+
+
+
+ <./mpc/MPC_gen.pdf>] [5]
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 9.19998pt on input line 151.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 151.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 151.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 151.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <7.6> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 151.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 151.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 9.19998pt on input line 151.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.99199pt on input line 151.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 5.51999pt on input line 151.
+ [6] [7] [8] [9] [10] [11]
+
+Package amsmath Warning: Foreign command \atop;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 584.
+
+[12] [13] [14] [15] [16] [17]
+Overfull \hbox (2.7685pt too wide) in paragraph at lines 894--904
+\T1/futs/m/n/12 loop ob-tained by Al-go-rithm 2[] be-longs to the fam-ily of cl
+osed-loop so-lu-tions for which we showed
+ []
+
+[18]
+Overfull \hbox (0.3326pt too wide) in paragraph at lines 1013--1013
+[] 
+ []
+
+[19] [20] [21] [22]
+Overfull \hbox (0.3326pt too wide) in paragraph at lines 1321--1321
+[] 
+ []
+
+[23]
+LaTeX Font Info:    Calculating math sizes for size <14> on input line 1383.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 12.87997pt on input line 1383.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 9.7887pt on input line 1383.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.72806pt on input line 1383.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.63992> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 1383.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <8.40009> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 1383.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <8.40009> not available
+(Font)              size <8> substituted on input line 1383.
+
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 12.87997pt on input line 1383.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 9.7887pt on input line 1383.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.72806pt on input line 1383.
+(./mpc/2tanks_dist.tex <mpc/2tanks_dist.pdf, id=126, 800.9925pt x 552.0625pt>
+File: mpc/2tanks_dist.pdf Graphic file (type pdf)
+
+<use mpc/2tanks_dist.pdf>) [24] [25 <./mpc/2tanks_dist.pdf>]
+(./mpc/unstable_x.tex <mpc/unstable_x.pdf, id=136, 361.35pt x 126.4725pt>
+File: mpc/unstable_x.pdf Graphic file (type pdf)
+
+<use mpc/unstable_x.pdf>) (./mpc/unstable_u1.tex
+<mpc/unstable_u1.pdf, id=137, 361.35pt x 126.4725pt>
+File: mpc/unstable_u1.pdf Graphic file (type pdf)
+ <use mpc/unstable_u1.pdf>) (./mpc/unstable_u2.tex <mpc/unstable_u2.pdf, id=138
+, 361.35pt x 126.4725pt>
+File: mpc/unstable_u2.pdf Graphic file (type pdf)
+
+<use mpc/unstable_u2.pdf>) [26] [27 <./mpc/unstable_x.pdf> <./mpc/unstable_u1.p
+df> <./mpc/unstable_u2.pdf>]
+Overfull \hbox (2.04524pt too wide) in paragraph at lines 1555--1561
+[]\T1/futs/m/n/12 The sta-bil-ity and con-ver-gence the-o-rems are there-fore b
+ased on the fol-low-ing ob-ser-va-tions:(i)
+ []
+
+[28] [29] [30] [31] (./mpc/two_tanks.tex
+<mpc/two_tanks.pdf, id=164, 800.9925pt x 402.50375pt>
+File: mpc/two_tanks.pdf Graphic file (type pdf)
+ <use mpc/two_tanks.pdf>)
+Overfull \hbox (24.15955pt too wide) in paragraph at lines 1774--1777
+[]\T1/futs/m/n/12 The in-put con-straints are given by $\U/futm/m/n/12 U[] \FMS
+/futm/m/n/12 Å []$ \T1/futs/m/n/12 and $\U/futm/m/n/12 U[] \FMS/futm/m/n/12 Å [
+]$\T1/futs/m/n/12 . 
+ []
+
+[32 <./mpc/two_tanks.pdf>] (./mpc/CL1.tex
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 7.35999pt on input line 124.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 124.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <8> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 124.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <6.8> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 124.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 7.35999pt on input line 124.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 6.25598pt on input line 124.
+
+<mpc/CL1.pdf, id=170, 361.35pt x 151.56625pt>
+File: mpc/CL1.pdf Graphic file (type pdf)
+ <use mpc/CL1.pdf>) (./mpc/CL2.tex <mpc/CL2.pdf, id=171, 361.35pt x 151.56625pt
+>
+File: mpc/CL2.pdf Graphic file (type pdf)
+ <use mpc/CL2.pdf>) [33 <./mpc/CL1.pdf>] [34 <./mpc/CL2.pdf>] [35] [36]) [37]
+\openout2 = `scheduling/scheduling.aux'.
+
+ (./scheduling/scheduling.tex
+CHAPTER 3. A state space model for chemical production scheduling
+
+Overfull \hbox (1.67325pt too wide) in paragraph at lines 27--41
+[]\T1/futs/m/n/12 Chemical pro-duc-tion schedul-ing prob-lems arise in a wide v
+a-ri-ety of ap-pli-ca-tions, from batch
+ []
+
+[38
+
+
+
+]
+Overfull \hbox (17.34042pt too wide) in paragraph at lines 102--114
+\T1/futs/m/n/12 present in the same fa-cil-ity. Pro-cess-ing char-ac-ter-is-tic
+s and con-straints in-clude se-tups, changeovers,
+ []
+
+[39] [40] [41] [42] (./scheduling/ABexample.tex
+<scheduling/ABexample.pdf, id=208, 344.28625pt x 192.72pt>
+File: scheduling/ABexample.pdf Graphic file (type pdf)
+
+<use scheduling/ABexample.pdf>
+LaTeX Font Info:    Calculating math sizes for size <17> on input line 28.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 15.63997pt on input line 28.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 11.88628pt on input line 28.
+LaTeX Font Info:    Font shape `FMX/futm/m/n' will be
+(Font)              scaled to size 9.38406pt on input line 28.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <12.9199> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 28.
+LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10.2001> not available
+(Font)              Font shape `T1/futs/b/n' tried instead on input line 28.
+
+
+LaTeX Font Warning: Font shape `U/lasy/m/n' in size <12.9199> not available
+(Font)              size <12> substituted on input line 28.
+
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 15.63997pt on input line 28.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 11.88628pt on input line 28.
+LaTeX Font Info:    Font shape `U/futm/m/n' will be
+(Font)              scaled to size 9.38406pt on input line 28.
+) (./scheduling/ABgantt.tex
+<scheduling/ABgantt.pdf, id=209, 440.64626pt x 330.23375pt>
+File: scheduling/ABgantt.pdf Graphic file (type pdf)
+
+<use scheduling/ABgantt.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43 <./scheduling/ABexample.pdf>] [44 <./scheduling/ABgantt.pdf>] [45] [46]
+[47] [48] [49]
+Overfull \hbox (37.15175pt too wide) in paragraph at lines 830--833
+\T1/futs/m/n/12 in which $\FML/futmi/m/it/12 N$ \T1/futs/m/n/12 is the pre-dic-
+tion hori-zon and $\FML/futmi/m/it/12 d[]\T1/futs/m/n/12 (\FML/futmi/m/it/12 t\
+T1/futs/m/n/12 )$ is the nom-i-nal de-mand, while $\T1/futs/b/n/12 u \FMS/futm/
+m/n/12 Å \T1/futs/m/n/12 (\FML/futmi/m/it/12 u\T1/futs/m/n/12 (0)\FML/futmi/m/i
+t/12 ; u\T1/futs/m/n/12 (1)\FML/futmi/m/it/12 ; [] ; u\T1/futs/m/n/12 (\FML/fut
+mi/m/it/12 N \FMS/futm/m/n/12 ^^@
+ []
+
+[50] <scheduling/gantt_NT.pdf, id=242, 416.55624pt x 201.75375pt>
+File: scheduling/gantt_NT.pdf Graphic file (type pdf)
+
+<use scheduling/gantt_NT.pdf> [51 <./scheduling/gantt_NT.pdf>]
+<scheduling/gantt_Periodic.pdf, id=252, 430.60875pt x 173.64874pt>
+File: scheduling/gantt_Periodic.pdf Graphic file (type pdf)
+
+<use scheduling/gantt_Periodic.pdf> [52 <./scheduling/gantt_Periodic.pdf>]
+<scheduling/gantt_24.pdf, id=261, 416.55624pt x 201.75375pt>
+File: scheduling/gantt_24.pdf Graphic file (type pdf)
+
+<use scheduling/gantt_24.pdf>
+<scheduling/T_24_CL.pdf, id=262, 430.60875pt x 165.61874pt>
+File: scheduling/T_24_CL.pdf Graphic file (type pdf)
+
+<use scheduling/T_24_CL.pdf>
+<scheduling/gantt_12.pdf, id=263, 416.55624pt x 201.75375pt>
+File: scheduling/gantt_12.pdf Graphic file (type pdf)
+
+<use scheduling/gantt_12.pdf>
+<scheduling/T_12_CL.pdf, id=264, 430.60875pt x 165.61874pt>
+File: scheduling/T_12_CL.pdf Graphic file (type pdf)
+
+<use scheduling/T_12_CL.pdf>
+<scheduling/gantt_NT_disturbance.pdf, id=265, 420.57124pt x 418.56375pt>
+File: scheduling/gantt_NT_disturbance.pdf Graphic file (type pdf)
+
+<use scheduling/gantt_NT_disturbance.pdf> [53 <./scheduling/gantt_24.pdf>]
+[54 <./scheduling/T_24_CL.pdf> <./scheduling/gantt_12.pdf>] [55 <./scheduling/T
+_12_CL.pdf>]
+<scheduling/CL_NT_disturbance.pdf, id=300, 430.60875pt x 180.675pt>
+File: scheduling/CL_NT_disturbance.pdf Graphic file (type pdf)
+
+<use scheduling/CL_NT_disturbance.pdf>
+<scheduling/CL_T_disturbance.pdf, id=301, 430.60875pt x 180.675pt>
+File: scheduling/CL_T_disturbance.pdf Graphic file (type pdf)
+
+<use scheduling/CL_T_disturbance.pdf> [56] [57 <./scheduling/gantt_NT_disturban
+ce.pdf>] [58 <./scheduling/CL_NT_disturbance.pdf> <./scheduling/CL_T_disturbanc
+e.pdf>]
+Overfull \hbox (14.96928pt too wide) in paragraph at lines 1085--1091
+[]\T1/futs/m/n/12 Interestingly, the types of dis-tur-bances we have dis-cussed
+ cor-re-spond, when treated as stochas-
+ []
+
+[59] [60]) [61]
+\openout2 = `sc/sc.aux'.
+
+ (./sc/sc.tex
+CHAPTER 4. Distributed MPC for supply chain optimization
+[62
+
+
+
+] [63] [64] [65] [66] [67] [68] [69] (./sc/nodes1_color.tex
+<sc/nodes1_color.pdf, id=365, 790.955pt x 521.95pt>
+File: sc/nodes1_color.pdf Graphic file (type pdf)
+ <use sc/nodes1_color.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(./sc/model.tex <sc/model.pdf, id=366, 840.13875pt x 581.17125pt>
+File: sc/model.pdf Graphic file (type pdf)
+
+<use sc/model.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[70] [71 <./sc/nodes1_color.pdf>] [72 <./sc/model.pdf>]
+Overfull \hbox (13.29187pt too wide) in paragraph at lines 681--693
+ \T1/futs/b/n/12 Schedul-ing mod-els[] \T1/futs/m/n/12 The state task net-work 
+(STN) ap-proach is prob-a-bly the most pop-u-lar method
+ []
+
+[73] [74] (./sc/2node.tex <sc/2node.pdf, id=387, 690.58pt x 144.54pt>
+File: sc/2node.pdf Graphic file (type pdf)
+
+<use sc/2node.pdf>) [75 <./sc/2node.pdf>] [76]
+Overfull \hbox (0.16397pt too wide) in paragraph at lines 933--944
+ \T1/futs/b/n/12 Dis-tributed MPC[] \T1/futs/m/n/12 In de-cen-tral-ized and non
+-co-op-er-a-tive MPC with order-up-to pol-icy, we mod-
+ []
+
+[77] (./sc/sS_demand.tex <sc/sS_demand.pdf, id=399, 361.35pt x 151.56625pt>
+File: sc/sS_demand.pdf Graphic file (type pdf)
+
+<use sc/sS_demand.pdf>) (./sc/sS_demand_input.tex
+<sc/sS_demand_input.pdf, id=400, 361.35pt x 151.56625pt>
+File: sc/sS_demand_input.pdf Graphic file (type pdf)
+
+<use sc/sS_demand_input.pdf>) (./sc/IP_dem.tex
+<sc/IP_dem.pdf, id=401, 361.35pt x 151.56625pt>
+File: sc/IP_dem.pdf Graphic file (type pdf)
+ <use sc/IP_dem.pdf>)
+(./sc/IP_dem_input.tex <sc/IP_dem_input.pdf, id=402, 361.35pt x 151.56625pt>
+File: sc/IP_dem_input.pdf Graphic file (type pdf)
+
+<use sc/IP_dem_input.pdf>) [78] [79 <./sc/sS_demand.pdf> <./sc/sS_demand_input.
+pdf>] [80 <./sc/IP_dem.pdf> <./sc/IP_dem_input.pdf>] (./sc/CL1.tex
+<sc/CL1.pdf, id=421, 361.35pt x 151.56625pt>
+File: sc/CL1.pdf Graphic file (type pdf)
+ <use sc/CL1.pdf>) (./sc/CL2.tex
+<sc/CL2.pdf, id=422, 361.35pt x 151.56625pt>
+File: sc/CL2.pdf Graphic file (type pdf)
+ <use sc/CL2.pdf>)
+Overfull \hbox (5.80844pt too wide) in paragraph at lines 1111--1121
+\T1/futs/m/n/12 closely re-sem-bles the de-ci-sion mak-ing hi-er-ar-chy in sup-
+ply chains. Tra-di-tion-ally, in sup-ply chains,
+ []
+
+[81] [82 <./sc/CL1.pdf> <./sc/CL2.pdf>] (./sc/lssc.tex
+<sc/lssc.pdf, id=433, 639.38875pt x 403.5075pt>
+File: sc/lssc.pdf Graphic file (type pdf)
+ <use sc/lssc.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+(./sc/Conv.tex <sc/Conv.pdf, id=434, 361.35pt x 151.56625pt>
+File: sc/Conv.pdf Graphic file (type pdf)
+ <use sc/Conv.pdf>) (./sc/VN.tex <sc/VN.pdf, id=435, 361.35pt x 151.56625pt>
+File: sc/VN.pdf Graphic file (type pdf)
+ <use sc/VN.pdf>)
+(./sc/Rprofile.tex <sc/Rprofile.pdf, id=436, 361.35pt x 151.56625pt>
+File: sc/Rprofile.pdf Graphic file (type pdf)
+
+<use sc/Rprofile.pdf>) (./sc/R1profile.tex
+<sc/R1profile.pdf, id=437, 361.35pt x 151.56625pt>
+File: sc/R1profile.pdf Graphic file (type pdf)
+ <use sc/R1profile.pdf>)
+[83] [84 <./sc/lssc.pdf>] [85 <./sc/Conv.pdf> <./sc/VN.pdf>] [86 <./sc/Rprofile
+.pdf> <./sc/R1profile.pdf>]
+Overfull \hbox (0.78784pt too wide) in paragraph at lines 1280--1291
+\T1/futs/m/n/12 co-op-er-a-tive MPC, we see that, co-op-er-a-tive and cen-tral-
+ized MPC reach steady state more quickly.
+ []
+
+) [87] [88]
+\openout2 = `esc/esc.aux'.
+
+ (./esc/esc.tex
+CHAPTER 5. Economic MPC for supply chains
+[89
+
+
+
+] [90] (./esc/unstable_SC.tex
+<esc/unstable_SC.pdf, id=473, 361.35pt x 151.56625pt>
+File: esc/unstable_SC.pdf Graphic file (type pdf)
+
+<use esc/unstable_SC.pdf>) (./esc/stable_SC.tex
+<esc/stable_SC.pdf, id=474, 361.35pt x 151.56625pt>
+File: esc/stable_SC.pdf Graphic file (type pdf)
+ <use esc/stable_SC.pdf>)
+[91] [92 <./esc/unstable_SC.pdf> <./esc/stable_SC.pdf>]
+Overfull \hbox (13.26047pt too wide) in paragraph at lines 238--241
+[]\T1/futs/m/n/12 We de-note $(\FML/futmi/m/it/12 x[]; u[]\T1/futs/m/n/12 ; \FM
+L/futmi/m/it/12 d[]\T1/futs/m/n/12 )$ as the so-lu-tion to [] and make the fol-
+low-ing as-sump-tions on $(\FML/futmi/m/it/12 x[]; u[]\T1/futs/m/n/12 ; \FML/fu
+tmi/m/it/12 d[]\T1/futs/m/n/12 )$.
+ []
+
+[93] [94] [95] (./esc/SS_omega.tex
+<esc/SS_omega.pdf, id=496, 361.35pt x 151.56625pt>
+File: esc/SS_omega.pdf Graphic file (type pdf)
+ <use esc/SS_omega.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[96] [97 <./esc/SS_omega.pdf>] [98] (./esc/Xf4.tex
+<esc/Xf4.pdf, id=509, 361.35pt x 252.945pt>
+File: esc/Xf4.pdf Graphic file (type pdf)
+ <use esc/Xf4.pdf>) (./esc/CL2.tex
+<esc/CL2.pdf, id=510, 361.35pt x 151.56625pt>
+File: esc/CL2.pdf Graphic file (type pdf)
+ <use esc/CL2.pdf>) (./esc/CL4.tex <esc/CL4.pdf, id=511, 361.35pt x 151.56625pt
+>
+File: esc/CL4.pdf Graphic file (type pdf)
+ <use esc/CL4.pdf>)
+(./esc/CL8.tex <esc/CL8.pdf, id=512, 361.35pt x 151.56625pt>
+File: esc/CL8.pdf Graphic file (type pdf)
+ <use esc/CL8.pdf>)
+
+LaTeX Warning: Float too large for page by 8.1374pt on input line 663.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[99] [100 <./esc/Xf4.pdf>] [101 <./esc/CL2.pdf> <./esc/CL4.pdf> <./esc/CL8.pdf>
+] (./esc/lssc.tex <esc/lssc.pdf, id=530, 639.38875pt x 403.5075pt>
+File: esc/lssc.pdf Graphic file (type pdf)
+
+<use esc/lssc.pdf>) [102] [103] [104]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[105 <./esc/lssc.pdf>]
+Overfull \hbox (4.16928pt too wide) in paragraph at lines 943--952
+[]\T1/futs/m/n/12 The sup-ply chain de-scribed in the pre-vi-ous sec-tion was s
+im-u-lated for 50 days us-ing a stochas-
+ []
+
+[106] (./esc/bullwhip.tex <esc/bullwhip.pdf, id=549, 361.35pt x 151.56625pt>
+File: esc/bullwhip.pdf Graphic file (type pdf)
+
+<use esc/bullwhip.pdf>) (./esc/R5.tex
+<esc/R5.pdf, id=550, 361.35pt x 151.56625pt>
+File: esc/R5.pdf Graphic file (type pdf)
+ <use esc/R5.pdf>) (./esc/R3.tex
+<esc/R3.pdf, id=551, 361.35pt x 151.56625pt>
+File: esc/R3.pdf Graphic file (type pdf)
+ <use esc/R3.pdf>)
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[107] [108 <./esc/bullwhip.pdf> <./esc/R5.pdf>] [109 <./esc/R3.pdf>] [110]
+<esc/SS_gantt.pdf, id=571, 416.55624pt x 115.43124pt>
+File: esc/SS_gantt.pdf Graphic file (type pdf)
+ <use esc/SS_gantt.pdf>
+<esc/NTS_gantt.pdf, id=572, 412.54124pt x 115.43124pt>
+File: esc/NTS_gantt.pdf Graphic file (type pdf)
+ <use esc/NTS_gantt.pdf>
+<esc/TS_gantt.pdf, id=573, 408.52625pt x 115.43124pt>
+File: esc/TS_gantt.pdf Graphic file (type pdf)
+ <use esc/TS_gantt.pdf>
+(./esc/BOprofile.tex <esc/BOprofile.pdf, id=574, 361.35pt x 151.56625pt>
+File: esc/BOprofile.pdf Graphic file (type pdf)
+
+<use esc/BOprofile.pdf>) [111] [112 <./esc/SS_gantt.pdf> <./esc/NTS_gantt.pdf> 
+<./esc/TS_gantt.pdf>] [113 <./esc/BOprofile.pdf>]) [114]
+\openout2 = `conclusions/conclusions.aux'.
+
+
+(./conclusions/conclusions.tex
+CHAPTER 6. Conclusions and Future work
+
+Overfull \hbox (4.89256pt too wide) in paragraph at lines 15--22
+ \T1/futs/b/n/12 State-space mod-els for schedul-ing:[] \T1/futs/m/n/12 In Chap
+-ter 3[], we pro-vided a state-space model for schedul-
+ []
+
+[115
+
+
+
+] [116]) [117] (./thesis.bbl [118
+
+
+] [119] [120] [121]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 427.
+
+
+(/usr/local/texlive/2010/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+Underfull \hbox (badness 1325) in paragraph at lines 425--428
+[]\T1/futs/m/n/12 M. Kvas-nica, P. Grieder, and M. Baoti¢.  \T1/futs/m/it/12 Mu
+lti-Parametric Tool-box (MPT)\T1/futs/m/n/12 , 2006.  URL
+ []
+
+[122] [123] [124] [125]
+Underfull \hbox (badness 1163) in paragraph at lines 790--795
+\T1/futs/m/n/12 pre-dic-tive con-trol.  In \T1/futs/m/it/12 Pro-ceed-ings of th
+e Amer-i-can Con-trol Con-fer-ence\T1/futs/m/n/12 , Boston, Mas-
+ []
+
+[126] [127]
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1005
+[]\T1/futs/m/n/12 Aswin N. Venkat.  \T1/futs/m/it/12 Dis-tributed Model Pre-dic
+-tive Con-trol: The-ory and Ap-pli-ca-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1001--1005
+\T1/futs/m/it/12 tions\T1/futs/m/n/12 .  PhD the-sis, Uni-ver-sity of Wisconsin
+--Madison, Oc-to-ber 2006.  URL
+ []
+
+[128]) [129] (./abstract.tex) [128] (./thesis.aux (./prelude.aux)
+(./introduction/introduction.aux) (./mpc/mpc.aux) (./scheduling/scheduling.aux)
+(./sc/sc.aux) (./esc/esc.aux) (./conclusions/conclusions.aux))
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.9199pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 7786 strings out of 493747
+ 123089 string characters out of 3143546
+ 199145 words of memory out of 3000000
+ 10684 multiletter control sequences out of 15000+200000
+ 238902 words of font info for 270 fonts, out of 3000000 for 9000
+ 714 hyphenation exceptions out of 8191
+ 44i,23n,42p,644b,536s stack positions out of 5000i,500n,10000p,200000b,50000s
+{/usr/local/texlive/2010/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}
+{/usr/local/texlive/2010/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/tex
+live/2010/texmf-dist/fonts/type1/public/fourier/fourier-bb.pfb></usr/local/texl
+ive/2010/texmf-dist/fonts/type1/public/fourier/fourier-mcl.pfb></usr/local/texl
+ive/2010/texmf-dist/fonts/type1/public/fourier/fourier-mex.pfb></usr/local/texl
+ive/2010/texmf-dist/fonts/type1/public/fourier/fourier-ml.pfb></usr/local/texli
+ve/2010/texmf-dist/fonts/type1/public/fourier/fourier-mlit.pfb></usr/local/texl
+ive/2010/texmf-dist/fonts/type1/public/fourier/fourier-ms.pfb></usr/local/texli
+ve/2010/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/t
+exlive/2010/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/
+2010/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2010/te
+xmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2010/texmf-di
+st/fonts/type1/public/cm-super/sftt1200.pfb>
+Output written on thesis.pdf (142 pages, 614971 bytes).
+PDF statistics:
+ 699 PDF objects out of 1000 (max. 8388607)
+ 478 compressed objects within 5 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 241 words of extra memory for PDF output out of 10000 (max. 10000000)
+

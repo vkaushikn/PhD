@@ -1,0 +1,117 @@
+\contentsline {chapter}{LIST OF TABLES}{vi}
+\contentsline {chapter}{LIST OF FIGURES}{vii}
+\contentsline {chapter}{ABSTRACT}{x}
+\contentsline {chapter}{\numberline {1}{ {Introduction}}}{1}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {paragraph}{Chapter 2 -- Model predictive control:}{2}
+\contentsline {paragraph}{Chapter 3 -- A state-space model for chemical production scheduling:}{2}
+\contentsline {paragraph}{Chapter 4 -- Distributed MPC for supply chain optimization:}{3}
+\contentsline {paragraph}{Chapter 5 -- Economic MPC for supply chains:}{3}
+\contentsline {paragraph}{Chapter 6 -- Conclusions and future work:}{3}
+\contentsline {chapter}{\numberline {2}{ {Model predictive control}}}{4}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {section}{\numberline {2.1}Introduction}{4}
+\contentsline {section}{\numberline {2.2}Centralized MPC}{5}
+\contentsline {subsection}{\numberline {2.2.1}Preliminaries}{5}
+\contentsline {subsection}{\numberline {2.2.2}Optimal MPC}{6}
+\contentsline {subsection}{\numberline {2.2.3}Suboptimal MPC}{8}
+\contentsline {section}{\numberline {2.3}Distributed MPC}{12}
+\contentsline {subsection}{\numberline {2.3.1}Models, constraints and objective functions}{12}
+\contentsline {subsection}{\numberline {2.3.2}Noncooperative MPC}{13}
+\contentsline {subsection}{\numberline {2.3.3}Cooperative MPC}{14}
+\contentsline {subsubsection}{\numberline {2.3.3.1}Sub-states}{19}
+\contentsline {paragraph}{Applicability.}{21}
+\contentsline {paragraph}{Convergence.}{21}
+\contentsline {paragraph}{Initialization.}{21}
+\contentsline {subsubsection}{\numberline {2.3.3.2}Relaxing the terminal region}{22}
+\contentsline {paragraph}{Applicability.}{24}
+\contentsline {paragraph}{Convergence.}{24}
+\contentsline {paragraph}{Initialization.}{24}
+\contentsline {subsection}{\numberline {2.3.4}Example\FN@sf@gobble@opt {This example is taken from \citet {subramanian:rawlings:maravelias:2012}.}}{25}
+\contentsline {section}{\numberline {2.4}Robust cooperative MPC}{26}
+\contentsline {subsection}{\numberline {2.4.1}Preliminaries}{26}
+\contentsline {subsection}{\numberline {2.4.2}Tube based MPC}{28}
+\contentsline {subsection}{\numberline {2.4.3}Main results}{29}
+\contentsline {subsection}{\numberline {2.4.4}Example}{32}
+\contentsline {section}{\numberline {2.5}Related Work}{34}
+\contentsline {chapter}{\numberline {3}{ {A state space model for chemical production scheduling}}}{38}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {section}{\numberline {3.1}Introduction \FN@sf@gobble@opt {This text appears in Section 1 of \citet {subramanian:maravelias:rawlings:2012}}}{38}
+\contentsline {section}{\numberline {3.2}Background}{39}
+\contentsline {subsection}{\numberline {3.2.1}Chemical production scheduling problems and models\FN@sf@gobble@opt {This text appears in Section 2.1 of \citet {subramanian:maravelias:rawlings:2012}}}{39}
+\contentsline {subsection}{\numberline {3.2.2}Reactive scheduling\FN@sf@gobble@opt {This text appears in Section 2.4 of \citet {subramanian:maravelias:rawlings:2012}.} }{40}
+\contentsline {section}{\numberline {3.3}State space scheduling model}{41}
+\contentsline {subsection}{\numberline {3.3.1}General problem statement\FN@sf@gobble@opt { This text appears in Section 2.2 of \citet {subramanian:maravelias:rawlings:2012}.}}{41}
+\contentsline {subsection}{\numberline {3.3.2}Scheduling MIP model\FN@sf@gobble@opt {This text appears in Section 2.3 of \citet {subramanian:maravelias:rawlings:2012}}}{42}
+\contentsline {subsection}{\numberline {3.3.3}Inputs and states\FN@sf@gobble@opt {This section corresponds to the model developed in Section 3.1 of \citet {subramanian:maravelias:rawlings:2012}.}}{43}
+\contentsline {subsection}{\numberline {3.3.4}Disturbances\FN@sf@gobble@opt {This section corresponds to the model developed in Section 3.1 of \citet {subramanian:maravelias:rawlings:2012}.} }{45}
+\contentsline {subsubsection}{\numberline {3.3.4.1}Shipments}{45}
+\contentsline {subsubsection}{\numberline {3.3.4.2}Task yields}{45}
+\contentsline {subsubsection}{\numberline {3.3.4.3}Task delays}{46}
+\contentsline {subsubsection}{\numberline {3.3.4.4}Unit breakdowns}{46}
+\contentsline {subsection}{\numberline {3.3.5}Final model}{47}
+\contentsline {subsection}{\numberline {3.3.6}Extensions}{48}
+\contentsline {subsubsection}{\numberline {3.3.6.1}Variable Batchsizes}{48}
+\contentsline {subsubsection}{\numberline {3.3.6.2}Backorders}{48}
+\contentsline {subsubsection}{\numberline {3.3.6.3}Processing constraints\FN@sf@gobble@opt {The text in this section appears in \citet {subramanian:maravelias:rawlings:2012}.}}{49}
+\contentsline {section}{\numberline {3.4}Illustrative Examples\FN@sf@gobble@opt {The results in this section appears in Section 5 and Section 6.4 of \citet {subramanian:maravelias:rawlings:2012}.}}{49}
+\contentsline {subsection}{\numberline {3.4.1}Nominal demand}{49}
+\contentsline {subsection}{\numberline {3.4.2}Rescheduling}{53}
+\contentsline {section}{\numberline {3.5}Discussion}{56}
+\contentsline {subsection}{\numberline {3.5.1}Generality of the scheduling model\FN@sf@gobble@opt {This text appears in Section 3.5.1 of \citet {subramanian:maravelias:rawlings:2012}}}{56}
+\contentsline {subsection}{\numberline {3.5.2}Stochastic vs. deterministic approaches\FN@sf@gobble@opt {This text appears in Section 3.5.2 of \citet {subramanian:maravelias:rawlings:2012}}}{56}
+\contentsline {subsection}{\numberline {3.5.3}Types of disturbances and uncertainties\FN@sf@gobble@opt {This text appears in Section 3.5.3 of \citet {subramanian:maravelias:rawlings:2012}. Equation \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 3}.30\hbox {}\unskip \@@italiccorr )}} has been modified to remain consistent with the notation used in this chapter}}{59}
+\contentsline {subsubsection}{\numberline {3.5.3.1}Reverse transformation and reoptimization\FN@sf@gobble@opt {This text appears in Section 3.5.2 of \citet {subramanian:maravelias:rawlings:2012}}}{59}
+\contentsline {subsection}{\numberline {3.5.4}MPC tools\FN@sf@gobble@opt {This text appears in Section 6.1 of \citet {subramanian:maravelias:rawlings:2012}}}{60}
+\contentsline {chapter}{\numberline {4}{ {Distributed MPC for supply chain optimization}}}{62}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {section}{\numberline {4.1}Introduction\FN@sf@gobble@opt { The text in this section appears in Section 1 of \citet {subramanian:rawlings:maravelias:2012}.}}{62}
+\contentsline {section}{\numberline {4.2}Literature survey\FN@sf@gobble@opt {The text in this section appears in Section 2 of \citet {subramanian:rawlings:maravelias:2012}}}{64}
+\contentsline {section}{\numberline {4.3}Dynamic modeling of the supply chain\FN@sf@gobble@opt { This section has been modified from Section 3 of \citet {subramanian:rawlings:maravelias:2012} to account for multiple products in the supply chain. Equation \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 4}.2\hbox {}\unskip \@@italiccorr )}} has been modified to track backorders for each downstream node separately.}}{70}
+\contentsline {paragraph}{Planning models}{73}
+\contentsline {paragraph}{Scheduling models}{73}
+\contentsline {subsection}{\numberline {4.3.1}Summary}{74}
+\contentsline {paragraph}{Uncontrollable local models}{74}
+\contentsline {paragraph}{Unstable models}{74}
+\contentsline {paragraph}{Stabilizable centralized model}{74}
+\contentsline {section}{\numberline {4.4}Example\FN@sf@gobble@opt {The results this section, with the exception of Sections 4.4.2\hbox {}, 4.4.3\hbox {} and the discussion on steady states, are slightly modified from Section 6 of \citet {subramanian:rawlings:maravelias:2012} to reflect a coding error that was corrected. }}{75}
+\contentsline {paragraph}{Production model}{75}
+\contentsline {paragraph}{Models}{75}
+\contentsline {paragraph}{Steady state}{76}
+\contentsline {paragraph}{Stage cost}{76}
+\contentsline {paragraph}{Terminal cost}{76}
+\contentsline {paragraph}{Ordering policies}{77}
+\contentsline {paragraph}{Distributed MPC}{77}
+\contentsline {subsection}{\numberline {4.4.1}Nominal demands}{78}
+\contentsline {subsection}{\numberline {4.4.2}Stochastic demands}{78}
+\contentsline {subsection}{\numberline {4.4.3}Multi-echelon supply chain example}{81}
+\contentsline {section}{\numberline {4.5}Discussion\FN@sf@gobble@opt {This section, with the exception of the discussion about VMI appears in Section 6 of \citet {subramanian:rawlings:maravelias:2012}}}{84}
+\contentsline {paragraph}{Value of information:}{84}
+\contentsline {paragraph}{Impact of ordering policy:}{87}
+\contentsline {paragraph}{Plant-model mismatch:}{87}
+\contentsline {paragraph}{Guaranteed stability:}{87}
+\contentsline {paragraph}{Relation to echelon stock policies and VMI:}{87}
+\contentsline {chapter}{\numberline {5}{ {Economic MPC for supply chains}}}{89}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {section}{\numberline {5.1}Economic MPC theory}{89}
+\contentsline {subsection}{\numberline {5.1.1}Terminal equality constraint formulation}{93}
+\contentsline {subsection}{\numberline {5.1.2}Terminal region formulation}{96}
+\contentsline {paragraph}{Terminal region and Terminal penalty.}{97}
+\contentsline {section}{\numberline {5.2}Multi-product, multi-echelon supply chain example}{102}
+\contentsline {paragraph}{$(\sigma ,\Sigma ) $ Policy.}{105}
+\contentsline {subsection}{\numberline {5.2.1}Results}{106}
+\contentsline {subsection}{\numberline {5.2.2}Scheduling model}{107}
+\contentsline {subsubsection}{\numberline {5.2.2.1}Dynamic Response}{111}
+\contentsline {chapter}{\numberline {6}{ {Conclusions and Future work}}}{115}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {paragraph}{Cooperative MPC for linear systems:}{115}
+\contentsline {paragraph}{State-space models for scheduling:}{115}
+\contentsline {paragraph}{MPC for supply chains:}{115}
+\contentsline {paragraph}{Integration of scheduling and control:}{116}
+{\ifnum \value {tocdepth} > 0 {\vskip 1.0em plus 1pt} \fi }
+\contentsline {paragraph}{Terminal conditions for the scheduling problem:}{116}
+\contentsline {paragraph}{Hybrid control theory:}{116}
+\contentsline {paragraph}{Impact of forecast:}{116}
+\contentsline {paragraph}{ Robust terminal conditions:}{116}
+\contentsline {paragraph}{Cooperative game theory:}{117}
+\contentsline {paragraph}{Implementation:}{117}

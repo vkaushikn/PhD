@@ -1,0 +1,95 @@
+\begin{thebibliography}{13}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Amrit et~al.(2011)Amrit, Rawlings, and
+  Angeli]{amrit:rawlings:angeli:2011}
+R.~Amrit, J.~B. Rawlings, and D.~Angeli.
+\newblock Economic optimization using model predictive control with a terminal
+  cost.
+\newblock \emph{Annual Rev. Control}, 35:\penalty0 178--186, 2011.
+
+\bibitem[Angerhofer and Angelides(2000)]{angerhofer:angelides:2000}
+B.~J. Angerhofer and M.~C. Angelides.
+\newblock System dynamics modelling in supply chain management: Research
+  review.
+\newblock In \emph{Simulation Conference Proceedings, 2000. Winter}, volume~1,
+  pages 342--350, 2000.
+
+\bibitem[Beamon(1998)]{beamon:1998}
+B.~M. Beamon.
+\newblock Supply chain design and analysis: Models and methods.
+\newblock \emph{Int. J. Prod. Econ.}, 55\penalty0 (3):\penalty0 281--294, 1998.
+
+\bibitem[Diehl et~al.(2011)Diehl, Amrit, and
+  Rawlings]{diehl:amrit:rawlings:2011}
+M.~Diehl, R.~Amrit, and J.~B. Rawlings.
+\newblock A {Lyapunov} function for economic optimizing model predictive
+  control.
+\newblock \emph{{IEEE} Trans. Auto. Cont.}, 56\penalty0 (3):\penalty0 703--707,
+  2011.
+
+\bibitem[Li and Ierapetritou(2008)]{li:ierapetritou:2008b}
+Z.~Li and M.~Ierapetritou.
+\newblock Process scheduling under uncertainty: Review and challenges.
+\newblock \emph{Comput. Chem. Eng.}, 32\penalty0 (4):\penalty0 715--727, 2008.
+
+\bibitem[Pannocchia et~al.(2011)Pannocchia, Rawlings, and
+  Wright]{pannocchia:rawlings:wright:2011}
+G.~Pannocchia, J.~B. Rawlings, and S.~J. Wright.
+\newblock Conditions under which suboptimal nonlinear {MPC} is inherently
+  robust.
+\newblock \emph{Sys. Cont. Let.}, 60:\penalty0 747--755, 2011.
+
+\bibitem[Rawlings and Mayne(2009)]{rawlings:mayne:2009}
+J.~B. Rawlings and D.~Q. Mayne.
+\newblock \emph{Model Predictive Control: Theory and Design}.
+\newblock Nob Hill Publishing, Madison, WI, 2009.
+\newblock 576 pages, ISBN 978-0-9759377-0-9.
+
+\bibitem[Shah(2005)]{shah:2005}
+N.~Shah.
+\newblock Process industry supply chains: Advances and challenges.
+\newblock \emph{Comput. Chem. Eng.}, 29:\penalty0 1225--1235, April 2005.
+
+\bibitem[Shah et~al.(1993)Shah, Pantelides, and
+  Sargent]{shah:pantelides:sargent:1993}
+N.~Shah, C.~C. Pantelides, and R.~Sargent.
+\newblock A general algorithm for short term scheduling of batch
+  operations--{II}. {C}omputational issues.
+\newblock \emph{Comput. Chem. Eng.}, 20:\penalty0 229--244, 1993.
+
+\bibitem[Stewart et~al.(2010)Stewart, Venkat, Rawlings, Wright, and
+  Pannocchia]{stewart:venkat:rawlings:wright:pannocchia:2010}
+B.~T. Stewart, A.~N. Venkat, J.~B. Rawlings, S.~J. Wright, and G.~Pannocchia.
+\newblock Cooperative distributed model predictive control.
+\newblock \emph{Sys. Cont. Let.}, 59:\penalty0 460--469, 2010.
+
+\bibitem[Stewart et~al.(2011)Stewart, Wright, and
+  Rawlings]{stewart:wright:rawlings:2011}
+B.~T. Stewart, S.~J. Wright, and J.~B. Rawlings.
+\newblock Cooperative distributed model predictive control for nonlinear
+  systems.
+\newblock \emph{J. Proc. Cont.}, 21:\penalty0 698--704, 2011.
+
+\bibitem[Subramanian et~al.(2012{\natexlab{a}})Subramanian, Maravelias, and
+  Rawlings]{subramanian:maravelias:rawlings:2012}
+K.~Subramanian, C.~T. Maravelias, and J.~B. Rawlings.
+\newblock A state-space model for chemical production scheduling.
+\newblock Proceedings of Foundations of Computer-AidedProcess Operations
+  ({FOCAPO}) 2012 and Chemical Process Control ({CPC}) {VIII}, Savannah, GA,
+  2012{\natexlab{a}}.
+
+\bibitem[Subramanian et~al.(2012{\natexlab{b}})Subramanian, Rawlings, and
+  Maravelias]{subramanian:rawlings:maravelias:2012}
+K.~Subramanian, J.~B. Rawlings, and C.~T. Maravelias.
+\newblock Integration of control theory and scheduling methods for supply chain
+  management.
+\newblock Proceedings of Foundations of Computer-AidedProcess Operations
+  ({FOCAPO}) 2012 and Chemical Process Control ({CPC}) {VIII}, Savannah, GA,
+  2012{\natexlab{b}}.
+
+\end{thebibliography}

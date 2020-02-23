@@ -1,0 +1,112 @@
+% modify these themes slightly
+%\usetheme{CambridgeUS}
+%\usecolortheme{beaver}
+%\useoutertheme{infolines}
+
+% define `'UW'' colors (from uw desgin website)
+\definecolor{uwred}{RGB}{183,1,1}
+\definecolor{uwgold}{RGB}{231,217,193}
+\definecolor{medred}{RGB}{153,0,0}
+\definecolor{darkred}{RGB}{102,0,0}
+%\setbeamercolor{section in toc}{fg=medred,bg=white}
+%\setbeamercolor{subsection in head/foot}{fg = uwred}
+%\setbeamercolor{alerted text}{fg=medred}
+%\setbeamercolor*{palette primary}{bg = uwgold,fg = uwred}
+%\setbeamercolor*{palette secondary}{fg=uwred,bg = uwgold}
+%\setbeamercolor*{palette tertiary}{bg=uwred!70!black,fg=gray!10!white}
+%\setbeamercolor*{palette quaternary}{fg=uwred,bg=gray!5!white}
+%\setbeamercolor*{sidebar}{fg=uwgold,bg=gray!15!white}
+%\setbeamercolor*{palette sidebar primary}{fg=uwred!10!black}
+%\setbeamercolor*{palette sidebar secondary}{fg=white}
+%\setbeamercolor*{palette sidebar tertiary}{fg=uwred!50!black}
+%\setbeamercolor*{palette sidebar quaternary}{fg=gray!10!white}
+%\setbeamercolor{titlelike}{parent=palette primary,fg=uwred}
+%\setbeamercolor{frametitle}{bg=uwgold}
+%\setbeamercolor{frametitle right}{bg=uwgold}
+%\setbeamercolor*{separation line}{}
+%\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor*{author in head/foot}{parent=palette tertiary}
+\setbeamercolor*{title in head/foot}{parent=palette secondary}
+\setbeamercolor*{date in head/foot}{parent=palette primary}
+
+\setbeamercolor*{section in head/foot}{parent=palette tertiary}
+\setbeamercolor*{subsection in head/foot}{parent=palette primary}
+
+%light gray/black highlighting to be used with pause command
+\def\blackgray<#1>{%
+  \temporal<#1>{\color{gray}}{\color{black}}{\color{gray}}}
+
+%set the math environment font color to medred
+%\setbeamercolor{math text}{fg=medred}
+
+% Remove navigation symbols (p. 56 of 3.01 User's guide)
+\setbeamertemplate{navigation symbols}{}
+
+
+% Remove author name, univ etc from footer (for local talks)
+\setbeamertemplate{footline}
+{   \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,right]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot} \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}%
+  \vskip0pt%
+
+}
+
+\setbeamertemplate{headline}
+{
+  %\leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+   \hspace*{2ex}\usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}}%
+}
+
+
+
+
+
+%to draw header and footer on repeat slides without page number, title.
+\newcommand{\NoHeaderFooter}{
+\setbeamertemplate{footline}
+{
+   \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,right]{subsection in head/foot}%
+    \usebeamerfont{subsection in head/foot}
+    %\insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}%
+  \vskip0pt%
+
+}
+
+\setbeamertemplate{headline}
+{
+  %\leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,left]{section in head/foot}%
+  %  \usebeamerfont{section in head/foot}\insertsectionhead\hspace*{2ex}
+  \end{beamercolorbox}}%
+}
+
+}
+
+%Add citations in footer
+\newcommand{\FooterCite}[1]{
+\setbeamertemplate{footline}
+{   \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,right]{subsection in head/foot}{\color{black}{#1}}%
+    \usebeamerfont{subsection in head/foot} \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+  \end{beamercolorbox}%
+  \vskip0pt%
+
+}
+}
+
+%set the itemize list bullets to fancy balls
+\beamertemplateballitem
+%set the enumerate balls to be in red too
+\setbeamercolor{item}{use={structure,normal,text},fg = uwred!80!uwgold }
+\mode<handout>{\setbeamercolor{background canvas}{bg=black!5}}
+\def\newblock{\hskip .11em plus .33em minus .07em}
+
+
+%\logo{\includegraphics[height=2cm]{logo.pdf}}
+

@@ -1,0 +1,41 @@
+A supply chain is a network of facilities and distribution options
+that performs the functions of procuring raw materials, transforming
+them to products and distributing the finished products to the
+customers. The modern supply chain is a highly interconnected network
+of facilities that are spread over multiple locations and handle
+multiple products. In a highly competitive global
+environment, optimal day-to-day operations of supply chains is
+essential.
+
+To facilitate optimal operations in supply chains, we propose the use of
+Model Predictive Control (MPC) for supply chains. We develop:  
+
+\begin{itemize}
+\item A new cooperative MPC algorithm that can stabilize any
+  centralized stabilizable system
+\item A new algorithm for robust cooperative MPC
+\item A state space model for the chemical production scheduling problem
+\end{itemize}
+
+We use the new tools and algorithms to design model predictive
+controllers for supply chain models. We demonstrate:
+
+\begin{itemize}
+\item {\textbf{Cooperative control for supply chains}}: In cooperative MPC, each node makes its
+  decisions by considering the effects of their decisions on the
+  entire supply chain. We show that the cooperative controller can
+  perform better than the noncooperative and decentralized  controller
+  and can reduce the  bullwhip effect in the supply chain. 
+
+\item {\textbf{Centralized economic control}}: We propose a new multiobjective
+  stage cost that captures both the economics and risk at a node,
+  using a weighted sum of an economic stage cost and a tracking stage
+  cost. We use Economic MPC theory \citep{amrit:rawlings:angeli:2011} to design
+  closed-loop stable controllers for the supply chain. 
+
+\item {\textbf{Integrated supply chain}}: We show an example of integrating
+  inventory control with production scheduling using the tools
+  developed in this thesis. We develop simple terminal conditions to
+  show recursive feasibility of such integrated control schemes.
+\end{itemize}
+

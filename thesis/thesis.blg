@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ./thesis.aux
+A level-1 auxiliary file: prelude.aux
+A level-1 auxiliary file: introduction/introduction.aux
+A level-1 auxiliary file: mpc/mpc.aux
+A level-1 auxiliary file: scheduling/scheduling.aux
+A level-1 auxiliary file: sc/sc.aux
+A level-1 auxiliary file: esc/esc.aux
+A level-1 auxiliary file: conclusions/conclusions.aux
+The style file: plainnat.bst
+Database file #1: abbreviations.bib
+Database file #2: articles.bib
+Database file #3: books.bib
+Database file #4: proceedings.bib
+Database file #5: unpub.bib
+You've used 166 entries,
+            2773 wiz_defined-function locations,
+            2225 strings with 42530 characters,
+and the built_in function-call counts, 78040 in all, are:
+= -- 7203
+> -- 4038
+< -- 116
++ -- 1372
+- -- 1200
+* -- 6380
+:= -- 11769
+add.period$ -- 511
+call.type$ -- 166
+change.case$ -- 889
+chr.to.int$ -- 160
+cite$ -- 332
+duplicate$ -- 3537
+empty$ -- 6675
+format.name$ -- 1506
+if$ -- 16432
+int.to.chr$ -- 7
+int.to.str$ -- 1
+missing$ -- 168
+newline$ -- 846
+num.names$ -- 664
+pop$ -- 1667
+preamble$ -- 1
+purify$ -- 732
+quote$ -- 0
+skip$ -- 2644
+stack$ -- 0
+substring$ -- 3957
+swap$ -- 333
+text.length$ -- 16
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 1786
+warning$ -- 0
+while$ -- 763
+width$ -- 0
+write$ -- 2169

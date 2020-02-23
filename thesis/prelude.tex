@@ -1,0 +1,122 @@
+% prelude.tex
+%   - titlepage
+%   - dedication
+%   - acknowledgments
+%   - table of contents, list of tables and list of figures
+%   - nomenclature
+%   - abstract
+%============================================================================
+
+
+\clearpage\pagenumbering{roman}  % This makes the page numbers Roman (i, ii, etc)
+
+
+
+% TITLE PAGE
+%   - define \title{} \author{} \date{}
+\title{Integration of control theory and scheduling methods for supply
+  chain management}
+\author{Kaushik Subramanian}
+\date{2013}
+%   - The default degree is ``Doctor of Philosophy''
+%     (unless the document style msthesis is specified
+%      and then the default degree is ``Master of Science'')
+%     Degree can be changed using the command \degree{}
+%\degree{Master \TeX nician}
+%   - The default is dissertation, unless the document style
+%     msthesis was specified in which case it becomes thesis.
+%     If msthesis is specified for the MS margins, you can
+%     still have a dissertation if you specify \disseration
+%\disseration
+%   - for a masters project report, specify \project
+%\project
+%   - for a preliminary report, specify \prelim
+%\prelim
+%   - for a masters thesis, specify \thesis
+%\thesis
+%   - The default department is ``Electrical Engineering''
+%     The department can be changed using the command \department{}
+\department{Chemical and Biological Engineering}
+%   - once the above are defined, use \maketitle to generate the titlepage
+\maketitle
+
+% COPYRIGHT PAGE
+%   - To include a copyright page use \copyrightpage
+\copyrightpage
+
+% DEDICATION
+\begin{dedication}
+To my teachers.
+\end{dedication}
+
+% ACKNOWLEDGMENTS
+\begin{acknowledgments}
+I would like to express my sincere thanks to my advisers, Prof Jim
+Rawlings and Prof. Christos Maravelias for their invaluable help and
+guidance. Their depth of knowledge, attention to detail, and
+enthusiasm to teach and learn has always motivated me. 
+
+I would like to thank Prof Scahin Patwardhan, for his invaluable
+advice and guidance regarding my decision to pursue a PhD.
+ 
+I also thank Prof. Ross Swaney, Prof. Jennifer Reed, Prof. Michael
+Graham and Prof. Ananth Krishnamurthy for taking time to be on my
+thesis committee.
+  
+I would like to thank Dr Jesus Flores-Cerrillo and Dr Lawrence Megan
+from the Advanced Controls and Optimizations group at Praxair,
+Tonawanda, NY, for giving me the opportunity to work in an exciting
+industrial research group. I have returned brimming with new ideas
+after my visits to Praxair. 
+
+I would like to thank Dr Aswin Venkat and Brent Miller from Bloom
+Energy. The experience working in a start-up company is truly unique.
+
+I would like to thank all the members of Jim Rawlings' group. 
+It is always a pleasure interacting with Ankur
+Gupta, may it be about optimization algorithms or about the Lannister
+clan. Rishi Srivastava has been a very good and patient friend. I
+enjoyed my time with  Brett Stewart, whose guidance helped me a lot in 
+understanding  my research problem. Rishi Amrit has been a savior
+whenever I experienced computing troubles. His help in explaining
+Economic MPC to me has helped me immensely. I have also enjoyed
+interacting with Cuyler Bates, who has listened patiently to all my new
+ideas. I must thank Mary Diaz, for all her administrative support and the delicious
+cookies and cakes.
+
+I am also thankful to all the friends I have made in Madison. The
+memories with Swami, Raghu, Sriram, Pavithra, Janani are something
+that I shall cherish for the rest of my life. 
+
+Thanks to the ``Panni group'' - Sashi, Shriram, Srikant, Anand. I look
+forward to many more New year ``reunion'' trips!
+
+Finally,  a big thanks to Amma, Appa and, Vidu for all their love,
+encouragement and support.
+  
+  \raggedleft
+  Kaushik - Madison, WI
+
+\end{acknowledgments}
+
+% CONTENTS, TABLES, FIGURES
+\tableofcontents
+\listoftables
+\listoffigures
+
+% NOMENCLATURE
+%\input{notation}
+
+
+
+\advisorname{James B.\ Rawlings \&  Christos T.\ Maravelias}
+\advisortitle{Professors}
+% ABSTRACT
+
+
+\begin{abstract}
+  \input{abstract}
+\end{abstract}
+
+
+\clearpage\pagenumbering{arabic} % This makes the page numbers Arabic (1, 2, etc)

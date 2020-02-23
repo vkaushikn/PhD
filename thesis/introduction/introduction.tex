@@ -1,0 +1,121 @@
+\chapter{Introduction}
+\label{chap:introduction}
+In today's highly competitive market, it is important that
+the process industries integrate their manufacturing
+processes with the downstream supply chain to maximize economic
+benefits. For example, BASF was able to generate $\$10$ million/year
+savings in operating costs by performing a corporate network
+optimization \citep{grossmann:2005}. In recent years, Enterprise Wide
+Optimization (EWO) has become an important research area for both
+academia and industry. \citet{grossmann:2005} defines EWO as 
+\begin{quotation}
+An area that lies at the interface of chemical engineering (process systems
+engineering) and operations research. It involves optimizing the
+operations of supply, manufacturing (batch or continuous) and
+distribution in a company. The major operational activities include
+planning, scheduling, real-time optimization and inventory control.
+\end{quotation}
+
+In process control technologies like Model Predictive Control (MPC),
+feedback from the process, in terms of measurements of the current state
+of the plant, is used to improve the control performance. It has been
+recognized that using feedback control can be significant for supply
+chain optimization. \citet{backx:bosgra:marquardt:2000} highlight the
+importance of considering the dynamics and feedback in process
+integration. They say
+
+\begin{quotation}
+Future process innovation must aim at a high degree of adaptability of
+manufacturing to the increasingly transient nature of the marketplace
+to meet the challenges of global competition. Adaptation to changing
+environmental conditions requires feedback control mechanisms, which
+manipulate the quality performance and transition flexibility
+characteristics of the manufacturing processes on the basis of measured
+production performance indicators derived from observations of
+critical process variables. This feedback can be achieved by means of
+two qualitatively completely different approaches residing on two
+different time scales. The first, shorter time scale focused approach
+aims at the adaptation of process operations by modified planning,
+scheduling and control strategies and algorithms assuming fixed
+installations. The second approach attempts to achieve performance
+improvements by reengineering the plant, including process and
+equipment, as well as instrumentation and operation support system design.
+\end{quotation}
+
+
+Model predictive control is a multi-variable control
+algorithm which deals with operating constraints and multi-variable interactions. MPC's ability to handle constraints along
+with the online optimization of the control problem has made it a very
+popular control algorithm in the process industries
+\citep{qin:badgwell:2003,morari:lee:1997}. At the heart of MPC is a
+dynamic process model that is used to predict the influence of inputs
+(manipulated variables) on the process. Based on the prediction, an
+optimization problem is solved online, to find the optimal control
+action.  
+
+
+In this thesis, we propose  model predictive control as a
+general purpose tool to aid in enterprise wide
+optimization. Traditionally, decision making in the process industries
+follows a hierarchical structure. At the top, the planning module uses a
+simplified model of the facility along with some knowledge of the
+supply chain dynamics to predict production targets and material
+flows. This problem is called the Planning problem. In the scheduling
+layer, the solution of the planning problem is used to find a detailed
+schedule for the plant. This problem is called the Scheduling problem.
+The Real Time Optimizer (RTO) uses the solution of the scheduling
+problem to find  optimal set-points for the plant.  Finally, the
+advanced controller regulates the plant to the predicted set-points. The main contribution of this
+thesis is to formulate parts of the short term planning problem (interaction of
+the production facility with the supply chain) and the production scheduling
+problem as dynamic models (also see hybrid modeling for rolling
+horizon approaches \citep[Sec 4.4]{maravelias:sung:2009}), that can be ``controlled'' using MPC. Thus,
+in conjunction with economic MPC \citep{amrit:rawlings:angeli:2011} that integrates the advanced control
+layer with the RTO; the tools developed in this thesis allows us to
+study the entire decision making  hierarchy in the enterprise from a predictive control
+point of view.  
+ 
+We focus   on two important aspects of the supply
+chain. First, from an operations
+research standpoint, we use MPC to coordinate 
+orders and shipments in the supply chain to minimize (maximize) costs
+(profits). Second, from a process systems engineering standpoint, we
+develop tools to formulate the short term production scheduling problem as a dynamic control problem.
+
+\section*{Overview of the thesis}
+
+\paragraph{Chapter 2 -- Model predictive control:} In this chapter, we summarize the fundamental theory for linear MPC. We state
+stability theorems for centralized, suboptimal and cooperative MPC. We
+then propose a cooperative MPC algorithm that is applicable to all
+centralized stabilizable systems and an algorithm for robust
+cooperative MPC using tube-based MPC \citep[Chapter 3]{rawlings:mayne:2009}.
+
+\paragraph{Chapter 3 -- A state-space model for chemical production
+  scheduling:} In this chapter we derive a state space model for the
+production scheduling problem and highlight how different scheduling
+disturbances can be modeled. We use ideas from MPC like the terminal
+region to show how the state space model can be used in iterative scheduling.
+
+\paragraph{Chapter 4 -- Distributed MPC for supply chain
+  optimization:} In this chapter, we show how to model a supply chain, and use the theory outlined in
+Chapter 2 to design centralized, distributed and, robust MPC for supply
+chains.
+
+\paragraph{Chapter 5 -- Economic MPC for supply chains:} In this
+chapter, we briefly review economic MPC theory and show how it can be
+tailored for supply chains. Instead of optimizing a tracking
+objective, we show how to design economic and multiobjective
+optimization problems for supply chains. We conclude this chapter with
+an example of an integrated production scheduling--supply chain
+problem solved in a rolling horizon framework.
+
+\paragraph{Chapter 6 -- Conclusions and future work:} We end with a
+summary of the contributions and recommendations for future work.
+
+
+
+
+
+
+
+

@@ -1,0 +1,1071 @@
+\begin{thebibliography}{166}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Amrit et~al.(2011)Amrit, Rawlings, and
+  Angeli]{amrit:rawlings:angeli:2011}
+Rishi Amrit, James~B. Rawlings, and David Angeli.
+\newblock Economic optimization using model predictive control with a terminal
+  cost.
+\newblock \emph{Annual Rev. Control}, 35:\penalty0 178--186, 2011.
+
+\bibitem[Angerhofer and Angelides(2000)]{angerhofer:angelides:2000}
+Bernhard~J. Angerhofer and Marios~C. Angelides.
+\newblock System dynamics modelling in supply chain management: Research
+  review.
+\newblock In \emph{Simulation Conference Proceedings, 2000. Winter}, volume~1,
+  pages 342--350, 2000.
+
+\bibitem[Antsaklis and Michel(1997)]{antsaklis:michel:1997}
+Panos~J. Antsaklis and Anthony~N. Michel.
+\newblock \emph{Linear Systems}.
+\newblock McGraw-Hill, New York, 1997.
+
+\bibitem[Atamt{\"u}rk and Savelsbergh(2005)]{atamturk:savelsbergh:2005}
+A.~Atamt{\"u}rk and M.W.P. Savelsbergh.
+\newblock Integer-programming software systems.
+\newblock \emph{Ann. Oper. Res.}, 140\penalty0 (1):\penalty0 67--124, 2005.
+
+\bibitem[Axs{\"a}ter(2001)]{axsater:2001}
+S.~Axs{\"a}ter.
+\newblock A framework for decentralized multi-echelon inventory.
+\newblock \emph{{IIE} Trans.}, 33:\penalty0 91--97, 2001.
+
+\bibitem[Axs{\"a}ter(2006)]{axsater:2006}
+S.~Axs{\"a}ter.
+\newblock \emph{Inventory control}.
+\newblock Springer Verlag, 2006.
+
+\bibitem[Backx et~al.(1998)Backx, Bosagra, and
+  Marquardt]{backx:bosgra:marquardt:1998}
+T.~Backx, O.~Bosagra, and W.~Marquardt.
+\newblock Towards intentional dynamics in supply chain conscious process
+  operations.
+\newblock In \emph{FOCAPO}, 1998.
+
+\bibitem[Backx et~al.(2000)Backx, Bosgra, and
+  Marquardt]{backx:bosgra:marquardt:2000}
+T.~Backx, O.~Bosgra, and W.~Marquardt.
+\newblock Integration of model predictive control and optimization of
+  processes.
+\newblock In \emph{International Symposium on Advanced Control of Chemical
+  Processes (ADCHEM 2000)}, volume~1, pages 249--260, June 2000.
+
+\bibitem[Bartholdi and Kemahlio{\u{g}}lu-Ziya(2005)]{bartholdi:ziya:2005}
+J.~J. Bartholdi and E.~Kemahlio{\u{g}}lu-Ziya.
+\newblock Using shapley value to allocate savings in a supply chain.
+\newblock \emph{Supply Chain Optim.}, 98:\penalty0 169--208, 2005.
+
+\bibitem[Ba{\c{s}}ar and Olsder(1999)]{basar:olsder:1999}
+Tamer Ba{\c{s}}ar and Geert~Jan Olsder.
+\newblock \emph{Dynamic Noncooperative Game Theory}.
+\newblock {SIAM}, Philadelphia, 1999.
+
+\bibitem[Beamon(1999)]{beamon:1999}
+B.~M. Beamon.
+\newblock Measuring supply chain performance.
+\newblock \emph{Int. J. Oper. Prod. Manage.}, 19\penalty0 (3):\penalty0
+  275--292, 1999.
+
+\bibitem[Beamon(1998)]{beamon:1998}
+Benita~M. Beamon.
+\newblock Supply chain design and analysis: Models and methods.
+\newblock \emph{Int. J. Prod. Econ.}, 55\penalty0 (3):\penalty0 281--294, 1998.
+
+\bibitem[Bemporad and Morari(1999)]{bemporad:morari:1999}
+A.~Bemporad and M.~Morari.
+\newblock Control of systems integrating logic, dynamics, and constraints.
+\newblock \emph{Automatica}, 35:\penalty0 407--427, 1999.
+
+\bibitem[Bemporad et~al.(2005)Bemporad, Di~Cairano, and
+  Giorgetti]{bemporad:cairano:giorgetti:2005}
+A.~Bemporad, S.~Di~Cairano, and N.~Giorgetti.
+\newblock Model predictive control of hybrid systems with applications to
+  supply chain management.
+\newblock In \emph{Congresso ANIPLA (Associazione Nazionale Per
+  L'Automazione)}, 2005.
+
+\bibitem[Ben-Tal and Nemirovski(2002)]{ben-tal:nemirovski:2002}
+A.~Ben-Tal and A.~Nemirovski.
+\newblock Robust optimization--methodology and applications.
+\newblock \emph{Math. Prog.}, 92\penalty0 (3):\penalty0 453--480, 2002.
+
+\bibitem[Bensoussan et~al.(2006)Bensoussan, Liu, and
+  Sethi]{bensoussan:liu:sethi:2006}
+A.~Bensoussan, RH~Liu, and S.~P. Sethi.
+\newblock Optimality of an (s, {S}) policy with compound poisson and diffusion
+  demands: A quasi-variational inequalities approach.
+\newblock \emph{{SIAM} J. Cont. Opt.}, 44\penalty0 (5):\penalty0 1650--1676,
+  2006.
+
+\bibitem[Bertsekas and Tsitsiklis(1989)]{bertsekas:tsitsiklis:1989}
+Dimitri~P. Bertsekas and John~N. Tsitsiklis.
+\newblock \emph{Parallel and Distributed Computation}.
+\newblock Prentice-Hall, Inc., Englewood Cliffs, New Jersey, 1989.
+
+\bibitem[Bose and Penky(2000)]{bose:pekny:2000}
+S.~Bose and J.~F. Penky.
+\newblock A model predictive framework for planning and scheduling problems:
+  {A} case study of consumer goods supply chain.
+\newblock \emph{Comput. Chem. Eng.}, 24:\penalty0 329--335, 2000.
+
+\bibitem[Braun et~al.(2002)Braun, Rivera, Carlyle, and
+  Kempf]{braun:rivera:carlyle:kempf:2002}
+M.~W. Braun, D.~E. Rivera, W.~M. Carlyle, and K.~G. Kempf.
+\newblock A model predictive control framework for robust management of
+  multi-product, multiechelon demand networks.
+\newblock In \emph{IFAC, 15th Triennial World Congress}, 2002.
+
+\bibitem[Burns and Sivazlian(1978)]{burns:sivazlian:1978}
+J.~F. Burns and BD~Sivazlian.
+\newblock Dynamic analysis of multiechelon supply systems.
+\newblock \emph{Comput. Ind. Eng.}, 2\penalty0 (4):\penalty0 181--193, 1978.
+
+\bibitem[Cachon(2003)]{cachon:2003}
+G.~P. Cachon.
+\newblock Supply chain coordination with contracts.
+\newblock \emph{Handbooks Oper. Res. Manage. Sci.}, 11:\penalty0 229--340,
+  2003.
+
+\bibitem[Cachon and Netessine(2006)]{cachon:netessine:2006}
+G.~P. Cachon and S.~Netessine.
+\newblock Game theory in supply chain analysis.
+\newblock \emph{Tutorials in Operations Research: Models, Methods, and
+  Applications for Innovative Decision Making}, 2006.
+
+\bibitem[Cachon and Zipkin(1999)]{cachon:zipkin:1999}
+G.~P. Cachon and P.~H. Zipkin.
+\newblock Competitive and cooperative inventory polices in a two stage supply
+  chain.
+\newblock \emph{Manage Sci.}, 45:\penalty0 936--953, 1999.
+
+\bibitem[Camacho et~al.(2010)Camacho, Ramirez, Limon, Mu{\~n}oz de~la Pe{\~n}a,
+  and Alamo]{camacho:ramirez:limon:pena:alamo:2010}
+EF~Camacho, DR~Ramirez, D.~Limon, D.~Mu{\~n}oz de~la Pe{\~n}a, and T.~Alamo.
+\newblock Model predictive control techniques for hybrid systems.
+\newblock \emph{Annual Rev. Control}, 34\penalty0 (1):\penalty0 21--31, 2010.
+
+\bibitem[Chen and Song(2001)]{chen:song:2001}
+F.~Chen and J.~S. Song.
+\newblock Optimal policies for multiechelon inventory problems with
+  {M}arkov-modulated demand.
+\newblock \emph{Oper. Res.}, 49\penalty0 (2):\penalty0 226--234, 2001.
+
+\bibitem[Chen et~al.(2000{\natexlab{a}})Chen, Drezner, Ryan, and
+  Simchi-Levi]{chen:ryan:simchi-levi:2000}
+F.~Chen, Z.~Drezner, J.~K. Ryan, and D.~Simchi-Levi.
+\newblock Quantifying the bullwhip effect in a simple supply chain: The impact
+  of forecasting, lead times, and information.
+\newblock \emph{Manage Sci.}, 46:\penalty0 436--443, 2000{\natexlab{a}}.
+
+\bibitem[Chen et~al.(2000{\natexlab{b}})Chen, Ryan, and
+  Simchi-Levi]{chen:ryan:simchi-levi:2000b}
+F.~Chen, J.~K. Ryan, and D.~Simchi-Levi.
+\newblock The impact of exponential smoothing forecasts on the bullwhip effect.
+\newblock \emph{Naval Res. Logist.}, 47\penalty0 (4):\penalty0 269--286,
+  2000{\natexlab{b}}.
+
+\bibitem[Cheng et~al.(2007)Cheng, Forbes, and Yip]{cheng:forbes:yip:2007}
+R.~Cheng, J.~F. Forbes, and W.~S. Yip.
+\newblock Price-driven coordination method for solving plant-wide {MPC}
+  problems.
+\newblock \emph{J. Proc. Cont.}, 17\penalty0 (5):\penalty0 429--438, 2007.
+
+\bibitem[Christofides et~al.(2012)Christofides, Scattolini, de~la Pe{\~n}a, and
+  Liu]{christofides:scattolini:pena:liu:2012}
+P.D. Christofides, R.~Scattolini, D.M. de~la Pe{\~n}a, and J.~Liu.
+\newblock Distributed model predictive control: A tutorial review and future
+  research directions.
+\newblock \emph{Comput. Chem. Eng.}, 2012.
+
+\bibitem[Clark and Scarf(1960)]{clark:scarf:1960}
+A.~J. Clark and H.~Scarf.
+\newblock Optimal policies for a multiechelon inventory problem.
+\newblock \emph{Manage Sci.}, 6:\penalty0 475--490, 1960.
+
+\bibitem[Colvin and Maravelias(2008)]{colvin:maravelias:2008}
+M.~Colvin and C.T. Maravelias.
+\newblock A stochastic programming approach for clinical trial planning in new
+  drug development.
+\newblock \emph{Comput. Chem. Eng.}, 32\penalty0 (11):\penalty0 2626--2642,
+  2008.
+
+\bibitem[Colvin and Maravelias(2010)]{colvin:maravelias:2010}
+M.~Colvin and C.T. Maravelias.
+\newblock Modeling methods and a branch and cut algorithm for pharmaceutical
+  clinical trial planning using stochastic programming.
+\newblock \emph{Eur. J. Oper. Res.}, 203\penalty0 (1):\penalty0 205--215, 2010.
+
+\bibitem[Dejonckheere et~al.(2003)Dejonckheere, Disney, Lambrecht, and
+  Towill]{dejonckheere:disney:lambrecht:towill:2003}
+J.~Dejonckheere, S.~M. Disney, M.~R. Lambrecht, and D.~R. Towill.
+\newblock Measuring and avoiding the bullwhip effect: A control theoretic
+  approach.
+\newblock \emph{Eur. J. Oper. Res.}, 147\penalty0 (3):\penalty0 567--590, 2003.
+
+\bibitem[Dejonckheere et~al.(2004)Dejonckheere, Disney, Lambrecht, and
+  Towill]{dejonckheere:disney:lambrecht:towill:2004}
+J.~Dejonckheere, S.~M. Disney, M.~R. Lambrecht, and D.~R. Towill.
+\newblock The impact of information enrichment on the bullwhip effect in supply
+  chains: A control engineering perspective.
+\newblock \emph{Eur. J. Oper. Res.}, 153\penalty0 (3):\penalty0 727--750, 2004.
+
+\bibitem[Diehl et~al.(2011)Diehl, Amrit, and
+  Rawlings]{diehl:amrit:rawlings:2011}
+Moritz Diehl, Rishi Amrit, and James~B. Rawlings.
+\newblock A {Lyapunov} function for economic optimizing model predictive
+  control.
+\newblock \emph{{IEEE} Trans. Auto. Cont.}, 56\penalty0 (3):\penalty0 703--707,
+  2011.
+
+\bibitem[Disney et~al.(2006)Disney, Towill, and
+  Warburton]{disney:towill:warburton:2006}
+Stephen~M. Disney, Denis~R. Towill, and Roger D.~H. Warburton.
+\newblock On the equivalence of control theoretic, differential, and difference
+  equation approaches to modeling supply chains.
+\newblock \emph{Int. J. Prod. Econ.}, 101\penalty0 (1):\penalty0 194 -- 208,
+  2006.
+
+\bibitem[Doan et~al.(2009)Doan, Keviczky, Necoara, Diehl, and
+  De~Schutter]{doan:keviczky:necoara:diehl:schutter:2009}
+D.~Doan, T.~Keviczky, I.~Necoara, M.~Diehl, and B.~De~Schutter.
+\newblock A distributed version of han's method for dmpc using local
+  communications only.
+\newblock \emph{Contr. Eng. and App. Info.}, 11\penalty0 (3):\penalty0 6--15,
+  2009.
+
+\bibitem[Doan et~al.(2011)Doan, Keviczky, and
+  De~Schutter]{doan:keviczky:schutter:2011}
+M.D. Doan, T.~Keviczky, and B.~De~Schutter.
+\newblock A dual decomposition-based optimization method with guaranteed primal
+  feasibility for hierarchical mpc problems.
+\newblock In \emph{18th IFAC World Congress}, 2011.
+
+\bibitem[Dong and Lee(2003)]{dong:lee:2003}
+L.~Dong and H.~L. Lee.
+\newblock Optimal policies and approximations for a serial multiechelon
+  inventory system with time-correlated demand.
+\newblock \emph{Oper. Res.}, 51:\penalty0 969--980, 2003.
+
+\bibitem[Dunbar and Desa(2007)]{dunbar:desa:2007a}
+William~B. Dunbar and S.~Desa.
+\newblock Distributed model predictive control for dynamic supply chain
+  management.
+\newblock In \emph{Assessment and Future Directions of Nonlinear Model
+  Predictive Control}. Springer, 2007.
+
+\bibitem[Federgruen(1993)]{federgruen:1993}
+A.~Federgruen.
+\newblock Centralized planning models for multiechelon inventory systems under
+  uncertainty.
+\newblock \emph{Handbooks Oper. Res. Manage. Sci.}, 4:\penalty0 133--173, 1993.
+
+\bibitem[Federgruen and Zipkin(1984)]{federgruen:zipkin:1984}
+A.~Federgruen and P.~Zipkin.
+\newblock Computational issues in an infinite-horizon, multiechelon inventory
+  model.
+\newblock \emph{Oper. Res.}, 32:\penalty0 818--836, 1984.
+
+\bibitem[Federgruen and Zipkin(1986{\natexlab{a}})]{federgruen:zipkin:1986}
+A.~Federgruen and P.~Zipkin.
+\newblock An inventory model with limited production capacity and uncertain
+  demands {II. T}he discounted-cost criterion.
+\newblock \emph{Math. Oper. Res.}, 11\penalty0 (2):\penalty0 208--215,
+  1986{\natexlab{a}}.
+
+\bibitem[Federgruen and Zipkin(1986{\natexlab{b}})]{federgruen:zipkin:1986b}
+A.~Federgruen and P.~Zipkin.
+\newblock An inventory model with limited production capacity and uncertain
+  demands {I. T}he average-cost criterion.
+\newblock \emph{Math. Oper. Res.}, 11\penalty0 (2):\penalty0 193--207,
+  1986{\natexlab{b}}.
+
+\bibitem[Gallego and {\"O}zer(2005)]{gallego:ozer:2005}
+G.~Gallego and O.~{\"O}zer.
+\newblock A new algorithm and a new heuristic for serial supply systems.
+\newblock \emph{Oper. Res. Lett.}, 33\penalty0 (4):\penalty0 349--362, 2005.
+
+\bibitem[Ganeshan and Harrison(1995)]{ganeshan:harrison:1995}
+R.~Ganeshan and T.~P. Harrison.
+\newblock An introduction to supply chain management.
+\newblock Technical report, Department of Management Scicence and Information
+  Systems, The Pennsylvania State University, University Park, PA, 1995.
+
+\bibitem[Gilbert and Tan(1991)]{gilbert:tan:1991}
+Elmer~G. Gilbert and Kok~Tin Tan.
+\newblock Linear systems with state and control constraints: {T}he theory and
+  application of maximal output admissible sets.
+\newblock \emph{{IEEE} Trans. Auto. Cont.}, 36\penalty0 (9):\penalty0
+  1008--1020, September 1991.
+
+\bibitem[Giselsson and Rantzer(2010)]{giselsson:rantzer:2010}
+P.~Giselsson and A.~Rantzer.
+\newblock Distributed model predictive control with suboptimality and stability
+  guarantees.
+\newblock In \emph{Decision and Control (CDC), 2010 49th IEEE Conference on},
+  pages 7272--7277. IEEE, 2010.
+
+\bibitem[Giselsson et~al.(2012)Giselsson, Doan, Keviczky, De~Schutter, and
+  Rantzer]{giselsson:doan:keviczky:schutter:rantzer:2012}
+P.~Giselsson, MD~Doan, T.~Keviczky, B.~De~Schutter, and A.~Rantzer.
+\newblock Accelerated gradient methods and dual decomposition in distributed
+  model predictive control.
+\newblock \emph{Automatica}, 2012.
+
+\bibitem[Goel and Grossmann(2006)]{goel:grossmann:2006}
+V.~Goel and I.E. Grossmann.
+\newblock A class of stochastic programs with decision dependent uncertainty.
+\newblock \emph{Math. Prog.}, 108\penalty0 (2):\penalty0 355--394, 2006.
+
+\bibitem[Golany and Rothblum(2006)]{golany:rothblum:2006}
+B.~Golany and U.~G. Rothblum.
+\newblock Inducing coordination in supply chains through linear reward schemes.
+\newblock \emph{Naval Res. Logist.}, 53\penalty0 (1):\penalty0 1--15, 2006.
+
+\bibitem[Grossmann(2005)]{grossmann:2005}
+I.~E. Grossmann.
+\newblock Enterprise-wide optimization: A new frontier in process systems
+  engineering.
+\newblock \emph{{AIChE} J.}, 51:\penalty0 1846--1857, 2005.
+
+\bibitem[Grubbstr{\"o}m and Tang(2000)]{grubbstrom:tang:2000}
+R.~W. Grubbstr{\"o}m and O.~Tang.
+\newblock An overview of input-output analysis applied to production-inventory
+  systems.
+\newblock \emph{Econ. Sys. Res.}, 12\penalty0 (1):\penalty0 3--25, 2000.
+
+\bibitem[Gr{\"u}ne(2009)]{grune:2009}
+L.~Gr{\"u}ne.
+\newblock Analysis and design of unconstrained nonlinear mpc schemes for finite
+  and infinite dimensional systems.
+\newblock \emph{{SIAM} J. Cont. Opt.}, 48\penalty0 (2):\penalty0 1206--1228,
+  2009.
+
+\bibitem[Heemels et~al.(2001)Heemels, De~Schutter, and
+  Bemporad]{heemels:schutter:bemporad:2001}
+W.P.M.H. Heemels, B.~De~Schutter, and A.~Bemporad.
+\newblock Equivalence of hybrid dynamical models.
+\newblock \emph{Automatica}, 37\penalty0 (7):\penalty0 1085--1091, 2001.
+
+\bibitem[Hoberg et~al.(2007)Hoberg, Bradley, and
+  Thonemann]{hoberg:bradley:thonemann:2007}
+Kai Hoberg, James~R. Bradley, and Ulrich~W. Thonemann.
+\newblock Analyzing the effect of the inventory policy on order and inventory
+  variability with linear control theory.
+\newblock \emph{Eur. J. Oper. Res.}, 176\penalty0 (3):\penalty0 1620 -- 1642,
+  2007.
+
+\bibitem[Honkomp et~al.(1999)Honkomp, Mockus, and
+  Reklaitis]{honkomp:mockus:reklaitis:1999}
+SJ~Honkomp, L.~Mockus, and GV~Reklaitis.
+\newblock A framework for schedule evaluation with processing uncertainty.
+\newblock \emph{Comput. Chem. Eng.}, 23\penalty0 (4-5):\penalty0 595--609,
+  1999.
+
+\bibitem[Huercio et~al.(1995)Huercio, Espuna, and
+  Puigjaner]{huercio:espuna:puigjaner:1995}
+A.~Huercio, A.~Espuna, and L.~Puigjaner.
+\newblock Incorporating on-line scheduling strategies in integrated batch
+  production control.
+\newblock \emph{Comput. Chem. Eng.}, 19:\penalty0 609--614, 1995.
+
+\bibitem[Iglehart(1963)]{iglehart:1963}
+D.~L. Iglehart.
+\newblock Optimality of (s, {S}) policies in the infinite horizon dynamic
+  inventory problem.
+\newblock \emph{Manage Sci.}, pages 259--267, 1963.
+
+\bibitem[Janak et~al.(2006)Janak, Floudas, Kallrath, and
+  Vormbrock]{janak:floudas:kallrath:vormbrock:2006}
+S.L. Janak, C.A. Floudas, J.~Kallrath, and N.~Vormbrock.
+\newblock Production scheduling of a large-scale industrial batch plant. ii.
+  reactive scheduling.
+\newblock \emph{Ind. Eng. Chem. Res.}, 45\penalty0 (25):\penalty0 8253--8269,
+  2006.
+
+\bibitem[Johansson et~al.(2006)Johansson, Speranzon, Johansson, and
+  Johansson]{johansson:speranzon:johansson:johansson:2006}
+B.~Johansson, A.~Speranzon, M.~Johansson, and K.H. Johansson.
+\newblock Distributed model predictive consensus.
+\newblock In \emph{Proceedings of the 17th International Symposium on
+  Mathematical Theory of Networks and Systems}, pages 2438--2444, 2006.
+
+\bibitem[Kempf(2004)]{kempf:2004}
+Karl~G. Kempf.
+\newblock Control oriented approaches to supply chain management in
+  semiconductor manufacturing.
+\newblock In \emph{Proceedings of the 2004 American Control Conference}, July
+  2004.
+
+\bibitem[Kim and De~Weck(2005)]{kim:weck:2005}
+I.Y. Kim and OL~De~Weck.
+\newblock Adaptive weighted-sum method for bi-objective optimization: Pareto
+  front generation.
+\newblock \emph{Structural and Multidisciplinary Optimization}, 29\penalty0
+  (2):\penalty0 149--158, 2005.
+
+\bibitem[Kolmanovsky and Gilbert(1998)]{kolmanovsky:gilbert:1998}
+Ilya Kolmanovsky and Elmer~G. Gilbert.
+\newblock Theory and computation of disturbance invariant sets for
+  discrete-time linear systems.
+\newblock \emph{Math. Probl. Eng.}, 4\penalty0 (4):\penalty0 317--367, 1998.
+
+\bibitem[Kondili et~al.(1993)Kondili, Pantelides, and
+  Sargent]{kondili:pantelides:sargent:1993}
+E.~Kondili, C.~C. Pantelides, and R.~Sargent.
+\newblock A general algorithm for short term scheduling of batch
+  operations--{I}. {MILP} formulation.
+\newblock \emph{Comput. Chem. Eng.}, 17:\penalty0 211--227, 1993.
+
+\bibitem[Kvasnica et~al.(2006)Kvasnica, Grieder, and
+  Baoti\'{c}]{kvasnica:grieder:baotic:2006}
+M.~Kvasnica, P.~Grieder, and M.~Baoti\'{c}.
+\newblock \emph{{Multi-Parametric Toolbox (MPT)}}, 2006.
+\newblock URL \url{http://control.ee.ethz.ch/~mpt/}.
+
+\bibitem[Lalwani et~al.(2006)Lalwani, Disney, and
+  Towill]{lalwani:disney:towill:2006}
+C.~S. Lalwani, S.~M. Disney, and D.~R. Towill.
+\newblock Observable and controllable state space representations of a
+  generalized order-up-to policy.
+\newblock \emph{Int. J. Prod. Econ.}, 101\penalty0 (1):\penalty0 173--184,
+  2006.
+
+\bibitem[Lazar and Heemels(2009)]{lazar:heemels:2009}
+M.~Lazar and W.~P. M.~H. Heemels.
+\newblock Predictive control of hybrid systems: Input-to-state stability
+  results for sub-optimal solutions.
+\newblock \emph{Automatica}, 45\penalty0 (1):\penalty0 180--185, 2009.
+
+\bibitem[Lazar et~al.(2009)Lazar, Heemels, and Teel]{lazar:heemels:teel:2009}
+M.~Lazar, W.~P. M.~H. Heemels, and A.~R. Teel.
+\newblock Lyapunov functions, stability and input-to-state stability subtleties
+  for discrete-time discontinuous systems.
+\newblock \emph{{IEEE} Trans. Auto. Cont.}, 54\penalty0 (10):\penalty0
+  2421--2425, 2009.
+
+\bibitem[Lee et~al.(1997{\natexlab{a}})Lee, Padmanabhan, and
+  Whang]{lee:padmanabhan:whang:1997b}
+H.~L. Lee, V.~Padmanabhan, and S.~Whang.
+\newblock Information distortion in a supply chain: The bullwhip effect.
+\newblock \emph{Manage Sci.}, 43:\penalty0 546--558, 1997{\natexlab{a}}.
+
+\bibitem[Lee et~al.(1997{\natexlab{b}})Lee, Padmanabhan, and
+  Whang]{lee:padmanabhan:whang:1997}
+Hau~L. Lee, V.~Padmanabhan, and Seungjin Whang.
+\newblock The bullwhip effect in supply chains.
+\newblock \emph{Sloan Manage. Rev.}, 38:\penalty0 93--102, 1997{\natexlab{b}}.
+
+\bibitem[Leng and Parlar(2005)]{leng:parlar:2005}
+M.~Leng and M.~Parlar.
+\newblock Game theoretic applications in supply chain management: A review.
+\newblock \emph{INFOR}, 43\penalty0 (3):\penalty0 187--220, 2005.
+
+\bibitem[Leng and Parlar(2009)]{leng:parlar:2009}
+M.~Leng and M.~Parlar.
+\newblock Allocation of cost savings in a three-level supply chain with demand
+  information sharing: A cooperative-game approach.
+\newblock \emph{Oper. Res.}, 57\penalty0 (1):\penalty0 200--213, 2009.
+
+\bibitem[Levi et~al.(2008)Levi, Roundy, Shmoys, and
+  Truong]{levi:roundy:shmoys:truong:2008}
+R.~Levi, R.~O. Roundy, D.~B. Shmoys, and V.~A. Truong.
+\newblock Approximation algorithms for capacitated stochastic inventory control
+  models.
+\newblock \emph{Oper. Res.}, 56\penalty0 (5):\penalty0 1184--1199, 2008.
+
+\bibitem[Li and Wang(2007)]{li:wang:2007}
+X.~Li and Q.~Wang.
+\newblock Coordination mechanisms of supply chain systems.
+\newblock \emph{Eur. J. Oper. Res.}, 179\penalty0 (1):\penalty0 1--16, 2007.
+
+\bibitem[Li and Marlin({2009})]{li:marlin:2009}
+Xiang Li and Thomas~E. Marlin.
+\newblock {Robust supply chain performance via model predictive control}.
+\newblock \emph{Comput. Chem. Eng.}, {33}\penalty0 ({12, Sp. Iss.
+  SI}):\penalty0 {2134--2143}, {Dec.} {2009}.
+
+\bibitem[Li and Ierapetritou(2008{\natexlab{a}})]{li:ierapetritou:2008b}
+Z.~Li and M.~Ierapetritou.
+\newblock Process scheduling under uncertainty: Review and challenges.
+\newblock \emph{Comput. Chem. Eng.}, 32\penalty0 (4):\penalty0 715--727,
+  2008{\natexlab{a}}.
+
+\bibitem[Li and Ierapetritou(2010)]{li:ierapetritou:2010}
+Z.~Li and M.~G. Ierapetritou.
+\newblock Rolling horizon based planning and scheduling integration with
+  production capacity consideration.
+\newblock \emph{Chem. Eng. Sci.}, 2010.
+
+\bibitem[Li and Ierapetritou(2008{\natexlab{b}})]{li:ierapetritou:2008a}
+Zukui Li and Marianthi~G. Ierapetritou.
+\newblock Reactive scheduling using parametric programming.
+\newblock \emph{{AIChE} J.}, 54\penalty0 (10):\penalty0 2610--2623,
+  2008{\natexlab{b}}.
+\newblock ISSN 1547-5905.
+\newblock \doi{10.1002/aic.11593}.
+\newblock URL \url{http://dx.doi.org/10.1002/aic.11593}.
+
+\bibitem[Lin et~al.(2004)Lin, Wong, Jang, Shieh, and
+  Chu]{lin:wong:jang:shieh:chu:2004}
+Pin-Ho Lin, David Shan-Hill Wong, Shi-Shang Jang, Shyan~Shu Shieh, and Ji-Zheng
+  Chu.
+\newblock Controller design and reduction of bullwhip for a model supply chain
+  system using z-transform analysis.
+\newblock \emph{J. Proc. Cont.}, 14:\penalty0 487--499, September 2004.
+
+\bibitem[Liu et~al.(2010)Liu, Chen, {Mu{\~n}oz de la Pe{\~n}a}, and
+  Christofides]{liu:chen:pena:christofides:2010}
+Jinfeng Liu, X.~Chen, David {Mu{\~n}oz de la Pe{\~n}a}, and Panagiotis~D.
+  Christofides.
+\newblock Sequential and iterative architectures for distributed model
+  predictive control of nonlinear process systems.
+\newblock \emph{{AIChE} J.}, 56\penalty0 (5):\penalty0 2137--2149, 2010.
+
+\bibitem[Ma et~al.(2011)Ma, Anderson, and Borrelli]{ma:anderson:borrelli:2011}
+Y.~Ma, G.~Anderson, and F.~Borrelli.
+\newblock A distributed predictive control approach to building temperature
+  regulation.
+\newblock In \emph{American Control Conference (ACC), 2011}, pages 2089--2094.
+  IEEE, 2011.
+
+\bibitem[Maestre et~al.(2009)Maestre, {D. Mu\~noz de la Pe\~na}, and
+  Camacho]{Maestre:Pena:Camacho:2009}
+J.~M. Maestre, {D. Mu\~noz de la Pe\~na}, and E.~F. Camacho.
+\newblock Distributed {MPC}: {A} supply chain case study.
+\newblock In \emph{Joint 48th {IEEE} Conference on Decision and Control and
+  28th Chinese Control Conference}, 2009.
+
+\bibitem[Maestre et~al.(2011{\natexlab{a}})Maestre, {Mu\~noz de la Pe\~na}, and
+  Camacho]{maestre:pena:camacho:2011}
+J.~M. Maestre, D.~{Mu\~noz de la Pe\~na}, and E.~F. Camacho.
+\newblock Distributed model predictive control based on a cooperative game.
+\newblock \emph{Optimal Cont. Appl. Meth.}, 32\penalty0 (2):\penalty0 153--176,
+  2011{\natexlab{a}}.
+
+\bibitem[Maestre et~al.(2011{\natexlab{b}})Maestre, Mu{\~n}oz de~la Pe{\~n}a,
+  Camacho, and Alamo]{maestre:pena:camacho:alamo:2011}
+JM~Maestre, D.~Mu{\~n}oz de~la Pe{\~n}a, EF~Camacho, and T.~Alamo.
+\newblock Distributed model predictive control based on agent negotiation.
+\newblock \emph{J. Proc. Cont.}, 21\penalty0 (5):\penalty0 685--697,
+  2011{\natexlab{b}}.
+
+\bibitem[Maravelias and Sung(2009)]{maravelias:sung:2009}
+Christos~T. Maravelias and Charles Sung.
+\newblock Integration of production planning and scheduling: Overview,
+  challenges and opportunities.
+\newblock \emph{Comput. Chem. Eng.}, 33:\penalty0 1919--1930, 2009.
+
+\bibitem[Maravelias(2012)]{maravelias:2012}
+C.T. Maravelias.
+\newblock General framework and modeling approach classification for chemical
+  production scheduling.
+\newblock \emph{{AIChE} J.}, 2012.
+
+\bibitem[Marcos et~al.(2009)Marcos, Forbes, and Guay]{marcos:forbes:guay:2009}
+Natalia~I. Marcos, J.~Fraser Forbes, and Martin Guay.
+\newblock Coordination of distributed model predictive controllers for
+  constrained dynamic processes.
+\newblock In \emph{ADCHEM 2009, International Symposium on Advanced Control of
+  Chemical Processes}, Istanbul, Turkey, July 12-15, 2009.
+
+\bibitem[M{\'e}ndez and Cerd{\'a}(2003)]{mendez:cerda:2003}
+C.A. M{\'e}ndez and J.~Cerd{\'a}.
+\newblock Dynamic scheduling in multiproduct batch plants.
+\newblock \emph{Comput. Chem. Eng.}, 27\penalty0 (8):\penalty0 1247--1259,
+  2003.
+
+\bibitem[M{\'e}ndez et~al.(2006)M{\'e}ndez, Cerd{\'a}, Grossmann, Harjunkoski,
+  and Fahl]{mendez:cerda:grossmann:harjunkoski:fahl:2006}
+C.A. M{\'e}ndez, J.~Cerd{\'a}, I.E. Grossmann, I.~Harjunkoski, and M.~Fahl.
+\newblock State-of-the-art review of optimization methods for short-term
+  scheduling of batch processes.
+\newblock \emph{Comput. Chem. Eng.}, 30\penalty0 (6):\penalty0 913--946, 2006.
+
+\bibitem[Mestan et~al.(2006)Mestan, T{\"u}rkay, and
+  Arkun]{mestan:turkay:arkun:2006}
+Esen Mestan, Metin T{\"u}rkay, and Yaman Arkun.
+\newblock Optimization of operations in supply chain systems using hybrid
+  systems approach and model predictive control.
+\newblock \emph{Ind. Eng. Chem. Res.}, 45:\penalty0 6493--6503, August 2006.
+
+\bibitem[Morari and Lee(1997)]{morari:lee:1997}
+M.~Morari and J.~H. Lee.
+\newblock Model predictive control: past, present and future.
+\newblock In \emph{Proceedings of joint 6th international symposium on process
+  systems engineering (PSE '97) and 30th European symposium on computer aided
+  process systems engineering (ESCAPE 7)}, Trondheim, Norway, 1997.
+
+\bibitem[Morari et~al.(2003)Morari, Baotic, and
+  Borrelli]{morari:baotic:borrelli:2003}
+M.~Morari, M.~Baotic, and F.~Borrelli.
+\newblock Hybrid systems modeling and control.
+\newblock \emph{Eur. J. Control}, 9\penalty0 (2-3):\penalty0 177--189, 2003.
+
+\bibitem[Moro{\c{s}}an et~al.(2011)Moro{\c{s}}an, Bourdais, Dumur, and
+  Buisson]{morocan:bourdais:dumur:buisson:2011}
+P.D. Moro{\c{s}}an, R.~Bourdais, D.~Dumur, and J.~Buisson.
+\newblock A distributed mpc strategy based on benders’ decomposition applied
+  to multi-source multi-zone temperature regulation.
+\newblock \emph{J. Proc. Cont.}, 21\penalty0 (5):\penalty0 729--737, 2011.
+
+\bibitem[Moses and Seshadri(2000)]{moses:seshadri:2000}
+M.~Moses and S.~Seshadri.
+\newblock Policy mechanisms for supply chain coordination.
+\newblock \emph{{IIE} Trans.}, 32\penalty0 (3):\penalty0 245--262, 2000.
+
+\bibitem[Moyaux et~al.(2007)Moyaux, Chain-draa, and
+  D'Amours]{moyaux:chaib-draa:damours:2007}
+Thierry Moyaux, Brahim Chain-draa, and Sophie D'Amours.
+\newblock Information sharing as a coordination mechanism for reducing the
+  bullwhip effect in a supply chain.
+\newblock \emph{{IEEE} T. Syst. Man Cy. C}, 37\penalty0 (3):\penalty0 396--409,
+  2007.
+
+\bibitem[M{\"u}ller et~al.(2012)M{\"u}ller, Reble, and
+  Allg{\"o}wer]{muller:revle:allgower:2012}
+M.A. M{\"u}ller, M.~Reble, and F.~Allg{\"o}wer.
+\newblock Cooperative control of dynamically decoupled systems via distributed
+  model predictive control.
+\newblock \emph{Int. J. Robust and Nonlinear Control}, 2012.
+
+\bibitem[Munawar and Gudi(2005)]{munawar:gudi:2005}
+S.A. Munawar and R.D. Gudi.
+\newblock A multilevel, control-theoretic framework for integration of
+  planning, scheduling, and rescheduling.
+\newblock \emph{Ind. Eng. Chem. Res.}, 44\penalty0 (11):\penalty0 4001--4021,
+  2005.
+
+\bibitem[Nagarajan and So\v{s}i\'{c}(2008)]{nagarajan:sosic:2008}
+M.~Nagarajan and G.~So\v{s}i\'{c}.
+\newblock Game-theoretic analysis of cooperation among supply chain agents:
+  Review and extensions.
+\newblock \emph{Eur. J. Oper. Res.}, 187\penalty0 (3):\penalty0 719--745, 2008.
+
+\bibitem[Nash(1951)]{nash:1951}
+J.~Nash.
+\newblock Noncooperative games.
+\newblock \emph{Ann. Math.}, 54:\penalty0 286--295, 1951.
+
+\bibitem[Necoara et~al.(2011)Necoara, Nedelcu, and
+  Dumitrache]{necoara:nedelcu:dumitrache:2011}
+I.~Necoara, V.~Nedelcu, and I.~Dumitrache.
+\newblock Parallel and distributed optimization methods for estimation and
+  control in networks.
+\newblock \emph{J. Proc. Cont.}, 21\penalty0 (5):\penalty0 756--766, 2011.
+
+\bibitem[Necoara et~al.(2008)Necoara, Doan, and
+  Suykens]{necoara:doan:suykens:2008}
+Ion Necoara, Dang Doan, and {J. A. K} Suykens.
+\newblock Application of the proximal center decomposition method to
+  distributed model predictive control.
+\newblock In \emph{Proceedings of the {IEEE} Conference on Decision and
+  Control}, Cancun, Mexico, December 9-11 2008.
+
+\bibitem[Novas and Henning(2010)]{novas:henning:2010}
+J.M. Novas and G.P. Henning.
+\newblock Reactive scheduling framework based on domain knowledge and
+  constraint programming.
+\newblock \emph{Comput. Chem. Eng.}, 34\penalty0 (12):\penalty0 2129--2148,
+  2010.
+
+\bibitem[Ortega and Lin(2004)]{ortega:lin:2004}
+M.~Ortega and L.~Lin.
+\newblock Control theory applications to the production--inventory problem: {A}
+  review.
+\newblock \emph{Int. J. Prod. Res.}, 42:\penalty0 2303--2322, 2004.
+
+\bibitem[Pannocchia et~al.(2011)Pannocchia, Rawlings, and
+  Wright]{pannocchia:rawlings:wright:2011}
+Gabriele Pannocchia, James~B. Rawlings, and Stephen~J. Wright.
+\newblock Conditions under which suboptimal nonlinear {MPC} is inherently
+  robust.
+\newblock \emph{Sys. Cont. Let.}, 60:\penalty0 747--755, 2011.
+
+\bibitem[Papageorgiou(2009)]{papageorgiou:2009}
+Lazaros~G. Papageorgiou.
+\newblock Supply chain optisation for the proces industries: Advances and
+  opportunities.
+\newblock \emph{Comput. Chem. Eng.}, 33:\penalty0 1931--1938, 2009.
+
+\bibitem[Papanagnou and Halikias(2008)]{papanagnou:halikias:2008}
+CI~Papanagnou and GD~Halikias.
+\newblock Supply-chain modelling and control under proportional
+  inventory-replenishment policies.
+\newblock \emph{Int. J. Sys. Sci.}, 39\penalty0 (7):\penalty0 699--711, 2008.
+
+\bibitem[Perakis and Roels(2007)]{perakis:roels:2007}
+G.~Perakis and G.~Roels.
+\newblock The price of anarchy in supply chains: Quantifying the efficiency of
+  price-only contracts.
+\newblock \emph{Manage Sci.}, 53\penalty0 (8):\penalty0 1249--1268, 2007.
+
+\bibitem[Perea~L\'opez et~al.(2000)Perea~L\'opez, Grossmann, Ydstie, and
+  Tahmassebi]{perealopez:grossmann:ydstie:tahmassebi:2000b}
+Edgar Perea~L\'opez, I.~Grossmann, E.~Ydstie, and T.~Tahmassebi.
+\newblock Dynamic modeling and classical control theory for supply chain
+  management.
+\newblock \emph{Comput. Chem. Eng.}, 24:\penalty0 1143--1149, 2000.
+
+\bibitem[Perea~L{\'o}pez et~al.(2001)Perea~L{\'o}pez, Grossmann, Ydstie, and
+  Tahmassebi]{perealopez:grossmann:ydstie:tahmassebi:2001}
+Edgar Perea~L{\'o}pez, Ignacio~E. Grossmann, B.~Erik Ydstie, and Turaj
+  Tahmassebi.
+\newblock Dynamic modeling and decentralized control of supply chains.
+\newblock \emph{Ind. Eng. Chem. Res.}, 40:\penalty0 3369--3383, June 2001.
+
+\bibitem[Perea~L{\'o}pez et~al.(2003)Perea~L{\'o}pez, Ydstie, and
+  Grossmann]{perealopez:ydstie:grossmann:2003}
+Edgar Perea~L{\'o}pez, B.~Erik Ydstie, and Ignacio~E. Grossmann.
+\newblock A model predictive control strategy for supply chain optimization.
+\newblock \emph{Comput. Chem. Eng.}, 27\penalty0 (8-9):\penalty0 1201--1218,
+  February 2003.
+
+\bibitem[Pinedo(2008)]{pinedo:2008}
+M.L. Pinedo.
+\newblock \emph{Scheduling: theory, algorithms, and systems}.
+\newblock Springer, 2008.
+
+\bibitem[Puterman(2005)]{puterman:2005}
+M.~L. Puterman.
+\newblock \emph{Markov Decision Process: Discrete Stochastic Dynamic
+  Programing}.
+\newblock John Wiley and Sons, 2005.
+
+\bibitem[Qin and Badgwell(2003)]{qin:badgwell:2003}
+S.~Joe Qin and Thomas~A. Badgwell.
+\newblock A survey of industrial model predictive control technology.
+\newblock \emph{Control Eng. Prac.}, 11\penalty0 (7):\penalty0 733--764, 2003.
+
+\bibitem[Raghunathan(2003)]{raghunathan:2003}
+S.~Raghunathan.
+\newblock Impact of demand correlation on the value of and incentives for
+  information sharing in a supply chain.
+\newblock \emph{Eur. J. Oper. Res.}, 146\penalty0 (3):\penalty0 634--649, 2003.
+
+\bibitem[Rakovi\'{c} et~al.(2003)Rakovi\'{c}, Kerrigan, Kouramas, and
+  Mayne]{rakovic:kerrigan:kouramas:mayne:2003}
+S.~V. Rakovi\'{c}, E.~C. Kerrigan, K.~I. Kouramas, and D.~Q. Mayne.
+\newblock Approximation of the minimal robustly positively invariant set for
+  discrete-time {LTI} systems with persistent state disturbances.
+\newblock In \emph{Proceedings 42nd IEEE Conference on Decision and Control},
+  volume~4, pages 3917--3918, Maui, Hawaii, USA, December 2003.
+
+\bibitem[Rao and Rawlings(1999)]{rao:rawlings:1999}
+Christopher~V. Rao and James~B. Rawlings.
+\newblock Steady states and constraints in model predictive control.
+\newblock \emph{{AIChE} J.}, 45\penalty0 (6):\penalty0 1266--1278, 1999.
+
+\bibitem[Rawlings and Mayne(2009)]{rawlings:mayne:2009}
+James~B. Rawlings and David~Q. Mayne.
+\newblock \emph{Model Predictive Control: Theory and Design}.
+\newblock Nob Hill Publishing, Madison, WI, 2009.
+\newblock 576 pages, ISBN 978-0-9759377-0-9.
+
+\bibitem[Rawlings and Stewart(2008)]{rawlings:stewart:2008}
+James~B. Rawlings and Brett~T. Stewart.
+\newblock Coordinating multiple optimization-based controllers: New
+  opportunities and challenges.
+\newblock \emph{J. Proc. Cont.}, 18:\penalty0 839--845, 2008.
+
+\bibitem[Rawlings et~al.(2010)Rawlings, Stewart, Wright, and
+  Mayne]{rawlings:stewart:wright:mayne:2010}
+James~B. Rawlings, Brett~T. Stewart, Stephen~J. Wright, and David~Q. Mayne.
+\newblock Suboptimal {MPC}: On replacing the terminal contraint by a terminal
+  cost, 2010.
+\newblock Internal communication.
+
+\bibitem[Relvas et~al.(2007)Relvas, Matos, Barbosa-P{\'o}voa, and
+  Fialho]{relvas:matos:barbosa:fialho:2007}
+S.~Relvas, H.A. Matos, A.P.F.D. Barbosa-P{\'o}voa, and J.~Fialho.
+\newblock Reactive scheduling framework for a multiproduct pipeline with
+  inventory management.
+\newblock \emph{Ind. Eng. Chem. Res.}, 46\penalty0 (17):\penalty0 5659--5672,
+  2007.
+
+\bibitem[Richards and How(2004)]{richards:how:2004}
+Arthur Richards and Jonathan How.
+\newblock A decentralized algorithm for robust constrained model predictive
+  control.
+\newblock In \emph{Proceedings of the American Control Conference}, Boston,
+  Massachusetts, June 2004.
+
+\bibitem[Riddalls et~al.(2000)Riddalls, Bennett, and
+  Tipi]{riddalls:bennett:tipi:2000}
+C.~E. Riddalls, S.~Bennett, and N.~S. Tipi.
+\newblock Modelling the dynamics of supply chains.
+\newblock \emph{Int. J. Sys. Sci.}, 31:\penalty0 969--976, 2000.
+
+\bibitem[Rodrigues et~al.(1996)Rodrigues, Gimeno, Passos, and
+  Campos]{rodrigues:gimeno:passos:campos:1996}
+MTM Rodrigues, L.~Gimeno, CAS Passos, and MD~Campos.
+\newblock Reactive scheduling approach for multipurpose chemical batch plants.
+\newblock \emph{Comput. Chem. Eng.}, 20:\penalty0 S1215--S1220, 1996.
+
+\bibitem[Sabri and Beamon(2000)]{sabri:beamon:2000}
+Ehap~H. Sabri and Benita~M. Beamon.
+\newblock A multi-objective approach to simultaneous strategic and operational
+  planning in supply chain design.
+\newblock \emph{Omega-Int. J. Manage. Sci.}, 28:\penalty0 581--598, 2000.
+
+\bibitem[Sahinidis(2004)]{sahinidis:2004}
+N.V. Sahinidis.
+\newblock Optimization under uncertainty: state-of-the-art and opportunities.
+\newblock \emph{Comput. Chem. Eng.}, 28\penalty0 (6):\penalty0 971--983, 2004.
+
+\bibitem[Sand and Engell(2004)]{sand:engell:2004}
+G.~Sand and S.~Engell.
+\newblock Modeling and solving real-time scheduling problems by stochastic
+  integer programming.
+\newblock \emph{Comput. Chem. Eng.}, 28\penalty0 (6):\penalty0 1087--1103,
+  2004.
+
+\bibitem[Sari(2007)]{sari:2007}
+K.~Sari.
+\newblock Exploring the benefits of vendor managed inventory.
+\newblock \emph{Int. J. Phy. Dist. Logist. Mangage.}, 37\penalty0 (7):\penalty0
+  529--545, 2007.
+
+\bibitem[Sarimveis et~al.(2008)Sarimveis, Patrinos, Tarantilis, and
+  Kiranoudis]{sarimevis:patrinos:tarantilis:kiranoudis:2008}
+Haralambos Sarimveis, Panagiotis Patrinos, Chris~D. Tarantilis, and Chris~T.
+  Kiranoudis.
+\newblock Dynamic modeling and control of supply chains: {A} review.
+\newblock \emph{Comput. Oper. Res.}, 35:\penalty0 3530--3561, 2008.
+
+\bibitem[Scattolini(2009)]{scattolini:2009}
+Riccardo Scattolini.
+\newblock Architectures for distributed and hierarchical model predictive
+  control - a review.
+\newblock \emph{J. Proc. Cont.}, 19\penalty0 (5):\penalty0 723--731, May 2009.
+\newblock ISSN 0959-1524.
+
+\bibitem[Scheu and Marquardt(2011)]{scheu:marquardt:2011}
+H.~Scheu and W.~Marquardt.
+\newblock Sensitivity-based coordination in distributed model predictive
+  control.
+\newblock \emph{J. Proc. Cont.}, 21\penalty0 (5):\penalty0 715--728, 2011.
+
+\bibitem[Schmeidler(1969)]{schmeidler:1969}
+D.~Schmeidler.
+\newblock The nucleolus of a characteristic function game.
+\newblock \emph{{SIAM} J. Appl. Math.}, 17\penalty0 (6):\penalty0 1163--1170,
+  1969.
+
+\bibitem[Seferlis and Giannelos(2004)]{seferlis:giannelos:2004}
+P.~Seferlis and N.~F. Giannelos.
+\newblock A two-layered optimization-based control strategy for multi-echelon
+  supply chain networks.
+\newblock \emph{Comput. Chem. Eng.}, 28:\penalty0 1121--1129, 2004.
+
+\bibitem[Sethi and Cheng(1997)]{sethi:cheng:1997}
+S.~Sethi and F.~Cheng.
+\newblock Optimality of (s, {S}) policies in inventory models with markovian
+  demand.
+\newblock \emph{Oper. Res.}, 45\penalty0 (6):\penalty0 931--939, 1997.
+
+\bibitem[Shah et~al.(1993)Shah, Pantelides, and
+  Sargent]{shah:pantelides:sargent:1993}
+N~Shah, C.~C. Pantelides, and R.~Sargent.
+\newblock A general algorithm for short term scheduling of batch
+  operations--{II}. {C}omputational issues.
+\newblock \emph{Comput. Chem. Eng.}, 20:\penalty0 229--244, 1993.
+
+\bibitem[Shah(2005)]{shah:2005}
+Nilay Shah.
+\newblock Process industry supply chains: Advances and challenges.
+\newblock \emph{Comput. Chem. Eng.}, 29:\penalty0 1225--1235, April 2005.
+
+\bibitem[Shang and Song(2003)]{shang:song:2003}
+K.~H. Shang and J.~S. Song.
+\newblock Newsvendor bounds and heuristic for optimal policies in serial supply
+  chains.
+\newblock \emph{Manage Sci.}, 49:\penalty0 618--638, 2003.
+
+\bibitem[Shapiro(2004)]{shapiro:2004}
+J.~F. Shapiro.
+\newblock Challenges of strategic supply chain planning and modeling.
+\newblock \emph{Comput. Chem. Eng.}, 28\penalty0 (6-7):\penalty0 855--861,
+  2004.
+
+\bibitem[Shapley(1997)]{shapley:1997}
+L.~S. Shapley.
+\newblock A value for n-person games.
+\newblock \emph{Classics in game theory}, page~69, 1997.
+
+\bibitem[Smith(1995)]{smith:1995}
+S.F. Smith.
+\newblock Reactive scheduling systems.
+\newblock \emph{Intelligent scheduling systems}, pages 155--192, 1995.
+
+\bibitem[Song and Zipkin(1993)]{song:zipkin:1993}
+J.~S. Song and P.~Zipkin.
+\newblock Inventory control in a fluctuating demand environment.
+\newblock \emph{Oper. Res.}, 43:\penalty0 351--370, 1993.
+
+\bibitem[Stadtler(2005)]{stadtler:2005}
+H.~Stadtler.
+\newblock Supply chain management and advanced planning--basics, overview and
+  challenges.
+\newblock \emph{Eur. J. Oper. Res.}, 163\penalty0 (3):\penalty0 575--588, 2005.
+
+\bibitem[Stewart et~al.(2010)Stewart, Venkat, Rawlings, Wright, and
+  Pannocchia]{stewart:venkat:rawlings:wright:pannocchia:2010}
+Brett~T. Stewart, Aswin~N. Venkat, James~B. Rawlings, Stephen~J. Wright, and
+  Gabriele Pannocchia.
+\newblock Cooperative distributed model predictive control.
+\newblock \emph{Sys. Cont. Let.}, 59:\penalty0 460--469, 2010.
+
+\bibitem[Stewart et~al.(2011)Stewart, Wright, and
+  Rawlings]{stewart:wright:rawlings:2011}
+Brett~T. Stewart, Stephen~J. Wright, and James~B. Rawlings.
+\newblock Cooperative distributed model predictive control for nonlinear
+  systems.
+\newblock \emph{J. Proc. Cont.}, 21:\penalty0 698--704, 2011.
+
+\bibitem[Subramanian et~al.(2012{\natexlab{a}})Subramanian, Maravelias, and
+  Rawlings]{subramanian:maravelias:rawlings:2012}
+Kaushik Subramanian, Christos~T. Maravelias, and James~B. Rawlings.
+\newblock A state-space model for chemical production scheduling.
+\newblock Proceedings of Foundations of Computer-AidedProcess Operations
+  ({FOCAPO}) 2012 and Chemical Process Control ({CPC}) {VIII}, Savannah, GA,
+  2012{\natexlab{a}}.
+
+\bibitem[Subramanian et~al.(2012{\natexlab{b}})Subramanian, Rawlings, and
+  Maravelias]{subramanian:rawlings:maravelias:2012}
+Kaushik Subramanian, James~B. Rawlings, and Christos~T. Maravelias.
+\newblock Integration of control theory and scheduling methods for supply chain
+  management.
+\newblock Proceedings of Foundations of Computer-AidedProcess Operations
+  ({FOCAPO}) 2012 and Chemical Process Control ({CPC}) {VIII}, Savannah, GA,
+  2012{\natexlab{b}}.
+
+\bibitem[Sundaramoorthy and Maravelias(2010)]{sundaramoorthy:maravelias:2010}
+A.~Sundaramoorthy and C.T. Maravelias.
+\newblock A general framework for process scheduling.
+\newblock \emph{{AIChE} J.}, 57\penalty0 (3):\penalty0 695--710, 2010.
+
+\bibitem[Sung and Maravelias(2009)]{sung:maravelias:2009}
+C.~Sung and C.~T. Maravelias.
+\newblock A projection-based method for production planning of multiproduct
+  facilities.
+\newblock \emph{{AIChE} J.}, 55\penalty0 (10):\penalty0 2614--2630, 2009.
+
+\bibitem[Sung and Maravelias(2007)]{sung:maravelias:2007}
+Charles Sung and Christos~T. Maravelias.
+\newblock An attainable region approach for production planning of multiproduct
+  proceses.
+\newblock \emph{{AIChE} J.}, 53:\penalty0 1298--1315, 2007.
+
+\bibitem[Towill(1982)]{Towill:1982}
+D.~R. Towill.
+\newblock Dynamic analysis of an inventory and order based production control
+  system.
+\newblock \emph{Int. J. Prod. Res.}, 6:\penalty0 671--687, 1982.
+
+\bibitem[Trodden and Richards(2006)]{trodden:richards:2006}
+P.~Trodden and A.~Richards.
+\newblock Robust distributed model predictive control using tubes.
+\newblock In \emph{American Control Conference, 2006}, pages 6--pp. IEEE, 2006.
+
+\bibitem[Trodden and Richards(2007)]{trodden:richards:2007}
+P.~Trodden and A.~Richards.
+\newblock {Robust distributed model predictive control with cooperation}.
+\newblock In \emph{Proceedings of the European Control Conference, 2007}, pages
+  2172--2178, 2007.
+
+\bibitem[Tsiakis et~al.(2001)Tsiakis, Shah, and
+  Pantelides]{tsiakis:shah:pantelides:2001}
+P.~Tsiakis, N.~Shah, and C.~C. Pantelides.
+\newblock Design of multi-echelon supply chain networks under demand
+  uncertainty.
+\newblock \emph{Ind. Eng. Chem. Res.}, 40:\penalty0 3585--3604, 2001.
+
+\bibitem[van~den Heever and Grossmann(2003)]{van:grossmann:2003}
+S.A. van~den Heever and I.E. Grossmann.
+\newblock A strategy for the integration of production planning and reactive
+  scheduling in the optimization of a hydrogen supply network.
+\newblock \emph{Comput. Chem. Eng.}, 27\penalty0 (12):\penalty0 1813--1839,
+  2003.
+
+\bibitem[Veinott(1996)]{veinott:1966}
+A.~Veinott.
+\newblock On the optimality of (s,{S}) inventory policies: New conditions and a
+  new proof.
+\newblock \emph{{SIAM} J. Appl. Math.}, 14:\penalty0 1067--1083, 1996.
+
+\bibitem[Venkat(2006)]{venkat:2006}
+Aswin~N. Venkat.
+\newblock \emph{Distributed Model Predictive Control: Theory and Applications}.
+\newblock PhD thesis, University of Wisconsin--Madison, October 2006.
+\newblock URL \url{http://jbrwww.che.wisc.edu/theses/venkat.pdf}.
+
+\bibitem[Venkateswaran and Son(2005)]{venkateswaran:son:2005}
+J.~Venkateswaran and Y.~J. Son.
+\newblock Information synchronization effects on the stability of collaborative
+  supply chain.
+\newblock In \emph{Simulation Conference Proceedings, 2005. Winter}, pages
+  1668--1676, 2005.
+
+\bibitem[Verderame and Floudas(2009)]{verderame:floudas:2009}
+P.M. Verderame and C.A. Floudas.
+\newblock Operational planning framework for multisite production and
+  distribution networks.
+\newblock \emph{Comput. Chem. Eng.}, 33\penalty0 (5):\penalty0 1036--1050,
+  2009.
+
+\bibitem[Verderame et~al.(2010)Verderame, Elia, Li, and
+  Floudas]{verderame:elia:li:floudas:2010}
+P.M. Verderame, J.A. Elia, J.~Li, and C.A. Floudas.
+\newblock Planning and scheduling under uncertainty: A review across multiple
+  sectors.
+\newblock \emph{Ind. Eng. Chem. Res.}, 49\penalty0 (9):\penalty0 3993--4017,
+  2010.
+
+\bibitem[Vin and Ierapetritou(2000)]{vin:jeetmanyu:ierapetritou:2000}
+Jeetmanyu~P. Vin and Marianthi~G. Ierapetritou.
+\newblock A new approach for efficient rescheduling of multiproduct batch
+  plants.
+\newblock \emph{Ind. Eng. Chem. Res.}, 39\penalty0 (11):\penalty0 4228--4238,
+  2000.
+\newblock \doi{10.1021/ie000233z}.
+\newblock URL \url{http://pubs.acs.org/doi/abs/10.1021/ie000233z}.
+
+\bibitem[Wakasa et~al.(2008)Wakasa, Arakawa, Tanaka, and
+  Akashi]{wakasa:arakawa:tanka:akashi:2008}
+Y.~Wakasa, M.~Arakawa, K.~Tanaka, and T.~Akashi.
+\newblock Decentralized model predictive control via dual decomposition.
+\newblock In \emph{Decision and Control, 2008. CDC 2008. 47th IEEE Conference
+  on}, pages 381--386. IEEE, 2008.
+
+\bibitem[White(1999)]{white:1999}
+AS~White.
+\newblock Management of inventory using control theory.
+\newblock \emph{Int. J. Tech. Manage.}, 17\penalty0 (7):\penalty0 847--860,
+  1999.
+
+\bibitem[Wikner et~al.(1991)Wikner, Towill, and Naim]{wikner:towill:naim:1991}
+J.~Wikner, D.~R. Towill, and M.~Naim.
+\newblock Smoothing supply chain dynamics.
+\newblock \emph{Int. J. Prod. Res.}, 22\penalty0 (3):\penalty0 231--248, 1991.
+
+\bibitem[Wikner et~al.(1992)Wikner, Naim, and Towill]{wikner:naim:towill:1992}
+J.~Wikner, M.~Naim, and D.~R. Towill.
+\newblock The system simplification approach in understanding the dynamic
+  behaviour of a manufacturing supply chain.
+\newblock \emph{J. Sys. Eng.}, 2:\penalty0 164--178, 1992.
+
+\bibitem[You and Grossmann(2008)]{you:grossmann:2008}
+Fengqi You and Ignacio~E. Grossmann.
+\newblock Design of responsive supply chains under demand uncertainty.
+\newblock \emph{Comput. Chem. Eng.}, 32:\penalty0 3090--3111, 2008.
+
+\bibitem[Zipkin(2000)]{zipkin:2000}
+P.~H. Zipkin.
+\newblock \emph{Foundations of Inventory Management}.
+\newblock McGraw-Hill Boston, MA, 2000.
+
+\end{thebibliography}

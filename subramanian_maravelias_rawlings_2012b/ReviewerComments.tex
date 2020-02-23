@@ -1,0 +1,88 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{almostfull}
+\title{Response to Reviewer Comments}
+\date{\today}
+\newcommand{\response}[1]{\textbf{Response}: #1}
+\begin{document}
+\maketitle
+
+\paragraph{Reviewer-1}
+
+\begin{enumerate}
+\item
+The paper presents a rigorous formulation and analysis of economic MPC
+for the problem of inventory management in supply chains. A novel cost
+function is presented;  the approach enables the integration of the
+scheduling and inventory control tasks as well.  A number of
+illustrative examples are presented. I do not see issues of technical
+correctness with the paper; however, the paper is hampered somewhat by
+a lack of accessibility in the presentation that may be acceptable in
+other journals, but I would hope not be the case in CACE.  This is
+illustrated in Section 2, for example. 
+A real problem will likely have 1) longer (and uncertain) lead times and 2) uncertain demand.
+In these scenarios, I would perhaps not be so eager to have MPC with an economic objective 
+function, as having guarantees of stability would not be sufficient. Somehow the economic 
+objective function would have to allow a means to incorporate potentially significant robustness 
+margins in the response, while still maintaining meaningfulness as a metric. Can the authors 
+justify why would the proposed approach be better than a well-coordinated hierarchical 
+approach, which would maintain a separation between the control and
+scheduling layers?
+
+
+A minor issue: some of the references need to be updated, particularly
+those that involve the existence of journal versions of papers cited
+from conferences.  This applies to References [2] and [13], for
+example. 
+ 
+
+\response{The reviewer raises two related but distinguishable points: (i) the suitability of the 
+economic objective function, and (ii) the choice of the solution approach. Regarding the 
+objective function, we believe that the selection of an “economic” metric is the natural one in 
+the context of supply chain (SC), where managers are interested in minimizing costs and not 
+necessarily maintaining certain levels of inventory (tracking problem). Now, given the adoption 
+of an economic objective, our goal is to develop new results for EMPC in systems with 
+integrators, something that has not been done in the past. In other words, we aim to expand 
+the scope of these methods in new classes of problems. Of course, a number of other 
+approaches could be used to address the same problems (hierarchical decomposition is one of 
+them). However, no theoretical results are available for the closed-loop performance of these 
+approaches, even when all parameters are known deterministically. Thus, although they may 
+appear promising, there is no guarantee they will work; in fact, counter examples showing how 
+these methods fail can be constructed.
+
+We have made referencesin the text to papers detailing Model
+predictive control. A complete introduction to MPC was out of the
+scope of the paper. We have also made the corrections to the references.}
+\end{enumerate}
+\paragraph{REVIEWER-2}
+\begin{enumerate}
+\item Since the authors are dealing with inventory management in supply chains, which often have 
+integer units (books, parts, etc.), they should at least discuss the limits of their continuous 
+variable formulation for these problems. While the difference between 50.5 and 51 units/day will 
+not radically change a solution, presumably 1.25 units/day would require 3 days of 1 unit and 1 
+day of 2 units. 
+
+\response{The reviewer raises two interesting points. The first concerns the dynamic model of 
+the supply chain (section 3) and the second the production model at each manufacturing node.
+Regarding the first, please note that our primary focus is the supply chain of process industries, 
+where the major products are commodity chemicals and fluids (often shipped using pipelines, 
+trucks, etc). Thus, we believe that the treatment of the variables in the dynamic model as 
+continuous variables is reasonable. Note that even if products are produced in discrete 
+amounts (e.g., due to batch size restrictions), the orders and shipments, and thus inventory 
+levels, can be continuous variables. Regarding the second point, we note that the model can be 
+easily modified to enforce production of discrete amounts be simply
+setting $\underline{B}_i = \bar{B}_i$ in eq. (24); 
+i.e. without definig variable $B_i$ as an integer. However, the scheduling model does have binary 
+ $X_{(i,t)}$and $Z_{(i,i’,t)}$.}
+
+\item While the authors discuss periodic supply chains, I would like to better understand how this 
+relates to a typical Federal Express or UPS problem, where deliveries are made daily, with 
+perhaps Saturday mornings but no Saturday afternoon or Sunday service.
+\response{Restrictions on transportation and production can be easily handled through
+constraints on the corresponding variables. For example, in a problem with a 14 day horizon 
+divided into 336 1-hour periods, shipments between Saturday 12:00 pm and Monday 6:00 am 
+can be forbidden by setting $S_{i,t} = 0 for t {132, …, 174}$ (assuming zero time delay). Similar 
+restrictions can be placed on orders and production (e.g., setting scheduling variables to zero 
+during weekends).}
+\end{enumerate}
+\end{document}

@@ -1,0 +1,180 @@
+# Created by Octave 3.6.1, Thu Nov 29 18:22:00 2012 CST <kaushik@d-16>
+# name: SS
+# type: scalar
+7
+
+
+# name: parallel_retailer
+# type: matrix
+# rows: 1
+# columns: 4
+ 4 5 6 7
+
+
+# name: parallel_distributor
+# type: matrix
+# rows: 1
+# columns: 2
+ 2 3
+
+
+# name: subsystem
+# type: cell
+# rows: 1
+# columns: 7
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 3
+ 1 2 3
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 1
+M
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 3
+ 4 5 6
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+D1
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 3
+ 7 8 9
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+D2
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 2
+ 10 11
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+R1
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 2
+ 12 13
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+R2
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 2
+ 14 15
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+R3
+
+
+
+
+
+# name: <cell-element>
+# type: scalar struct
+# ndims: 2
+ 1 1
+# length: 2
+# name: uloc
+# type: matrix
+# rows: 1
+# columns: 2
+ 16 17
+
+
+# name: node
+# type: sq_string
+# elements: 1
+# length: 2
+R4
+
+
+
+
+
+
+

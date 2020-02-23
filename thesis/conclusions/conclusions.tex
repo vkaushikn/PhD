@@ -1,0 +1,112 @@
+\chapter{Conclusions and Future work}
+\label{chap:conclusions}
+We conclude with a summary of contributions and suggest possible
+directions for further research.
+
+\section*{Contributions}
+
+\paragraph{Cooperative MPC for linear systems:} In Chapter
+\ref{chap:mpc} we provided an overview of cooperative MPC for linear
+systems. The main contribution in Chapter \ref{chap:mpc} were (i) The
+extension of the class of systems for which cooperative MPC is
+applicable to all centralized  stabilizable systems and, (ii) Tube based robust
+cooperative MPC to avoid centralized restarts if the warm start fails.
+
+\paragraph{State-space models for scheduling:} In Chapter
+\ref{chap:scheduling}, we provided a state-space model for
+scheduling. We expressed the scheduling problem as a dynamic problem
+for iterative scheduling. We also modeled a variety of scheduling
+disturances so that rescheduling occurs ``naturally'' in iterative
+scheduling. Finally, we used tools from MPC to demonstrate design of closed-loop scheduling
+problems with guaranteed recursive feasibility.
+
+\paragraph{MPC for supply chains:} A goal of this thesis was to use
+MPC as a general purpose tool for enterprise wide optimization. We
+demonstrated MPC design for dynamic supply chain models. The main
+contribution of this thesis is to complement the research in 
+MPC/ Rolling horizon optimization frameworks for supply chain
+management by (i) showing the desirable properties of algorithms that
+guarantee closed-loop stability and, (ii) demonstrating the design of
+such control policies for supply chains.  The main message of the thesis  is
+that future researchers should appreciate the importance of
+considering the closed-loop dynamics of the supply chain as a result
+of the input actions taken. 
+\begin{enumerate}
+\item In order to appeal to the distributed nature of decision making in supply
+chains, we demonstrated cooperative MPC for supply chains in which
+each node makes its local decisions but with a global vision in
+Chapter \ref{chap:sc}. We
+proposed a new cooperative MPC iteration scheme which closely
+resembles the current decision making hierarchy in linear supply
+chains.
+\item Since supply chains directly optimize the economics, we
+  demonstrated design of Economic MPC for supply chains in Chapter
+  \ref{chap:esc}. We proposed a multiobjective stage cost, that not
+  only accounts for supply chain costs, but also for supply chain
+  risks. The supply chain is  stabilized at a steady-state that
+  reflects the managers' choice, i.e., risk seeking or risk averse.
+\end{enumerate}
+
+\paragraph{Integration of scheduling and control:} We demonstrated a
+supply chain example with an integrated scheduling model for the
+manufacturing plant. We showed the integration of the MPC design tools from
+Chapter \ref{chap:mpc} and Chapter \ref{chap:esc} along with the
+state-space scheduling model from Chapter \ref{chap:scheduling} to
+guarantee recursive feasibility for the integrated supply chain
+model. We also showed the inherent robustness of the proposed approach
+to small deviations from the nominal demand.
+
+\section*{Future work}
+
+\paragraph{Terminal conditions for the scheduling problem:}
+In Chapter \ref{chap:scheduling}, we showed recursive feasibility by
+using a cyclic schedule as the terminal condition. In many cases, we
+might not be able to find any cyclic schedule for the scheduling
+problem. In such cases, we have to find other suitable terminal
+conditions. One such idea that we are currently exploring is to find
+safety constraints on inventory from a scheduling point of view.
+Methods of finding terminal conditions for the scheduling problem is
+an important area for future research.
+\paragraph{Hybrid control theory:}
+The scheduling state space model comprises both of continuous
+variables (like the inventories, batch sizes, etc.) and discrete variables
+(like assignment, changeover etc.). For such systems, we need to study
+the stability theory for hybrid systems. There are methods that have
+been developed for hybrid dynamic systems consisting of both time and
+event driven dynamics \citep{bemporad:morari:1999,
+  morari:baotic:borrelli:2003} etc. More recently, Lyapunov stability
+theory for hybrid dynamic systems also have been studied
+\citep{lazar:heemels:2009,lazar:heemels:teel:2009}. Application and
+development  of hybrid theory to prove stability of scheduling models
+is a challenging research problem.
+\paragraph{Impact of forecast:}
+Supply chains are described as ``pull'' systems because the  dynamics
+is activated when the customer pulls products from the 
+supply chain. As such, the supply chain is sensitive to customer
+demands, price signals, etc. MPC theory has been mostly built around
+dynamic models trying to ``reject'' external disturbances ( \eg the
+nominal case is when there is no disturbance affecting the
+system). The impact of demand/ price forecast 
+the supply chain steady state; performance, etc. are yet to be studied. 
+\paragraph{ Robust terminal conditions:}
+In this thesis, we developed  algorithms based on a nominal demand
+signal. That is, the stability and convergence guarantees; and
+specially, the design of terminal
+region/ constraints were based on the nominal demand. In practice, it
+is desirable to design the terminal constraint so that we are robust
+to some known distribution of demands. Design of such terminal regions
+and integration with MPC technology remains an avenue of future work. 
+\paragraph{Cooperative game theory:} The cooperative MPC tools have
+been developed for process industries to coordinate multiple MPC's in
+a single plant. Therefore, it is reasonable to assume that all the
+subsystems can share models and objectives with each-other. In a
+supply chain, however,the nodes could
+be owned by different companies. Hence, we need to study the incentives to cooperate
+from a cooperative game theory point of view. 
+\paragraph{Implementation:} The ultimate test for any new tool is
+practical implementation. An avenue of future research is the
+implementation of the tools described in this thesis for a large scale
+supply chain with real data. Not only, would such a study help
+validate the idea of using MPC for supply chains, it would also help
+us uncover new research topics.
+

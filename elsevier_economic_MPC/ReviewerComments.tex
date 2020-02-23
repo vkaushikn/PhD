@@ -1,0 +1,94 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{almostfull}
+\title{Response to Reviewer Comments}
+\date{\today}
+\newcommand{\response}[1]{\textbf{Response}: #1}
+\begin{document}
+\maketitle
+
+\paragraph{Reviewer-1}
+
+\begin{enumerate}
+\item  The paper provides a very broad literature survey about supply chain management and control theory. These background materials can be helpful for some readers who are not familiar with the topic, however, they also distract most readers from the core issue. There are 96 references, which are excessive. It is suggested to curtail the background materials so that a reader can easily grasp the essential ones. For example, the subsection about stochastic optimal control on page 6 can be deleted. Though it is an important topic, it is irrelevant with the following integration of supply chain management and control theory.
+
+\response{Our aim in this paper was to introduce MPC as another tool for supply chain control. At the same time, we also wish to introduce to the control and scheduling community, the mature body of research on different aspects of the supply chain decision making problem.} 
+
+
+\item On page 11, what are definitions of $u_j(k-\tau_ji)$ and $u_j(k)$ in the state equation?
+\response{We have described the meanings of $\tau_{ji}$ and $u_i$ in the paragraph preceding the state equation.}
+
+\item On page 14, the presentation of uncontrollable local models is not clear. Controllability is often checked by the system matrix A and the input matrix B. It will be more obvious to explain the non-controllability by giving the two matrices explicitly.
+
+\response{We did not show the matrices for considering space.  The
+  uncontrollability can be easily understood by studying equations (1)
+  and (2) as mentioned in the text.}
+
+\item On page 19, what is the objective of Algorithm 1? There are two
+  problems $J_1$ and $J_2$. How are they coupled? Can the algorithm
+  converge to an optimal solution to $J_1$ or $J_2$? What is the value of
+  omega? Please clarify these issues.
+
+\response{The two problems are coupled via the decision variables. To evaluate either $V_1$ or $V_2$, we need to know the other subsystems decision variables. We do not make any claims about the convergence of algorithm-1. Later in the text, we claim that if $V_1$ and $V_2$ are both set to the overall (centralized) optimization objective, then Algorithm-1 converges to the centralized solution. The parameter $\omega$ is a number between $(0,1)$ used to take convex combinations of the points obtained during the optimizations mentioned in Algorithm-1. We need to take convex combination, because the full-step might not be a descent direction.}
+
+\item  On page 19, what is the stopping criterion of Algorithm 2? How the initial values for the iteration can be obtained?
+
+\response{The algorithm can be stopped in one of two ways (ii) After a maximum number of iterations have been reached, (ii) The optimal has been reached (step size will not change). We formulate the problem with maximum number of iterations as a parameter. However, the message that we intend to highlight is that, we can stop the algorithm after any number of iterates, but yet obtain a feasible input to the plant.  In this work, we assume that the initial values for the iteration is given. We are currently looking at techniques to generate initial values in a distributed manner.}
+
+\item  Section 5 provides the general theory about cooperative MPC where the system in eq. (6) is assumed to be nonlinear. However, the model of the supply chain is much simpler, which is a first order linear system. s it really necessary to make the derivation based on a general model if the application is just the supply chain management? If the derivation can be made on the simple supply chain model, it will be easy for a reader to understand, who has a background of the supply chain management.
+
+\response{As mentioned in equation (9), the theory developed  for cooperative MPC is valid only  for a linear system. However, the suboptimal MPC theory is valid for non-linear systems as well.  We shall update the document by mentioning that $f(x,u)$ is a linear system of the form $Ax+Bu$ to avoid confusion.}
+
+\item  Stability is the most important issue in control theory. Is it still important in supply chain management? Most existing methods solve the supply chain problems without taking stability into account. However these methods have been successfully applied. In a conventional optimization based method for supply chain management, people care more about the performance, e.g. the optimality of the solution and the efficiency of the computation. What are solution optimality and computational time of the cooperative MPC-based approach compared with the conventional methods? A comparison would be helpful.
+
+\response{
+The reviewer comments that supply chain operators care little about
+stability and care mainly about performance.   On the other hand, the
+single largest complaint in the literature about supply chain
+performance is the fact that all the implemented supply chain
+operational methods suffer from the bullwhip effect. The bullwhip
+effect is a particular kind of supply chain instability. If we
+guarantee stability, we guarantee that there is no bullwhip effect. So
+we disagree with the reviewer that practitioners do not care much
+about this issue. We conclude that instability is the source of
+practitioners' biggest complaint about current methods.
+
+Most existing supply chain optimization models are linear programs. Since, the supply chain models is a system of integrators, we can theoretically stabilize the supply chain at any inventory level (by making all the flows equal to that of the customer demand). In most existing models, however, a safety stock constraint is used, so that the inventories are not too low. This constraint, can be motivated as a stability constraint. Therefore, the stability constraints that we impose have practical significance. Also, most methods for supply chain optimization consider one-time optimization. They do not consider a rolling horizon approach. Stability constraints are important to ensure recursive feasibility in rolling horizon problems.
+
+Our motivation in this work was to propose a distributed solution to the supply chain optimization problem. We agree that the algorithms that we develop are much slower than an centralized optimization problem.  However, we believe that the comparison that we should be making is how the proposed algorithms compare to existing tools for distributed decision making. One of the conclusion that we make is that the agents have to consider the dynamics in the entire supply chain, even if they are making local decisions to avoid bullwhip effect.
+
+Another important comparison to make is the quality of solution obtained in a receding horizon framework to that of an one-time optimization framework. We can show that, incorporating the stability constraints means that the receding horizon framework incurs a higher cost; this disadvantage is offset by the fact that we can obtain closed-loop stability. In-fact, without stability constraints, we can design optimization problems that do not even give us recursive feasibility. We believe that the rolling horizon framework is the natural framework to study supply chain problems, and thus, we need to include stability tools from MPC to ensure that the rolling horizon supply chain problem is well posed.}
+
+\item  The examples studied in the paper are quite small. However, a model of supply chain is often complicated with many nodes in the network. For a simple model, the centralized method can also apply. A more realistic supply chain model will be better to demonstrate the advantage of the cooperative method. What is maximum size of problems that the cooperative MPC method can be applied to?
+
+\response{The aim of the paper was to highlight the theory used in cooperative MPC for supply chain problems. If the assumptions mentioned in the paper are satisfied, then the cooperative MPC method can be applied to a problem with any number of subsystems. However, as the number of subsystems increase, the step size in the cooperative MPC algorithm becomes small and we might need a lot of iterations to reach convergence. In such cases,  we might need to aggregate the sub-systems into hierarchies. One such hierarchy that we are studying now is to make each echelon make their decision sequentially. Since this decision making structure is similar to current decision making structure in supply chains, we believe that such  hierarchies are a promising research direction.}
+
+\item There are several typos.
+On page 4, in the second paragraph, please provide the reference for "[? ]".
+On page 4, in the last paragraph, please provide the reference for " ? ]".
+On page 33 and 34, please provide the figure numbers.
+
+\response{ We have made these corrections.}
+
+\end{enumerate}
+\paragraph{REVIEWER-2}
+
+\begin{enumerate}
+\item Weaknesses are the terse development of the theory. As written it requires familiarity with MPC theory
+as in [70].
+
+\response{Developing MPC theory from scratch was out of the scope of the paper.}
+
+
+\item In addition, the examples are not presented in a reproducible way.
+
+\response{We have added the values of the parameters that we used in
+  our simulations. We thank the reviewer for pointing this error.}
+
+\item Finally, p. 4 has missing citations and there are a few typos (e.g., Penky should be Pekny).
+Paper should be proofread more carefully.
+
+\response{We have made these corrections.}
+\end{enumerate}
+
+\end{document}

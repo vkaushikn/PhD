@@ -1,0 +1,1980 @@
+\documentclass{article}
+%\documentclass[letterpaper, 10pt, conference]{ieeeconf}
+%\IEEEoverridecommandlockouts                          
+%\overrideIEEEmargins
+%\bibliographystyle{IEEEtran}
+
+% Packages
+\usepackage{hyperref} % clickable links
+\usepackage{url}
+%\usepackage{rxn}
+\usepackage{natbib}
+\usepackage{graphicx,color,amsmath,amssymb}
+%\usepackage{mathptmx}
+%\usepackage{times}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{balance}
+\usepackage{verbatim} % \begin and \end {comment}
+
+% Environments
+\newtheorem{theorem}{Theorem} 
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\newtheorem{algorithm}{Algorithm}
+\newenvironment{proof}{\noindent {\em Proof}.\ }{\hspace*{\fill}$\Box$\medskip\\}
+
+% Commands
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+
+
+
+\title{On the robustness of optimal and suboptimal economic MPC}
+
+\author{Cuyler N. Bates and James B. Rawlings
+  \thanks{C. N. Bates and J. B. Rawlings are with Dept. of Chemical and
+    Biological Engineering, Univ. of Wisconsin, Madison, WI 53706, USA
+    \texttt{\footnotesize (cnbates@wisc.edu,rawlings@engr.wisc.edu)}}} 
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\begin{comment}
+Traditionally, the problem of dynamic economic optimization of processes has
+been divided into two subproblems. First, a static economic optimization
+is performed to select the process steady state with the lowest cost. Then,
+a regular is designed to guide the system dynamically to the chosen steady
+state without regard for the dynamic cost incurred. Increasingly, however, 
+due to demand for improving dynamic economic performance and a commensurate
+increase in the quality of available dynamic models and computational tools
+, interest in dynamic economic optimization methods is growing rapidly. In 
+this paper, we investigate the properties of economic model predictive 
+control, which is the use of an economic objective function in place of the
+regulatory objective function widely used in model predictive control. \\
+When considering the general economic model predictive control problem,
+however, we encounter several crucial questions. Firstly, economic model
+predictive control problems are almost never convex. Therefore, even with
+state of the art solution techniques, we can, in general, hope only to
+find a local optimum, not a global optimum as is universally assumed in
+previous papers on the subject. Secondly, when operating a control scheme,
+there are inevitably disturbances affecting the system. We would 
+therefore like to know under what conditions the economic control law 
+designed for the nominal system is able to reject those disturbances. \\
+The contributions of the paper are as follows. First, we extend the
+robustness result of \citep{pannocchia:rawlings:wright:2011} to a more 
+general class of cost functions. We then show that these results apply to
+suboptimal economic MPC. Finally, we present a proof giving guarantees on
+the economic performance of suboptimal economic MPC. The conclusion of the
+paper is that not only can the economic performance of optimal economic MPC
+be extended to the suboptimal case, but in addition the impressive 
+robustness of nominal (noneconomic) MPC can be extended to both optimal and
+suboptimal economic MPC as well. 
+\end{comment}
+\end{abstract}
+
+\section{Introduction}
+\begin{remark}[Note to self]
+FIXME: import changes from short.pdf
+get rid of $\tilde{\phi}$ etc etc
+\end{remark}
+\begin{comment}
+words words words \\ FIMXE
+I did a brief literature search and the results here all appear to be novel
+but I will need to do a more in depth search FIXME. \\
+\\
+% FIXME: too similar
+\end{comment}
+The differences in assumptions between this paper and \cite{pannocchia:rawlings:wright:2011}
+are discussed in Remark \ref{rm:assumptions}. Differences in the analysis and theory are discussed
+in Remark \ref{rm:analysis}. Open issues are discussed in Remark \ref{rm:issues}. 
+
+Notation. The symbols $\mathbb{I}_{\geq 0}$ and $\mathbb{R}_{\geq 0}$ denote
+the nonnegative integers and reals, respectively. The symbol $\mathbb{I}_{
+0:N}$ denotes the set $\{0,1,\dots,N\}$. The interior of a set $X$ is
+denoted int$X$. Given $V:X\rightarrow\mathbb{R}_{\geq 0}$ and $\alpha > 0$,
+we define $\text{lev}_\alpha V = \{x \in X \mid V(x) \leq \alpha\}$.
+The symbol $\abs{\cdot}$ denotes the Euclidean norm and 
+$\mathbb{B}$ denotes the closed ball of radius 1 centered at the origin.
+Set deletion is defined as $A \backslash B = \{x \in A \mid x \notin B\}$. 
+The relation $A \subseteq B$ denotes $A$ is a subset of $B$ while the 
+relation $A \subset B$ denotes $A$ is a proper subset of $B$. 
+
+Bold symbols, e.g., $\mathbf{d}$, denote sequences, $d(k)$ denotes the element of $\mathbf{d}$ at time 
+$k \in \mathbb{I}_{\geq{0}}$ and 
+$\mathbf{d}_k$ denotes the truncation of the sequence up to time $k$, i.e.
+$\mathbf{d}_k = \{d(0),d(1),\dots,d(k)\}$.
+We define $\norm{\mathbf{d}} = \max_{k \geq 0}\abs{d(k)}$. 
+
+Given time $k$, initial state $x$ and input sequence $\mathbf{u}$, $\tilde{\phi}(k;x,\mathbf{u})$ denotes 
+the open-loop state solution to the system \eqref{eq:system}.
+Given time $k$, initial state $x$ and initial warm start $\tilde{\mathbf{u}}$, $\psi(k;x,\tilde{\mathbf{u}})$ denotes 
+an arbitrary closed-loop extended state solution
+to the difference inclusion \eqref{eq:nominc}
+and $\phi(k;x,\tilde{\mathbf{u}})$ denotes the resulting state component trajectory. 
+Given time $k$, initial state $x$, initial warm start $\tilde{\mathbf{u}}$ and disturbance and measurement
+error sequences $\mathbf{d}$ and $\mathbf{e}$, $\psi_{ed}(k;x,\tilde{\mathbf{u}})$ denotes 
+an arbitrary closed-loop extended state solution
+to the perturbed difference inclusion \eqref{eq:perturbedinc}
+and $\phi_{ed}(k;x,\tilde{\mathbf{u}})$ denotes the resulting state component trajectory. 
+
+\section{Basic definitions and assumptions}
+\subsection{MPC problem}
+\label{sec:mpc}
+The subject of this paper is autonomous discrete-time systems of the form 
+\begin{equation}
+\label{eq:system}
+x^+=f(x,u) 
+\end{equation}
+where $x \in \mathbb{R}^n$ is the state, $u \in \mathbb{R}^m$ is the input
+and $x^+$ denotes the successor state. 
+We consider here the case of input constraints
+\begin{equation*}
+u \in \mathbb{U}, \quad x \in \mathbb{R}^n, \quad (x,u) \in \mathbb{Z} =   \mathbb{R}^n \times \mathbb{U}
+\end{equation*}
+\begin{comment}
+The state and input are 
+subject to the constraints
+\begin{equation*}
+%\label{eq:constraints}
+(x,u) \in \mathbb{X} \times \mathbb{U}
+\end{equation*}
+\end{comment}
+For model predictive control with a horizon of $N$, initial condition $x$ 
+and a terminal constraint, we define the set of admissible 
+$(x,\mathbf{u})$ pairs \eqref{eq:admissiblepairs}, admissible inputs
+\eqref{eq:admissibleinputs}, admissible states
+\eqref{eq:admissiblestates} and objective function \eqref{eq:objective} by
+\begin{align}
+\label{eq:admissiblepairs}
+\mathcal{Z}_N &= \{ (x,\mathbf{u}) \mid
+x(k+1)=f(x(k),u(k)), (x(k),u(k)) \in \mathbb{Z} \\ \nonumber
+&\quad \quad \forall k \in \mathbb{I}_{0:N-1}, x(N) \in \mathbb{X}_f, x(0)=x \} \\
+\label{eq:admissibleinputs}
+\mathcal{U}_N(x) &= \{\mathbf{u} \mid (x,\mathbf{u}) \in \mathcal{Z}_N \}
+\\
+\label{eq:admissiblestates}
+\mathcal{X}_N &= \{x \mid 
+\exists \, \mathbf{u} \text{ such that  } (x,\mathbf{u}) \in \mathcal{Z}_N \}
+\\
+\label{eq:objective}
+ V_N ( x, \mathbf{u} ) &= \sum_{k=0}^{N-1} \ell ( x(k),u(k) ) + V_f(x(N))
+\end{align}
+The result is the optimization problem %\eqref{eq:mpc}. 
+\begin{equation}
+\label{eq:mpc}
+\mathbb{P}_N(x): V_N^0(x)=V_N(x,\mathbf{u}^0)=
+\min_\mathbf{u} \Big \{ V_N(x,\mathbf{u}) \mid \mathbf{u} \in \mathcal{U}_N(x) \Big \}
+\end{equation}
+The existance of an optimal solution can be proven from Assumptions
+\ref{as:continuity} and \ref{as:constraints}
+\citep[p. 97-98]{rawlings:mayne:2009}. If the solution to $\mathbb{P}_N(x)$
+is unique for all $x \in \mathcal{X}_N$, we can write the control law 
+\eqref{eq:mpclaw} and closed-loop system \eqref{eq:closed}
+\begin{align}
+\label{eq:mpclaw}
+ u &= \kappa_N(x) := u^0(0;x)\\
+\label{eq:closed}
+x^+ &= f(x,\kappa_N(x))
+\end{align}
+The case where the solution to $\mathbb{P}_N(x)$ is not unique is considered
+in the following section.
+\begin{assumption}[Continuity of system and cost]
+\label{as:continuity}
+The model $f:\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n$, 
+stage cost $\ell: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}_
+{\geq 0}$ and terminal cost $V_f:\mathbb{R}^n \rightarrow \mathbb{R}_{\geq 0}$
+are continuous. Furthermore, for some steady state $(x_s,u_s)$, we have $\ell(x_s,u_s)=0$
+and $V_f(x_s) = 0$.
+\end{assumption}
+For the remainder of the paper, we assume without loss of generality that 
+$(x_s,u_s) = (0,0)$.
+\begin{assumption}[Properties of constraint set]
+\label{as:constraints}
+The set $\mathbb{U}$ is compact and contains the origin. 
+%The sets $\mathbb{X}$ and $\mathbb{X}_f$ are closed, contain the origin in their interiors and $\mathbb{X}_f \subset \mathbb{X}$.
+%The set $\mathbb{X}_f$ is closed and contains the origin in its interior.
+% We define X_f to be a level set of V_f
+The set $\mathbb{X}_f$ is defined by  $\mathbb{X}_f= \text{lev}_\alpha V_f = \{x \in \mathbb{R}^n \ | \ 
+V_f(x) \leq \alpha\}$, with $\alpha > 0$.
+\end{assumption}
+\begin{assumption}[Stability assumption]
+\label{as:terminalstability}
+There exists a terminal control law $\kappa_f:\mathbb{X}_f \rightarrow
+\mathbb{U}$ such that
+\begin{align*}
+%\label{eq:invariant}
+f(x,\kappa_f(x)) &\in \mathbb{X}_f \qquad &\forall x \in \mathbb{X}_f\\
+%\label{eq:terminalstability}
+V_f(f(x,\kappa_f(x))) &\leq V_f(x)-\ell(x,\kappa_f(x))  
+&\forall x \in \mathbb{X}_f
+\end{align*}
+\end{assumption}
+\begin{assumption}[Function bounds]
+\label{as:pdstagecost}
+There exists a function $\alpha_\ell \in \mathcal{K}_\infty$ such that
+\begin{equation*}
+%\label{eq:pdstagecost}
+\ell(x,u) \geq \alpha_\ell(\abs{(x,u)}) \quad \quad \forall (x,u) \in \mathbb{Z}
+\end{equation*}
+\end{assumption}
+\begin{remark}[Assumptions]
+\label{rm:assumptions}
+The result in \cite{pannocchia:rawlings:wright:2011} concerning robust stability, Theorem 41,
+uses essentially the same assumptions as the corresponding result here, Theorem \ref{th:mainiss}.
+
+The only difference is that since we consider asymptotic
+stability rather than exponential stability, we do not require exponential upper bounds for 
+$V_N(\cdot)$ and $V_f(\cdot)$ (Assumption 4 there, Assumption \ref{as:pdstagecost} here).
+\end{remark}
+We require the following lemma on $\mathcal{K}$-functions \citep[Proposition 1]{rawlings:mayne:2011}. % actually, it's slightly different
+\begin{lemma}
+\label{lem:overbound}
+Let a function $V(x)$ be defined and locally bounded on $\mathbb{R}^n$. If 
+$V(x)$ is continuous at $x=0$ and $V(0) = 0$, then there exists $\alpha \in \mathcal{K}$ such that
+\begin{equation*}
+V(x) \leq \alpha(\abs{x})  \quad \forall x \in \mathbb{R}^n
+\end{equation*}
+$\alpha$ can be chosen to be of class $\mathcal{K}_\infty$.
+\end{lemma}
+From Assumption \ref{as:continuity} and Lemma \ref{lem:overbound}, we 
+conclude that there exist functions $\alpha_V,\alpha_f \in \mathcal{K}_\infty$
+such that
+\begin{align}
+\label{eq:vnbound}
+V_N(x,\mathbf{u}) &\leq \alpha_V(\abs{(x,\mathbf{u})}) &\forall (x,\mathbf{u}) \in \mathbb{R}^{n+mN} \\
+\label{eq:vfbound}
+V_f(x) &\leq \alpha_f(\abs{x}) &\forall x \in \mathbb{R}^n
+\end{align}
+Given this upper bound on $V_f(x)$, we therefore have that $\mathbb{X}_f$ is compact.
+We make several remarks:
+\begin{itemize}
+\item In Assumption \ref{as:constraints}, we allow the optimal steady state
+to be on the boundary of $\mathbb{U}$.
+\item For Assumption \ref{as:terminalstability}, the design of the terminal
+controller for quadratic $\ell(x,u)$ is covered in \citep[p. 136-138]{rawlings:mayne:2009}. 
+% FIXME and for general $\ell(x,u)$ it is covered in  
+\end{itemize}
+
+\subsection{Suboptimal MPC}
+Suboptimal MPC refers to the two-step process of solving the MPC problem
+approximately given a warm start, and then using the approximate solution to build a warm start 
+for the MPC problem at the next time step. Given a state $x$ and warm start 
+$\tilde{\mathbf{u}} \in \mathcal{U}_N(x)$, we consider the following three conditions
+\begin{align}
+\label{eq:feasible}
+\mathbf{u} &\in \mathcal{U}_N(x) \\
+\label{eq:improved}
+V_N(x,\mathbf{u}) &\leq V_N(x,\tilde{\mathbf{u}})  \\
+\label{eq:terminal}
+V_N(x,\mathbf{u}) &\leq V_f(x) \ \text{if} \ x \in r\mathbb{B}
+\end{align}
+where $r>0$ is sufficiently small so that $r\mathbb{B} \subset \mathbb{X}_f$. Conditions 
+\eqref{eq:feasible} and \eqref{eq:terminal} define the set of feasible warm starts
+\begin{equation}
+\label{eq:feaswarm}
+\tilde{\mathcal{U}}_r(x) = \{ \tilde{\mathbf{u}} \mid \tilde{\mathbf{u}} \in \mathcal{U}_N(x) \ 
+\text{and} \ V_N(x,\tilde{\mathbf{u}}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B} \}
+\end{equation}
+and all three conditions together define the suboptimal controller's feasible set
+\begin{align}
+\label{eq:subcontrol}
+\mathcal{U}_r(x,\tilde{\mathbf{u}}) &= \{ (x,\mathbf{u}) \mid \mathbf{u} \in \mathcal{U}_N(x), \
+V_N(x,\mathbf{u}) \leq V_N(x,\tilde{\mathbf{u}}) \nonumber \\
+&\qquad \text{and} \ V_N(x,\tilde{\mathbf{u}}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B} \}
+\end{align}
+The
+suboptimal control law $\kappa_N(x,\tilde{\mathbf{u}})$ is a function of both the state $x$ and the
+warm start $\tilde{\mathbf{u}}$, and may select any element of $\mathcal{U}_r(x,\tilde{\mathbf{u}})$.
+Note that condition \eqref{eq:terminal} is required so that $\abs{x} \rightarrow 0$ implies 
+$\abs{\mathbf{u}} \rightarrow 0$, which is proven in Lemma \ref{lem:utox}.
+
+Given any suboptimal input $\mathbf{u} \in \mathcal{U}_r(x,\tilde{\mathbf{u}})$,
+%\eqref{eq:feasible} -- \eqref{eq:terminal},
+we construct the warm start for the successor state $x^+=f(x,u(0))$ as follows
+
+\begin{equation}
+\label{eq:warm}
+\tilde{\mathbf{u}}^+ =
+%\begin{cases}
+\{u(1),u(2),\dots,u(N-1),\kappa_f(\tilde{\phi}(N;x,\mathbf{u}))\} 
+%& \text{if} \ x^+ \notin r\mathbb{B} \\
+%\{\kappa_f(x^+),\kappa_f(f(x^+,\kappa_f(x^+))),\dots\} & \text{otherwise}
+%\end{cases}
+\end{equation}
+
+We summarize the suboptimal algorithm as follows
+\begin{algorithm}[Suboptimal MPC] .\\
+\label{alg:suboptimal}
+\begin{itemize}
+\item Construct $\mathbb{X}_f$ and $V_f(\cdot)$ satisfying Assumption \ref{as:terminalstability}
+\item Select $r > 0$ such that $r\mathbb{B} \subset \mathbb{X}_f$
+\item Provide initial state $x(0) \in \mathcal{X}_N$ 
+and any initial warm start $\tilde{\mathbf{u}}(0) \in \tilde{\mathcal{U}}_r(x(0))$
+\item Repeat for $k = 0,1,\dots$
+\begin{enumerate}
+\item Record current state $x(k)$
+\item Compute any input $\mathbf{u} \in \mathcal{U}_r(x(k),\tilde{\mathbf{u}}(k))$
+%\item Perform zero or more optimization iterations of the MPC problem \eqref{eq:mpc} subject to 
+%\eqref{eq:feasible} - \eqref{eq:terminal} to obtain $\mathbf{u}$
+\item Compute the next warm start $\tilde{\mathbf{u}}(k+1)$ according to \eqref{eq:warm}
+\item Inject the first element of the input sequence $\mathbf{u}$ and set $k \leftarrow k+1$  
+\end{enumerate}
+\end{itemize}
+\end{algorithm}
+
+\begin{proposition}
+\label{pp:opt}
+For any $x \in \mathcal{X}_N$ and any $\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x)$, the set 
+$\mathcal{U}_r(x,\tilde{\mathbf{u}})$ is never empty. Furthermore, when applying Algorithm 
+\ref{alg:suboptimal}, a member of $\mathcal{U}_r(x,\tilde{\mathbf{u}})$ can always be computed without
+any optimization.
+\end{proposition}
+\begin{proof}
+First, the existance of an optimal solution to \eqref{eq:mpc} can be proven from Assumptions
+\ref{as:continuity} and \ref{as:constraints}
+\citep[p. 97-98]{rawlings:mayne:2009}.
+Next, we note that any optimal solution $\mathbf{u}^0(x)$ satisfies \eqref{eq:feasible} and 
+\eqref{eq:improved}. For $x \in r\mathbb{B}$, we consider the following alternate warm start
+\begin{equation}
+\label{eq:altwarm}
+\tilde{\mathbf{u}}_f = \{\kappa_f(x^+),\kappa_f(f(x^+,\kappa_f(x^+))),\dots\} 
+\end{equation}
+Applying Assumption \ref{as:terminalstability} for $k = 0, \dots, N-1$, we have
+\begin{equation*}
+V_N(x,\tilde{\mathbf{u}}_f) = \sum_{k=0}^{N-1}\ell(x(k),u_f(k)) + V_f(x(N)) \leq V_f(x)
+\end{equation*}
+Therefore, $\tilde{\mathbf{u}}_f$ satisfies \eqref{eq:terminal}. 
+Since $\tilde{\mathbf{u}}_f \in \mathcal{U}_N(x)$ and by optimality $V_N(x,\mathbf{u}^0(x)) \leq 
+V_N(x,\tilde{\mathbf{u}}_f)$, we have that $\mathbf{u}^0(x) \in 
+\mathcal{U}_r(x,\tilde{\mathbf{u}})$.
+
+During the application of Algorithm \ref{alg:suboptimal}, we note that $\tilde{\mathbf{u}}$ computed
+from \eqref{eq:warm} is feasible by construction and trivially satisfies \eqref{eq:improved}.
+If $x \in r\mathbb{B}$ and $V_N(x,\tilde{\mathbf{u}}) \geq V_f(x)$, then we note that 
+$\tilde{\mathbf{u}}_f$ is feasible and satisfies \eqref{eq:terminal} and therefore \eqref{eq:improved}.
+We conclude that $\tilde{\mathbf{u}} \in \mathcal{U}_r(x,\tilde{\mathbf{u}})$ whenever $x \notin r\mathbb{B}$ or
+$V_N(x,\tilde{\mathbf{u}}) \leq V_f(x)$
+and $\tilde{\mathbf{u}}_f \in \mathcal{U}_r(x,\tilde{\mathbf{u}})$ whenever $x \in r\mathbb{B}$
+and $\tilde{\mathbf{u}} \notin \mathcal{U}_r(x,\tilde{\mathbf{u}})$.
+\end{proof}
+
+%\begin{proposition}
+%\label{pp:opt}
+%Any optimal solution $\mathbf{u}^0(x)$ of $\mathbb{P}_N(x)$ satisfies 
+%conditions \eqref{eq:feasible}, \eqref{eq:improved} 
+%for all $x \in \mathcal{X}_N$ and \eqref{eq:terminal} for all 
+%$x \in \mathcal{X}_f$.
+%\end{proposition}
+%The proof of this proposition is provided in \citet{pannocchia:rawlings:wright:2011} and 
+%reproduced in the appendix.
+
+\begin{proposition}
+$\kappa_N(0,\tilde{\mathbf{u}}) = \{0\}$.
+\end{proposition}
+\begin{proof}
+From the fact that $V_f(\cdot)$ is non-negative (by Assumption 
+\ref{as:continuity}) and Assumption \ref{as:pdstagecost}, we have
+\begin{align}
+V_N(x,\mathbf{u}) &\geq \sum^{N-1}_{k=0}\alpha(\abs{(x(k),u(k))}) \nonumber \\
+&\geq \underline{\alpha}(\abs{\mathbf{x},\mathbf{u}}) \nonumber \\
+\label{eq:lowerbound}
+&\geq \underline{\alpha}(\abs{x,\mathbf{u}})
+\end{align}
+From \eqref{eq:improved} and \eqref{eq:terminal} we have $V(0,
+\mathbf{u}) \leq V_f(0)=0$. We conclude that $\mathbf{u} = 0$ for all 
+suboptimal input sequences under consideration and therefore
+$\kappa_N(0,\tilde{\mathbf{u}}) = \{0\}$.
+\end{proof}
+
+Because the control law $\kappa_N(x,\tilde{\mathbf{u}})$ is a function of the warm start, which is
+itself a function of the previous state and input, we subsequently analyze the behavior of the
+extended state $z = (x,\tilde{\mathbf{u}})$. 
+
+\subsection{Asymptotic stability of difference inclusions}
+As the system of interest is now a difference inclusion, we present the 
+following definitions of asymptotic stability and the associated Lyapunov
+functions. Consider the difference inclusion $z^+ \in H(z)$, such that $H(0) =
+\{0\}$.
+\begin{definition}[Asymptotic Stability]
+\label{def:as}
+We say the origin of the difference inclusion $z^+ \in H(z)$ is 
+asymptotically stable on the positive invariant set $\mathcal{Z}$ if there exists a function
+$\beta \in \mathcal{KL}$ such that for any $z \in \mathcal{Z}$, all solutions
+$\psi(k;z)$ satisfy
+\begin{equation*}
+%\psi(k;z) \in \mathcal{Z} \quad \text{and} \quad \abs{\psi(k;z)} \leq 
+\abs{\psi(k;z)} \leq \beta(\abs{z},k) \quad \forall k \in \mathbb{I}_{\geq 0}
+\end{equation*}
+\end{definition}
+\begin{definition}[Lyapunov Function]
+\label{def:lyap}
+V is a Lyapunov function on the positive invariant set $\mathcal{Z}$ for the difference 
+inclusion $z^+ \in H(z)$ if there exists functions $\alpha_1,\alpha_2,\alpha_3
+\in \mathcal{K}_\infty$ such that for all $z \in \mathcal{Z}$
+\begin{align}
+\label{eq:lowerlyap}
+\alpha_1(\abs{z}) &\leq V(z) \\
+\label{eq:upperlyap}
+\alpha_2(\abs{z}) &\geq V(z) \\
+\label{eq:decreaselyap}
+\max_{z^+ \in H(z)} V(z^+) &\leq V(z) - \alpha_3(\abs{z})
+\end{align}
+\end{definition}
+Note that $V(\cdot)$ is not required to be continuous.
+\begin{lemma}
+\label{lem:stab}
+If the set $\mathcal{Z}$ is positively invariant for the difference 
+inclusion $z^+ \in H(z)$, $H(0) = \{0\}$, $0 \in \mathcal{Z}$ 
+and there exists a Lyapunov function $V$ on $\mathcal{Z}$, then the 
+origin is asymptotically stable on $\mathcal{Z}$.
+\end{lemma}
+The proof is functionally identical to the proof of Theorem 12 in \citep{rawlings:mayne:2011} and is
+reproduced in the appendix.
+
+\section{Asymptotic stability of suboptimal MPC}
+\subsection{Extended state}
+In Algorithm \ref{alg:suboptimal} we begin with a state and warm start pair
+and proceed from one such pair to the next at the start of each time step. 
+We therefore denote as the extended state $z = (x,\tilde{\mathbf{u}})$.
+The extended state evolves according to
+\begin{equation}
+\label{eq:nominc}
+z^+ \in H(z) = \{(x^+,\tilde{\mathbf{u}}^+) \ | \ x^+ = f(x,u(0)), \tilde{\mathbf{u}}^+ = \zeta(x,\mathbf{u}), 
+\mathbf{u} \in \mathcal{U}_r(z)\}
+\end{equation}
+where $\zeta(\cdot)$ is the mapping corresponding to \eqref{eq:warm}. 
+We denote by $\psi(k;z)$ an arbitrary solution of 
+\eqref{eq:nominc} with initial extended state $z$ and denote by $\phi(k;z)$ the accompanying state 
+component of the trajectory.
+We also define the restriction of $\mathcal{Z}_N$ satisfying \eqref{eq:terminal} by
+\begin{equation*}
+%\mathcal{Z}_r = \{(x,\mathbf{u}) \mid (x,\mathbf{u}) \in \mathcal{Z}_N \ \text{and} \
+%V_N(x,\mathbf{u}) \leq V_f(x) \ \text{if} \ x \in r\mathbb{B}\}
+\mathcal{Z}_r = \{(x,\mathbf{u}) \mid x \in \mathcal{X}_N \ \text{and} \
+\mathbf{u} \in \tilde{\mathcal{U}}_r(x)\}
+\end{equation*}
+\begin{lemma}
+\label{lem:utox}
+There exists a function $\alpha_r \in \mathcal{K}_\infty$ such that
+$\abs{\mathbf{u}} \leq \alpha_r(\abs{x})$ for any $(x,\mathbf{u}) \in 
+\mathcal{Z}_r$.
+\end{lemma}
+\begin{proof}
+We first consider the case $x \in r\mathbb{B}$. From 
+\eqref{eq:lowerbound}, \eqref{eq:terminal} and \eqref{eq:vfbound} we have that
+\begin{equation*}
+\underline{\alpha}(\abs{\mathbf{u}}) \leq \underline{\alpha}(\abs{x,\mathbf{u}}) \leq
+V_N(x,\mathbf{u}) \leq V_f(x) \leq \alpha_f(\abs{x})
+\end{equation*}
+Therefore, $\abs{\mathbf{u}} \leq \alpha_{r'}(\abs{x})$ where
+$\alpha_{r'}(\abs{x}) = \underline{\alpha}^{-1}(\alpha_f(\abs{x}))$ and $\alpha_{r'} \in \mathcal{K}_\infty$. 
+
+Now we consider the case $x \notin r\mathbb{B}$. Define
+$\mu = \max_{\mathbf{u} \in \mathbb{U}^N}\abs{\mathbf{u}}$ and note that $\mu$ is
+finite because $\mathbb{U}$ is compact by Assumption \ref{as:constraints}. Next, define 
+%$\gamma = \min\{1,\alpha_{r'}(r)\} > 0$. Finally, we define
+$\gamma = \alpha_{r'}(r) > 0$. Finally, we define
+$\alpha_r(\abs{x}) = (\mu/\gamma)\alpha_{r'}(\abs{x})$, which satisfies 
+$\abs{\mathbf{u}} \leq \alpha_r(\abs{x})$ for all $(x,\mathbf{u}) \in \mathcal{Z}_r$.
+\end{proof}
+
+\subsection{Main results}
+\begin{theorem}[Nominal Asymptotic Stability]
+\label{th:nominalstability}
+Under Assumptions \ref{as:continuity} -- \ref{as:pdstagecost}, there exists
+$\beta(\cdot) \in \mathcal{KL}$ such that 
+\begin{equation*}
+\abs{\phi(k;z)} \leq \beta(\abs{x},k)
+\end{equation*}
+for any initial extended state $z = (x,\tilde{\mathbf{u}}) \in \mathcal{Z}_r$.
+% There is no state evolution equation in x alone, therefore you can't claim anything is ``asymptotically
+% stable'' in terms of x alone because a.s. applies only to evolution equations
+\end{theorem}
+%\begin{lemma}
+%\label{lem:zlyap}
+%$V_N(\cdot)$ is a Lyapunov function for the extended system \eqref{eq:nominc} in $\mathcal{Z}_r$.
+%\end{lemma}
+\begin{proof}
+We proceed by proving $V_N(z)$ is a Lyapunov function for \eqref{eq:nominc} in $\mathcal{Z}_N$.
+From \eqref{eq:lowerbound} we have $\underline{\alpha}(\abs{z})
+\leq V_N(z)$ for all $z \in \mathcal{Z}_N$. Therefore the lower bound
+\eqref{eq:lowerlyap} of Definition \ref{def:lyap} is satisfied.
+
+From \eqref{eq:vnbound}, we conclude that the upper bound condition 
+\eqref{eq:upperlyap} of Definition \ref{def:lyap} is satisfied.
+
+By \eqref{eq:feasible} and construction of the warm start \eqref{eq:warm} we have that
+$z^+ \in \mathcal{Z}_N$, so that $\mathcal{Z}_N$ is positive invariant for Algorithm \ref{alg:suboptimal}.
+
+As is standard in MPC analysis, we have for all $z \in \mathcal{Z}_N$ that 
+\begin{equation*}
+%\label{eq:standard}
+V_N(z^+) \leq V_N(x,\mathbf{u}) - \ell(x,u(0))
+\end{equation*} 
+due to equations \eqref{eq:warm}, \eqref{eq:improved} and Assumption
+\ref{as:terminalstability}.
+From Assumption \ref{as:pdstagecost} we can write 
+\begin{equation*}
+V_N(z^+) \leq V_N(x,\mathbf{u}) - \alpha_\ell(\abs{x,u(0)})
+\end{equation*}
+Suppose $x \notin r\mathbb{B}$. Then we have $\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x)$ and from Lemma 
+\ref{lem:utox} we have that 
+\begin{equation*}
+\abs{(x,\tilde{\mathbf{u}})} \leq \abs{x} + \abs{\tilde{\mathbf{u}}} \leq \abs{x} + \alpha_r(\abs{x}) := 
+\alpha_{r*}(\abs{x}) \leq \alpha_{r*}(\abs{(x,u(0))})
+\end{equation*}
+Consequently,
+\begin{equation*}
+\alpha_\ell(\alpha_{r*}^{-1}(\abs{(x,\tilde{\mathbf{u}})})) \leq  \alpha_\ell(\abs{(x,u(0))})
+\end{equation*}
+Defining $\alpha_3(\cdot) = \alpha_\ell(\alpha_{r*}^{-1}(\cdot))$ and using \eqref{eq:improved}, we have
+that
+\begin{equation*}
+V_N(z^+) \leq V_N(x,\mathbf{u}) - \alpha_3(\abs{z}) \leq V_N(z) - \alpha_3(\abs{z})
+\end{equation*}
+Now suppose $x \in r\mathbb{B}$. Consider the case $(1/2)\underline{\alpha}
+(\abs{(x,\tilde{\mathbf{u}})}) \leq V_f(x)$, with $\underline{\alpha}(\cdot)$ from \eqref{eq:lowerbound}.
+In this case, we have that
+\begin{equation*}
+\abs{(x,\tilde{\mathbf{u}})} \leq \underline{\alpha}^{-1}(2V_f(x)) \leq 
+\underline{\alpha}^{-1}(2\alpha_f(\abs{x}))) \leq \underline{\alpha}^{-1}(2\alpha_f(\abs{(x,u(0))}))
+\end{equation*}
+We conclude that 
+\begin{equation*}
+V_N(z^+) \leq V_N(z) - \alpha_4(\abs{z})
+\end{equation*}
+where $\alpha_4(\cdot) = \alpha_\ell(\underline{\alpha}^{-1}(2\alpha_f(\cdot))$.
+
+Now consider the case that $(1/2)\underline{\alpha}
+(\abs{(x,\tilde{\mathbf{u}})}) > V_f(x)$. In this case, we have that
+\begin{equation*}
+V_N(x,\mathbf{u}) \leq V_f(x) < (1/2)\underline{\alpha}(\abs{(x,\tilde{\mathbf{u}})})
+\leq V_N(x,\tilde{\mathbf{u}}) - (1/2)\underline{\alpha}(\abs{(x,\tilde{\mathbf{u}})})
+\end{equation*}
+Therefore
+\begin{equation*}
+V_N(z^+) \leq V_N(x,\mathbf{u}) \leq V_N(z) - \alpha_5(\abs{z})
+\end{equation*}
+with $\alpha_5(\cdot) = (1/2)\underline{\alpha}(\cdot)$.
+
+%From \eqref{eq:terminal} and \eqref{eq:vfbound}, we have
+%that $V_N(x,\mathbf{u}) \leq V_f(x) \leq \alpha_f(\abs{x})$. 
+Defining $\alpha(\cdot) = \min\{\alpha_3(\cdot),\alpha_4(\cdot),\alpha_5(\cdot)\}$, we conclude 
+that
+\begin{equation*}
+V_N(z^+) \leq V_N(z) - \alpha(\abs{z})
+\end{equation*}
+for all $z \in \mathcal{Z}_N$ and $z^+ \in H(z)$. 
+%Finally, note that the set $\mathcal{Z}_r$ is
+%positive invariant for the system \eqref{eq:nominc} because of \eqref{eq:warm} and \eqref{eq:feasible} --
+%\eqref{eq:terminal}. 
+We conclude that $V_N(z)$ is a Lyapunov function for 
+\eqref{eq:nominc} in $\mathcal{Z}_N$. Asymptotic stability in $z$ follows directly from Lemma \ref{lem:stab}.
+Finally, because for the initial warm start \eqref{eq:terminal} is enforced, we have that 
+for all $k \in \mathbb{I}_{\geq 0}$
+\begin{equation*}
+\abs{\phi(k;z)} \leq \abs{\psi(k;z)} \leq \beta(\abs{z},k) \leq \overline{\beta}(\abs{x},k)
+\end{equation*}
+where $\overline{\beta}(s,k) := \beta(\alpha_{r*}(s),k)$.
+\end{proof}
+
+\section{Robust asymptotic stability of suboptimal MPC}
+\subsection{Disturbances and robust stability definitions}
+For robustness analysis, we consider the following modification to \eqref{eq:system}
+\begin{equation}
+\label{eq:disturbed}
+x_m^+ = f(x_m-e,u) + d + e^+
+\end{equation}
+where $x_m = x+e$ is the measured state and $d$ is an additive process disturbance.
+Note that the nominal suboptimal control 
+law is now calculated based on the measured state $u = \kappa_N(x_m,\tilde{\mathbf{u}})$.
+
+For any $x_m \in \mathcal{X}_N$, we formally replace conditions \eqref{eq:feasible} -- 
+\eqref{eq:terminal} with the following 
+\begin{align}
+\label{eq:pfeasible}
+\mathbf{u} &\in \mathcal{U}_N(x_m) \\
+\label{eq:pimproved}
+V_N(x_m,\mathbf{u}) &\leq V_N(x_m,\tilde{\mathbf{u}}) \\
+\label{eq:pterminal}
+V_N(x_m,\mathbf{u}) &\leq V_f(x_m) \ \text{if} \ x_m \in r\mathbb{B}
+\end{align}
+and the controller's resulting feasible set is $\mathcal{U}_r(x_m,\tilde{\mathbf{u}})$. 
+As before, the suboptimal control law can select any member of this set, $\kappa_N(x_m,\tilde{\mathbf{u}}) 
+\in \mathcal{U}_r(x_m,\tilde{\mathbf{u}})$. 
+
+Since the algorithm now begins with a measured state and warm start pair, we redefine the extended state by
+\begin{equation*}
+z_m = (x_m,\tilde{\mathbf{u}})
+\end{equation*}
+The procedure to generate the next warm start is again based on the measured state
+\begin{equation}
+\label{eq:pwarm}
+\tilde{\mathbf{u}} = \{u(1),u(2),\dots,u(N-1),\kappa_f(\tilde{\phi}(N;x_m,\mathbf{u}))\}
+%\label{eq:pwarm2}
+%\tilde{\mathbf{u}} &= \{\kappa_f(\tilde{x}^+),\kappa_f(f(\tilde{x}^+,\kappa_f(\tilde{x}^+))),\dots\}
+\end{equation}
+%where $\tilde{x}^+$ is the predicted successor state based on measurement $x_m$, i.e.,
+%$\tilde{x}^+ = f(x_m,u(0))$.
+
+The perturbed extended system then evolves as
+\begin{equation}
+\label{eq:perturbedinc}
+z_m^+ \in H_{ed}(z_m) = \{(x_m^+,\tilde{\mathbf{u}}^+) \ | \ x_m^+ = f(x_m-e,u(0))+d+e^+, 
+\tilde{\mathbf{u}}^+ = \zeta(x_m,\mathbf{u}), \mathbf{u} \in \mathcal{U}_r(z_m)\}
+\end{equation}
+where $\zeta(\cdot)$ is the mapping corresponding to \eqref{eq:pwarm} 
+%and $ed$ denotes the fact that
+%arbitrary elements of the disturbance sequences $\mathbf{d}$ and $\mathbf{e}$ are selected at each point in time
+.
+Finally, for given disturbance and measurement error sequences $\mathbf{d}$ and $\mathbf{e}$
+and initial extended state $z_m = (x_m,\tilde{\mathbf{u}})$ we denote an arbitrary solution of 
+\eqref{eq:perturbedinc}
+by $\psi_{ed}(k;z_m)$ and the corresponding state by $\phi_{ed}(k;z_m)$.
+
+We consider the following stability definition.
+\begin{definition}[Robust Asymptotic Stability]
+\label{def:ras}
+The origin of the closed-loop system \eqref{eq:perturbedinc} is robustly asymptotically stable
+(RAS) on $\mathcal{C}$
+if there exists $\beta \in \mathcal{KL}$ and $\sigma_d,\sigma_e \in \mathcal{K}$ such that
+for each $x_m \in \mathcal{C}$, for all $\tilde{\mathbf{u}} \in \tilde{\mathcal{U}}_r(x_m)$ and for all disturbance sequences $\mathbf{d}$ and $\mathbf{e}$
+satisfying $\norm{\mathbf{d}} \leq \delta$ and $\norm{\mathbf{e}} \leq \delta$, $\delta > 0$, we have that
+\begin{equation}
+\label{eq:ras}
+%\abs{\phi_{ed}(k;x,\tilde{\mathbf{u}},\mathbf{d}_i,\mathbf{e}_i)} \leq \beta(\abs{x},k) + \sigma_d(\norm{
+%\mathbf{d}_{i-1}})+ \sigma_e(\norm{\mathbf{e}_i})
+\abs{\phi_{ed}(k;x_m,\tilde{\mathbf{u}})} \leq \beta(\abs{x_m},k) + \sigma_d(\norm{
+\mathbf{d}_{k-1}})+ \sigma_e(\norm{\mathbf{e}_k})
+\end{equation}
+for all $k \in \mathbb{I}_{\geq 0}$.
+\end{definition}
+
+
+
+\begin{remark}[Analysis and Theory]
+\label{rm:analysis}
+First, we describe the differences in results between the robust stability results of \cite{pannocchia:rawlings:wright:2011}, Theorem 41, and the results here, Theorem \ref{th:mainiss}. In \cite{pannocchia:rawlings:wright:2011}, SRES is proven for the set $\overline{\mathcal{C}}_\rho$ for an MPC formulation with the
+terminal penalty multiplied by $\beta$. The set $\overline{\mathcal{C}}_\rho$ is the set of all states such
+that when measurement errors are bounded by $\rho$, there exists an input such that $V_N(x_m,\mathbf{u})$ 
+is upper bounded by $\overline{V}$ for all measured states. Note that $\beta = \overline{V}/\alpha$, and
+that $\overline{\mathcal{C}}_\rho$ is compact. In
+the limit as $\overline{V} \rightarrow \infty$ (which implies $\beta \rightarrow \infty$), and in the limit as $\rho \rightarrow 0$, it is stated (Remark 42) that $\overline{\mathcal{C}}_\rho$ approaches 
+$\mathcal{X}_N$.
+
+In this paper, Theorem \ref{th:mainiss} states that for MPC, without altering the terminal penalty, the
+same robust stability result holds over any compact subset of $\mathcal{X}_N$ (or all of $\mathcal{X}_N$,
+if $f(\cdot)$ is $\mathcal{K}$ continuous, although I have not proved this yet).
+
+Next, we discuss the differences in the analysis.
+One major difference between the analysis here and the analysis of \cite{pannocchia:rawlings:wright:2011}
+is that here we consider the evolution of measured state and warm start inputs $z_m = (x_m,\tilde{\mathbf{u}})$ as
+opposed to state and input pairs. This change is due to the fact that the algorithm is initialized with
+a measured state and a warm start. This also places more emphasis on how the warm start evolves;
+\cite{pannocchia:rawlings:wright:2011} does not discuss any warm start construction that would 
+satisfy \eqref{eq:pterminal}, whereas it is presented in \eqref{eq:altwarm} here.
+
+Another major change is that SRES and RES have been replaced with (essentially) input to state stability
+in Definition \ref{def:ras}. I believe this simplifies the proofs.
+
+The most significant change, however, is the claim in the robust feasibility section of the proof of 
+Theorem \ref{th:mainiss}. Specifically, we argue that the terminal control law brings the terminal state
+to the interior of the terminal set at the next time step; for disturbances small enough, the resultant
+warm start input sequence still causes the terminal state based on the new measurement to be 
+in the interior of the terminal set. This simplifies both the proof of ISS and the set in which 
+robust stability holds. 
+\end{remark}
+
+We modify the algorithm as follows.
+\begin{algorithm}[Suboptimal MPC with disturbances] .\\
+\label{alg:psuboptimal}
+\begin{itemize}
+\item Construct $\mathbb{X}_f$ and $V_f(\cdot)$ satisfying Assumption \ref{as:terminalstability}
+%\item Select $r > 0$ and $\overline{r} > 0 such that $r\mathbb{B} \subset \overline{r}\mathbb{B} \subset \mathbb{X}_f$
+\item Select $r > 0$ such that $r\mathbb{B} \subset \mathbb{X}_f$
+\item Provide initial state $x_m(0) \in \mathcal{X}_N$ 
+and any initial warm start $\tilde{\mathbf{u}}(0) \in \tilde{\mathcal{U}}_r(x_m(0))$.
+\item Repeat for $k = 0,1,\dots$
+\begin{enumerate}
+\item Measure current state $x_m(k)$
+\item Compute any input $\mathbf{u} \in \mathcal{U}_r(x(k),\tilde{\mathbf{u}}(k))$
+\item Compute the next warm start $\tilde{\mathbf{u}}(k+1)$ according to \eqref{eq:pwarm}
+\item Inject the first element of the input sequence $\mathbf{u}$ and set $k \leftarrow k+1$  
+\end{enumerate}
+\end{itemize}
+\end{algorithm}
+
+\subsection{Main results}
+
+\begin{remark}[Open Issues]
+\label{rm:issues}
+The most significant open issue is that of uniform continuity. In the paper \cite{pannocchia:rawlings:wright:2011} there is actually an error in Lemma 30.
+The issue comes from statements such as (proof of Lemma 30, slightly paraphrased)
+
+``By continuity of $V_N(\cdot)$, choose $\delta_2 > 0$ such that the condition
+\begin{equation*}
+V_N(x_m,\mathbf{u}) \leq V_N(x,\mathbf{u}) + \frac{\rho}{3}
+\end{equation*}
+holds for all $(z_m,e) \in \mathcal{Z}_r \times \delta_2\mathbb{B}$.''
+
+The problem is that this is a statement of uniform continuity, not continuity, because for continuity
+$\delta_2$ would be a function of $z_m$. This issue does not appear in either Theorem 31 or Theorem 41,
+however, because the definitions of RES and SRES involve only compact sets.
+
+There are two ways around this issue. The first is to restrict robust stability to hold only in an 
+arbitrarily large compact subset of $\mathcal{X}_N$. This approach works because it is known 
+(``Robust Nonlinear Control Design: State-Space and Lyapunov Techniques'' freeman:kokotovic:2008 
+not in .bib database yet) that a continuous function on a compact set is both uniformly continuous 
+and $\mathcal{K}$ continuous. 
+
+The second approach is to add an assumption such as the following: either (1) $\mathcal{X}_N$ is 
+bounded or (2) $f(\cdot)$ is $\mathcal{K}$ continuous on (an arbitrarily small expansion of) $\mathcal{X}_N$. Note that uniform continuity is
+not equivalent to $\mathcal{K}$ continuity on unbounded sets (due to freeman:kokotovic:2008).
+
+%I've kept the compactness requirements in the results for now because 
+%I'm not actually sure they can be removed.
+%Consider the system $x^+ = f(x+d)$ and nominal Lyapunov function $V(x^+) - V(x) \leq -\alpha(x)$, $\alpha
+%\in \mathcal{K}$. 
+%As $\abs{x} \rightarrow \infty$, it is true that $\alpha(x) \rightarrow \infty$. But it is also true that
+%$\abs{x_{nominal}^+-x_{disturbed}^+} \rightarrow \infty$ (and therefore 
+%$\abs{V(x_{nominal}^+)-V(x_{disturbed}^+)} \rightarrow \infty$)
+%for a fixed $d$, and I'm not sure how to demonstrate that one dominates the other.
+
+Also, I was incorrect earlier about needing the condition \ref{eq:pterminal} to hold only 
+at the initial state;
+Lemma \ref{lem:annoying} requires that $V_N$ be a nominal Lyapunov function, which in turn requires 
+condition \eqref{eq:pterminal}. Since this lemma is used at every time step, condition \ref{eq:pterminal}
+must be enforced at each step.
+
+Finally, it would also shorten things up considerably to define (the equivalent of) an ISS Lyapunov function; 
+we could then remove (almost) the entire robust stability section of the proof of 
+Theorem \ref{th:mainiss} by using the fact that an ISS Lyapunov function implies ISS.
+
+\end{remark}
+
+\begin{lemma}
+\label{lem:annoying}
+Let $\mathcal{C}$ be any compact subset of $\mathcal{X}_N$. Then
+there exists a $\mathcal{K}_\infty$ 
+function $\eta(\cdot)$ and $\mathcal{K}$ functions $\sigma_d(\cdot)$ and $\sigma_e(\cdot)$ such that for all
+$z_m \in \mathcal{C} \times \mathcal{U}_N(x_m)$ such that $z_m^+ \in \mathcal{C} \times \mathcal{U}_N(x_m)$ we have
+\begin{equation*}
+\max_{z_m^+ \in H_{ed}(z_m)} V_N(z_m^+) \leq \max\{V_N(z_m)-\eta(\abs{z_m}),\sigma_d(\abs{d})+
+\sigma_e(\abs{(e,e^+)})\}
+\end{equation*}
+\end{lemma}
+\begin{proof}
+Let $d,e$ and $e^+$ be arbitrary disturbance and measurement errors.
+
+First, note that from the proof of Theorem \ref{th:nominalstability},
+$V_N(\cdot)$ is a Lyapunov function of the nominal system on $\mathcal{Z}_N$.
+Therefore
+\begin{equation*}
+V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) \leq V_N(z_m) - \alpha_3(\abs{z_m})
+\end{equation*}
+where $\tilde{x}^+ = f(x_m,u(0))$ is the predicted successor state.
+
+%For all $x_m \in \mathbb{R}^n$, $\mathcal{C} \times \mathcal{U}_N(x_m)$ is compact  
+%because it is a subset of the compact set $\mathcal{C} \times \mathbb{U}$ and $\mathcal{U}_N(x_m)$ is closed.
+%Let $\rho > 0$ be arbitrary.
+By the continuity of $V_N(\cdot)$ and $f(\cdot)$ and compactness of $\mathcal{C} \times \mathbb{U}$,
+there exists $\sigma_d'(\cdot)$ and $\sigma_e'(\cdot)$ such that for all $(\tilde{x}^+,\tilde{\mathbf{u}}^+) \in 
+\mathcal{C} \times \mathbb{U}$
+\begin{equation}
+\label{eq:ed1}
+V_N(x_m^+,\tilde{\mathbf{u}}^+) \leq V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) + \sigma_d'(\abs{d}) + \sigma_e'(\abs{
+(e,e^+)})
+\end{equation}
+Therefore, for all $z_m \in \mathcal{C} \times \mathcal{U}_N(x_m)$, we have
+\begin{equation}
+\label{eq:ed2}
+V_N(z_m^+) \leq V_N(z_m) - \alpha_3(\abs{z_m}) + \sigma_d'(\abs{d}) + \sigma_e'(\abs{(e,e^+)})
+\end{equation}
+
+%Now, we develop an upper bound of $V_N(z_m) - \alpha_3(\abs{z_m})$ from \eqref{eq:upperlyap} as
+%\begin{equation}
+%\label{eq:ed3}
+%V_N(z_m) - \alpha_3(\abs{z_m}) \leq \alpha_2(\abs{z_m}) - \alpha_3(\abs{z_m})
+%\end{equation}
+
+Define $\mathcal{Z}_1 = \{z_m \in \mathcal{Z}_N \mid \alpha_3(\abs{z_m}) > 2\sigma_d'(\abs{d}) + 2\sigma_e'(\abs{(e,e^+)}) \}$ and 
+$\mathcal{Z}_2 = \{z_m \in \mathcal{Z}_N \mid \alpha_3(\abs{z_m}) \leq 2\sigma_d'(\abs{d}) + 2\sigma_e'(\abs{(e,e^+)}) \}$. 
+%Define also $\sigma_d(\cdot) = 2\sigma_d'(\cdot)$, $\sigma_e(\cdot) = 2\sigma_e'(\cdot)$ 
+%and $\eta(\abs{z_m}) = (1/2)\alpha_3(\abs{z_m})$.
+
+Suppose $z_m \in \mathcal{Z}_1$.  We have that
+\begin{align*}
+(1/2)\alpha_3(\abs{z_m}) - \sigma_d'(\abs{d}) - \sigma_e'(\abs{(e,e^+)}) &> 0\\
+\alpha_3(\abs{z_m}) - \sigma_d'(\abs{d}) - \sigma_e'(\abs{(e,e^+)}) &> (1/2)\alpha_3(\abs{z_m})
+\end{align*}
+Therefore, defining $\eta(\cdot) = (1/2)\alpha_3(\cdot)$, we have
+\begin{equation*}
+%\label{eq:ed4}
+V_N(z_m^+) \leq V_N(z_m) - \eta(\abs{z_m})
+\end{equation*}
+
+Now suppose $z_m \in \mathcal{Z}_2$. We have that $\abs{z_m} \leq \alpha_3^{-1}(2\sigma_d'(\abs{d}) + 2\sigma_e'(\abs{(e,e^+)}))$. By \eqref{eq:upperlyap}, we have 
+\begin{equation*}
+V_N(z_m) \leq \alpha_2(\abs{z_m}) \leq \alpha_2(\alpha_3^{-1}(2\sigma_d'(\abs{d}) + 2\sigma_e'(\abs{(e,e^+)})))
+\end{equation*}
+Defining $\sigma^*(\cdot) = \alpha_2(\alpha_3^{-1}(2\sigma_d'(\cdot) + 2\sigma_e'(\cdot)))$, we have
+\begin{align*}
+%\label{eq:ed5}
+V_N(z_m) -\alpha_3(\abs{z_m}) + \sigma_d'(\abs{d}) + \sigma_e'(\abs{(e,e^+)}) &\leq 
+V_N(z_m) + \sigma_d'(\abs{d}) + \sigma_e'(\abs{(e,e^+)}) \\
+&\leq \sigma^*(\abs{d})+\sigma^*(\abs{(e,e^+)}) + \sigma_d'(\abs{d}) + \sigma_e'(\abs{(e,e^+)}) \\
+&\leq \sigma_d(\abs{d}) + \sigma_e(\abs{(e,e^+)}) 
+\end{align*}
+where $\sigma_d(\cdot) := \sigma^*(\cdot)+\sigma_d'(\cdot)$ and 
+$\sigma_e(\cdot) := \sigma^*(\cdot)+\sigma_e'(\cdot)$ 
+are both of class $\mathcal{K}$.
+
+Since the above arguments hold for all $z \in \mathcal{Z}_N$, we conclude that 
+\begin{equation*}
+\max_{z_m^+ \in H_{ed}(z_m)} V_N(z_m^+) \leq \max\{V_N(z_m)-\eta(\abs{z_m}),\sigma_d(\abs{d})+
+\sigma_e(\abs{(e,e^+)})\}
+\end{equation*}
+and we note that $\eta(\cdot)$ does not depend on $(d,e,e^+)$.
+\end{proof}
+
+The main RAS result of this paper is as follows.
+
+\begin{theorem}[Robust Asymptotic Stability]
+\label{th:mainiss}
+Under Assumptions \ref{as:continuity} -- \ref{as:pdstagecost}, there exists
+$\delta > 0$ such that the origin of the perturbed closed-loop system 
+\eqref{eq:perturbedinc} is RAS on any compact subset, $\mathcal{C}$, of ${X}_N$ for 
+%any warm start satisfying \eqref{eq:pfeasible} and \eqref{eq:pterminal} and 
+any disturbance sequences
+satisfying
+\begin{equation*}
+%\label{eq:fail}
+\norm{\mathbf{d}} \leq \delta, \quad \norm{\mathbf{e}} \leq \delta
+\end{equation*}
+\end{theorem}
+\begin{proof}
+(\emph{Robust Feasibility}). 
+FIXME: WRONG, the set must be positive invariant to start with
+
+First, we expand $\mathcal{C}$ so that
+it is positively invariant. We define
+\begin{equation*}
+\mathcal{C}_\rho = \{x_m \mid \exists \mathbf{u} \ \text{such that} \ V_N(x_m,\mathbf{u}) \leq \rho \}
+\end{equation*}
+and note that $\mathcal{C}_\rho$ is compact and $\rho > 0$ can be chosen large enough so that 
+$\mathcal{C} \subseteq \mathcal{C}_\rho$. 
+Since $V_N(\cdot)$ is a Lyapunov function of the nominal system on $\mathcal{Z}_N$, we have
+\begin{equation*}
+V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) \leq V_N(z_m) - \alpha_3(\abs{z_m})
+\end{equation*}
+
+First, suppose $V_N(z_m) \leq \rho/2$. Then $V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) \leq V_N(z_m) \leq \rho/2$. 
+Because $\mathcal{C}_\rho \times \mathbb{U}^N$ is compact, we can choose $\delta_1 > 0$ such that 
+$V_N(z_m^+) \leq V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) + \rho/2$ for all $(e,d,e^+) \in \delta_1\mathbb{B}$.
+Therefore $V_N(z_m^+) \leq \rho$ and $x_m^+ \in \mathcal{C}_\rho$.
+
+Next, suppose $V_N(z_m) > \rho/2$. Then by
+\eqref{eq:vnbound}, we have $\abs{z_m^+} > \alpha_V^{-1}(\rho/2)$ and therefore 
+$\alpha_3(\abs{z_m^+}) > \alpha_3(\alpha_V^{-1}(\rho/2)) > 0$. We can then choose $\delta_2 > 0$ such that
+$V_N(z_m^+) \leq V_N(\tilde{x}^+,\tilde{\mathbf{u}}^+) + \alpha_3(\alpha_V^{-1}(\rho/2))$
+for all $(e,d,e^+) \in \delta_2\mathbb{B}$. Therefore $V_N(z_m^+) \leq \rho$ and $x_m^+ \in \mathcal{C}_\rho$.
+We conclude that $\mathcal{C}_\rho$ is positive invariant.
+
+Next, we establish that there exists a $\delta_3 > 0$ such that for all 
+$x_m \in \mathcal{C}_\rho$, $\tilde{\mathbf{u}} \in \mathcal{U}_N(x_m)$ and $(e,d,e^+) \in  \times \delta\mathbb{B}^3$, 
+we have $x_m^+ \in \mathcal{X}_N$,
+$x^+ \in \mathcal{X}_N$ and $z_m^+ \in \mathcal{Z}_N$. 
+
+Since $z_m = (x_m,\tilde{\mathbf{u}}) \in \mathcal{Z}_N$, the suboptimal controller is well defined and produces 
+an input sequence $\mathbf{u}$ satisfying \eqref{eq:pfeasible} -- \eqref{eq:pterminal}. 
+Consider next the warm start $\tilde{\mathbf{u}}^+$ generated from the input sequence $\mathbf{u}$ using 
+\eqref{eq:pwarm}.
+
+The key step of the proof is as follows: we argue that the predicted terminal state $\tilde{\phi}^N :=
+\tilde{\phi}(N;\tilde{x}^+,\tilde{\mathbf{u}}^+)$ is bounded away from the boundary of $\mathbb{X}_f$. The argument
+is depicted graphically in Figure \ref{fig:feasibility}.
+\begin{figure}
+\scalebox{.8}{\input{feasibility}}
+\caption{The terminal control law computed based on the predicted successor state $\tilde{x}^+$ takes the system
+to the interior of the terminal set. By uniform continuity, the actual and measured trajectories reach the interior as well.}
+\label{fig:feasibility}
+\end{figure} 
+First, consider the point 
+$\tilde{\phi}^{N-1} := \tilde{\phi}(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+)$, which belongs to $\mathbb{X}_f$ 
+because $\mathbf{u}$ satisfied the terminal constraint for $x_m$. From Assumption \ref{as:terminalstability}, 
+we have that 
+\begin{align*}
+V_f(\tilde{\phi}^N) - V_f(\tilde{\phi}^{N-1}) &\leq - 
+\ell(\tilde{\phi}^{N-1},\kappa_f(\tilde{\phi}^{N-1})) \\
+&\leq - \alpha_\ell(\abs{(\tilde{\phi}^{N-1},\kappa_f(\tilde{\phi}^{N-1}))}) \\
+&\leq - \alpha_\ell(\abs{\tilde{\phi}^{N-1}})
+%V_f(\phi(N;\tilde{x}^+,\tilde{\mathbf{u}}^+)) - V_f(\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+)) &\leq - 
+%\ell(\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+),k_f(\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+)) \\
+%&\leq - \alpha_\ell(\abs{(\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+),k_f(\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+)))}) \\
+%&\leq - \alpha_\ell(\abs{\phi(N-1;\tilde{x}^+,\tilde{\mathbf{u}}^+)})
+\end{align*}
+
+Suppose first that $V_f(\tilde{\phi}^{N-1}) > \alpha/2$. By \eqref{eq:vfbound}, we have $\abs{\tilde{\phi}^{N-1}} > 
+\alpha_f^{-1}(\alpha/2)$. Therefore, we have that
+$V_f(\tilde{\phi}^N) - V_f(\tilde{\phi}^{N-1}) \leq - \alpha_\ell(\alpha_f^{-1}(\alpha/2))$ which implies
+$V_f(\tilde{\phi}^N)  \leq \alpha - \alpha_\ell(\alpha_f^{-1}(\alpha/2))$. 
+
+Now suppose $V_f(\tilde{\phi}^{N-1}) \leq \alpha/2$. Since
+$V_f(\tilde{\phi}^N) - V_f(\tilde{\phi}^{N-1}) \leq 0$
+we have immediately that
+$V_f(\tilde{\phi}^{N-1}) \leq \alpha/2$.
+We conclude that 
+\begin{equation*}
+V_f(\tilde{\phi}^N) \leq \alpha - \gamma
+\end{equation*}
+where $\gamma = \min\{\alpha/2,\alpha_\ell(\alpha_f^{-1}(\alpha/2))\}$ and we note that $\gamma$ is independent of
+$(z_m,e,d,e^+)$.
+
+We now consider the actual and measured successor states, $x^+ = f(x,u(0;x_m))+d$ and $x_m^+ = f(x_m-e,u(0))+d+e^+$
+, respectively. Because $f(\cdot)$ and $V_f(\cdot)$ are continuous by Assumption \ref{as:continuity} and
+$\mathcal{C}_\rho \times \mathbb{U}$ is compact, we have that $f(\cdot)$ and $V_f(\cdot)$ are uniformly continuous on 
+$\mathcal{C}_\rho \times \mathbb{U}$ and $\mathcal{C}_\rho$, respectively.
+Therefore, for any $\rho > 0$ we can select $\delta_3 > 0$ such that for all 
+$x_m \in \mathcal{C}_\rho$, $\tilde{\mathbf{u}} \in \mathcal{U}_N(x_m)$ and $(e,d,e^+) \in  \times \delta_3\mathbb{B}^3$, 
+we have 
+\begin{align*}
+V_f(\tilde{\phi}(N;x^+,\tilde{\mathbf{u}}^+))  &\leq V_f(\tilde{\phi}^N) + \rho \\
+V_f(\tilde{\phi}(N;x_m^+,\tilde{\mathbf{u}}^+))  &\leq V_f(\tilde{\phi}^N) + \rho
+\end{align*}
+By selecting $\rho = \gamma$, we have $\tilde{\phi}(N;x^+,\tilde{\mathbf{u}}^+) \in \mathcal{X}_f$ and 
+$\tilde{\phi}(N;x_m^+,\tilde{\mathbf{u}}^+) \in \mathcal{X}_f$. Since $\tilde{\mathbf{u}}^+ \in \mathbb{U}^N$ and there are
+no other state constraints, we have that $\tilde{\mathbf{u}}^+ \in \mathcal{U}_N(x^+)$ and 
+$\tilde{\mathbf{u}}^+ \in \mathcal{U}_N(x_m^+)$. As a result, $x^+ \in \mathcal{X}_N$, $x_m^+ \in \mathcal{X}_N$,
+and $z_m^+ \in \mathcal{Z}_N$.
+
+% below is too similar
+(\emph{Robust Stability}) 
+%We define $\mathcal{C}_\xi = \{$
+From Lemma \ref{lem:annoying},
+for any $z_m^+ \in H_{ed}(z_m)$ we have that
+\begin{equation*}
+V_N(z_m^+) \leq \max\{V_N(z_m)-\eta(\abs{z_m}),\sigma_d(\abs{d})+
+\sigma_e(\abs{(e,e^+)})\}
+\end{equation*}
+Using steps identical to the proof of Lemma \ref{lem:stab}, we have 
+\begin{equation*}
+V_N(z_m^+) \leq \max\{\sigma(V_N(z_m)),\sigma_d(\abs{d})+\sigma_e(\abs{(e,e^+)})\}
+\end{equation*}
+for $\sigma(s) = (1/2)(s+\left(\max_{s' \in [0,s]}s'-\eta \circ \alpha_2^{-1}(s')\right))$, where 
+$0 < \sigma(s) < s$ for $s > 0$ and $\sigma \in \mathcal{K}_\infty$. Since 
+$\mathcal{C}_\rho$ is positive invariant, we can apply this inequality $k-1$ times to obtain
+\begin{equation*}
+V_N(\psi(k;z_m)) \leq \max\{\sigma^k(V_N(z_m)),\sigma_d(\norm{\mathbf{d}_{k-1}})+\sigma_e(\norm{\mathbf{e}_k})\}
+\end{equation*}
+From \eqref{eq:lowerlyap}
+\begin{align*}
+\abs{\psi(k;z_m)} &\leq \max\{\alpha_1^{-1}(\sigma^k(V_N(z_m))),\alpha_1^{-1}(\sigma_d(\norm{\mathbf{d}_{k-1}})+\sigma_e(\norm{\mathbf{e}_k}))\} \\
+&\leq \max\{\beta(\abs{z_m},k),\alpha_1^{-1}(\sigma_d(\norm{\mathbf{d}_{k-1}})+\sigma_e(\norm{\mathbf{e}_k}))\}
+\end{align*}
+Since the initial extended state satisfies condition \eqref{eq:pterminal} by assumption, we invoke
+Lemma \ref{lem:utox} to conclude that $\tilde{\mathbf{u}} \leq \alpha_r(x_m)$. Therefore
+\begin{align*}
+\abs{\phi(k;z_m)} \leq \abs{\psi(k;z_m)} &\leq \max\{\beta(\abs{z_m},k),\alpha_1^{-1}(\sigma_d(\norm{\mathbf{d}_{k-1}})+\sigma_e(\norm{\mathbf{e}_k}))\} \\
+&\leq \max\{\overline{\beta}(\abs{x_m},k),\alpha_1^{-1}(\sigma_d(\norm{\mathbf{d}_{k-1}})+\sigma_e(\norm{\mathbf{e}_k}))\}
+\end{align*}
+where $\overline{\beta}(s,k) := \beta(s+\alpha_r(s),k)$. Defining $\sigma_{de}(\cdot) :=
+\alpha_1^{-1}(\sigma_d(\cdot)+\sigma_e(\cdot)) \in \mathcal{K}$, we have
+\begin{align*}
+\abs{\phi(k;z_m)} &\leq \max\{\overline{\beta}(\abs{x_m},k),\sigma_{de}(\norm{\mathbf{d}_{k-1}})+\sigma_{de}(\norm{\mathbf{e}_{k}})\} \\
+&\leq \overline{\beta}(\abs{x_m},k)+\sigma_{de}(\norm{\mathbf{d}_{k-1}})+\sigma_{de}(\norm{\mathbf{e}_{k}})
+\end{align*}
+We conclude the proof by selecting $\delta = \min \{\delta_1,\delta_2,\delta_3\}$ and noting that
+$\delta$ is independent of $z_m$.
+
+\end{proof}
+Before continuing, we note that because conditions \eqref{eq:pfeasible} -- \eqref{eq:pterminal} are based on the
+measured state, the results of Proposition \ref{pp:opt} apply, that is, we can compute $\mathbf{u} \in \mathcal{U}_r(z_m)$ without any optimization.
+We also note that these results apply immediately to optimal MPC, including the
+case when the optimal solution of $\mathbb{P}_N(x)$ is not unique.
+
+\begin{comment}
+
+%FIXME: is $V_\infty$ a storage function (when it exists?)
+%FIXME: if so, can the terminal penalty to go be used anyway for removing the
+%state constraints
+
+\section{Robust stability in the absence of state constraints}
+\label{sec:nostateconstraints}
+% FIXME: similar
+One method to increase the region of attraction of the origin under process
+disturbances is to replace the hard state constraints $x(k) \in \mathbb{X}$
+with penalties, thus allowing small state constraint violations. In this 
+section we also replace the terminal constraint by adjusting the
+terminal penalty by weighting it, $\beta V_f(x(N))$. Unlike the case of 
+general state constraints,  however, this does not expand the region of
+attraction of the origin because the terminal constraint must still be
+exactly satisfied to use the local controller $\kappa_f(x)$ at the end of 
+the horizon. When considering the case of no terminal constraints we must
+therefore restrict attention to states under which the MPC solution
+a priori satisfies the the terminal constraint.
+
+\subsection{Revised assumptions and nominal stability results}
+We consider the case of no (hard) state constraints and therefore replace
+Assumption \ref{as:constraints} with the following
+\begin{assumption}
+\label{as:nostateconstraints}
+The set $\mathbb{U}$ is compact and contains the origin. The sets 
+$\mathbb{X}$ and $\mathbb{X_f}$ are defined by $\mathbb{X} = \mathbb{R}^n$
+and $\mathbb{X_f} = \text{lev}_\alpha V_f = \{x \in \mathbb{R}^n | V_f(x) \leq
+\alpha\}$, with $\alpha > 0$.
+\end{assumption}
+Assumption \ref{as:vn0continuous} is no longer necessary because there are
+no state constraints to violate, and therefore no feasibility restoration
+step is required. We still make use of Assumptions \ref{as:continuity}
+, \ref{as:terminalstability} and \ref{as:pdstagecost} with the modified
+cost function
+\begin{equation}
+\label{eq:vnbeta}
+V_N^\beta(x,\mathbf{u}) = \sum_{k=0}^{N-1}\ell(\phi(k;x,\mathbf{u})+\beta
+V_f(\phi(N;x,\mathbf{u}))
+\end{equation}
+where $\beta \geq 1$ is a parameter which determines the set of initial
+conditions for which the terminal constrain is satisfied a priori. Note that
+since $\beta \geq 1$ the pair $(\beta V_f(x),\mathbb{X}_f)$ satisfies 
+Assumption \ref{as:terminalstability} whenever $(V_f(x),\mathbb{X}_f)$
+does. Given
+the same warm start $\tilde{\mathbf{u}}$ as defined in \eqref{eq:warm} and
+the successor state $x^+ = f(x,u(0;x))$ we replace the requirement for
+suboptimal MPC in \eqref{eq:feasible} -- 
+\eqref{eq:terminal} by the conditions
+\begin{align}
+\label{eq:newfeasible}
+&\mathbf{u}^+ \in \mathbb{U}^N \\
+\label{eq:newimproved}
+&V^\beta_N(x^+,\mathbf{u}^+) \leq V^\beta_N(x^+,\tilde{\mathbf{u}}) \\
+\label{eq:newterminal}
+&V^\beta_N(x^+,\mathbf{u}^+) \leq \beta V_f(x^+) \quad \text{when} x^+
+\in r\mathbb{B}
+\end{align}
+We still refer to \eqref{eq:inclusion} and \eqref{eq:nominc} for the
+evolution of the state and extended state, although for \eqref{eq:nominc}, 
+the definition of $G(z)$ must be modified according to 
+\eqref{eq:newfeasible} -- \eqref{eq:newterminal}. For a chosen maximal cost
+$\overline{V} > 0$, we define the compact sets
+\begin{align}
+\overline{\mathcal{Z}}_r &= \{(x,\mathbf{u}) \in \mathbb{R}^n \times 
+\mathbb{U}^N | V_N^\beta(x,\mathbf{u}) \leq \overline{V}, \text{and}
+V_N^\beta(x,\mathbf{u}) \leq \beta V_f(x) \text{if} x \in r\mathbb{B}\} \\
+\mathbb{X}_0 &= \{x \in \mathbb{R}^n | \exists \mathbf{u} \in \mathbb{U}^N
+\text{such that} (x,\mathbf{u} \in \overline{\mathcal{Z}}_r\}
+\end{align}
+For the remainder of the paper, we choose
+\begin{equation*}
+\overline{V} \geq \alpha, \beta \geq \overline{B} := \overline{V}/\alpha
+\geq 1
+\end{equation*}
+where $\alpha > 0$ defines the terminal region from Assumption 
+\ref{as:nostateconstraints}.
+\begin{remark}
+% FIXME: similar
+The choice $\beta \geq \overline{\beta}$ implies no trajectories in 
+$\overline{\mathcal{Z}}_r$ terminate on the boundary of $\mathbb{X}_f$.
+\end{remark}
+\begin{proof}
+For any trajectory terminating on the boundary of $\mathbb{X}_f$, we have
+$V_f(x(N)) = \alpha$ and therefore $\sum^{N-1}_{k=0}\ell(x(k),u(k)) \leq 0$.
+By Assumption \ref{as:pdstagecost}, this implies $(x(k),u(k)) = (0,0)$ for
+$k \in \mathbb{I}_{0:N-1}$, which combined with Assumption 
+\ref{as:terminalstability} implies $(x(N),u(N)) = (0,0)$. Thus, $V_f(x(N))
+= 0$, a contradiction.
+\end{proof}
+We have the following nominal stability results.
+\begin{lemma}
+\label{lem:betalyap}
+$V^\beta_N(z)$ is a Lyapunov function for the extended closed-loop system
+\eqref{eq:nominc} on $\overline{\mathcal{Z}}_r$. 
+\end{lemma}
+\begin{proof}
+We can replicate the proof of Lemma \ref{lem:utox} for the new terminal 
+penalty and new set $\overline{\mathcal{Z}}_r$ to obtain $\alpha_r \in 
+\mathcal{K}_\infty$ such that $\abs{\mathbf{u}} \leq \alpha_r(\abs{x})$
+for all $(x,\mathbf{u}) \in \overline{\mathcal{Z}}_r$. Consider the 
+difference inclusion $z^+ \in H(z)$ with $H(z)$ defined by \eqref{eq:nominc}
+and $G(z)$ appropriately modified for \eqref{eq:newfeasible} -- 
+\eqref{eq:newterminal}. We can replicate the proof of Theorem \ref{th:nominalstability}
+%Lemma \ref{lem:zlyap}
+to obtain
+\begin{equation*}
+alpha_1(\abs{z}) \leq V^\beta_N(z) \leq \alpha_2(\abs{z}), \max_{z^+ \in H(z)}
+V^\beta_N(z^+) \leq V_N^\beta(z) - \alpha_3(\abs{z})
+\end{equation*}
+for all $z \in \overline{\mathcal{Z}}_r$ for some $\alpha_1,\alpha_2,
+\alpha_3 \in \mathcal{K}_\infty$. Hence, $V_N^\beta(z)$ is a Lyapunov function
+on $\overline{\mathcal{Z}}_r$ for the closed-loop system \eqref{eq:nominc}.
+\end{proof}
+\begin{theorem}
+Under Assumptions \ref{as:continuity}, \ref{as:terminalstability}, 
+\ref{as:pdstagecost} and \ref{as:nostateconstraints}, the origin of the
+closed-loop system \eqref{eq:inclusion} is asymptotically stable on 
+$\mathcal{X}_0$. 
+\end{theorem}
+\begin{proof}
+First, we show that $\overline{\mathcal{Z}}_r$ is positive invariant
+for $z^+ \in H(z)$. Let $z \in \overline{\mathcal{Z}}_r$ and consider
+any $z^+ \in H(z)$. From \eqref{eq:newimproved},
+\begin{equation*}
+V^\beta_N(z^+) \leq V^\beta_N(x^+,\tilde{\mathbf{u}}) \leq V^\beta_N(z) \leq 
+\overline{V}
+\end{equation*}
+Since $\beta \geq \overline{V}/\alpha \geq 1$ and $\ell(cdot)$ is 
+nonnegative, we have that $V_f(\phi(N;x^+,\mathbf{u}^+)) \leq \alpha$ and
+therefore $\phi(N;x^+,\mathbf{u}^+) \in \mathbb{X}_f$. Along with 
+\eqref{eq:newfeasible} and \eqref{eq:newterminal}, it follows that $z^+
+\in \overline{\mathcal{Z}}_r$. From Lemmas \ref{lem:betalyap} and 
+\ref{lem:stab}, we have that the origin is asymptotically stable, i.e.
+for some $\sigma in \mathcal{KL}$, $\abs{\psi(k;z)} \leq \sigma(\abs{z},k)$
+for all $z \in \overline{\mathcal{Z}}_r$ and $k \in \mathbb{I}_{\geq 0}$.
+Let $\phi(k;x)$ denote the state component of $\psi(k;z)$ for any $x \in 
+\mathbb{X}_0$ and any input sequence $\mathbf{u}$ such that $(x,\mathbf{u})
+\in \overline{\mathcal{Z}}_r$. Using the fact that $\abs{z} \leq \abs{x} +
+\abs{u} \leq \abs{x} + \alpha_r{x} := \alpha_{r*}{x}$, we have
+\begin{align*}
+\abs{\phi(k;x)} &\leq \abs{\psi(k;z)} \\
+&\leq \sigma(\abs{z},k) \\
+&\leq \sigma(\alpha_{r*}{x},k) \\
+&:= \overline{\sigma}(\abs{x},k)
+\end{align*}
+for any $x \in \mathbb{X}_0$ and $k \in \mathbb{I}_{\geq 0}$.
+\end{proof}
+
+Next, we characterize the admissible set $\mathbb{X}_0$ and its limit
+for large $\overline{V}$. We define the set of feasible initial states
+that can be taken to the interior of $\mathbb{X}_f$ by
+\begin{equation}
+\overline{\mathbb{X}}_N = \{x \in \mathbb{R}^n | \exists \mathbf{u} \in 
+\mathbb{U}^N \text{such that} \phi(N;x,\mathbf{u}) \in \text{int}
+(\mathbb{X}_f)
+\end{equation}
+% FIXME: this is all too similar
+Note that the interior of $\mathbb{X}_f$ is not empty because $\alpha > 0$.
+\begin{proposition}
+\label{pp:admissibleset}
+The admissible set $\mathbb{X}_0$ and restricted feasible set 
+$\overline{\mathbb{X}}_N$ satisfy
+\begin{equation}
+\mathbb{X}_0(\overline{V}) \subset \overline{\mathbb{X}}_N \text{for all}
+\overline{V} \geq 0, \text{and} \overline{\mathbb{X}}_N \subset \bigcup_{
+\overline{V} \geq 0} \mathbb{X}_0(\overline{V})
+\end{equation}
+\end{proposition}
+\begin{proof}
+FIXME: the proof is identical to the other paper and can be omitted\\
+The first statement follows directly from the definitions of $\mathbb{X}_0
+(\overline{V})$ and $\overline{\mathbb{X}}_N$; $\overline{\mathbb{X}}_N$ is
+the set of all states that can be brought to the interior of $\mathbb{X}_f$
+with a feasible input, while $\mathbb{X}_0(\overline{V})$ is
+the set of all states that can be brought to the interior of $\mathbb{X}_f$
+with a feasible input and a cost not exceeding $\overline{V}$. \\
+To establish the second statement, we first argue that the sets 
+$\mathbb{X}_0(\overline{V})$ are nested: $\overline{V}_2 \geq 
+\overline{V}_1$ implies $\mathbb{X}_0(\overline{V_2}) \supseteq 
+\mathbb{X}_0(\overline{V_1})$. Assume an arbitrary $x \in \mathbb{X}_0(
+\overline{V}_1)$ and correstponding $(x,\mathbf{u}) \in \overline{\mathbb{
+Z}}_r(\overline{V}_1)$. We show that $x \in \mathbb{X}_0(\overline{V}_2)$.
+Let $\beta_1 = \overline{V}_1/\alpha$, $\beta_2 = \overline{V}_2/\alpha$ and
+$x(N) = \phi(N;x,\mathbf{u})$. We have that
+\begin{equation*}
+V^{\beta_2}_N(x,\mathbf{u}) = V^{\beta_1}_N(x,\mathbf{u}) +(\beta_2-\beta_1)
+V_f(x(N))
+\end{equation*}
+First, notice that if $x \in r\mathbb{B}$, $V_N^{\beta_1}(x,\mathbf{u}) \leq
+\beta_1V_f(x)$ and this implies that $V_N^{\beta_2}(x,\mathbf{u}) \leq
+\beta_2V_f(x)$ so the inequality is established in $r\mathbb{B}$. Then 
+notice that $V_f(x(N)) = \alpha' < \alpha$, which gives
+\begin{align*}
+V_N^{\beta_2}(x,\mathbf{u}) &\leq \overline{V}_1 + (\overline{V}_2 - 
+\overline{V}_1)(\alpha'/\alpha) \\
+&= \overline{V}_1(1-\alpha'/\alpha) + \overline{V}_2(\alpha'/\alpha) \\
+&\leq \overline{V}_2(1-\alpha'/\alpha) + \overline{V}_2(\alpha'/\alpha) \\
+&= \overline{V}_2
+\end{align*}
+and we conclude $x \in \mathbb{X}_0(\overline{V}_2)$. \\
+Next, we establish that for every point $x_0 \in \overline{\mathcal{X}}_N$,
+there exists a $\overline{V}_0 > 0$ such that $x_0 \in \mathbb{X}_0(
+\overline{V}$ for all $\overline{V} \geq \overline{V}_0$. Take an arbitrary
+$x_0 \in \overline{\mathcal{X}}_N$ and a corresponding $\mathbf{u}_0 \in
+\mathbb{U}^N$ that satisfies $\phi(N;x_0,\mathbf{u}_0) \in \text{int}
+(\mathbb{X}_f)$. If $x_0 \in r\mathbb{B}$, we add the restriction to
+$\mathbf{u}_0$ that $V_N(x_0,u_0) \leq V_f(x_0)$. Such a $\mathbf{u}_0$ 
+exists because Proposition \ref{pp:opt} establishes that the optimal
+input sequence has this property. Since $\beta \geq 1$, it follows that
+$V^\beta_N(x_0,\mathbf{u}_0) \leq \beta V_N(x_0,\mathbf{u}_0) \leq \beta V_f
+(x_0)$, if $x_0 \in r\mathbb{B}$. Then denote by $\alpha'$ the terminal
+cost $\alpha' := V_f(\phi(N;x_0,\mathbf{u}_0))$, and we have that $\alpha'
+< \alpha$. Then define $\overline{V}_0 := \frac{1}{1-alpha'/\alpha}\sum_{i=0}^{N-1} \ell(\phi(i;x_0,\mathbf{u}_0),u_0(i))$. A direct computation gives
+(FIXME: I don't understand this step) $V^\beta_N(x_0,\mathbf{u}_0) = 
+\overline{V}_0$, and, if $x_0 \in r\mathbb{B}$, $V^\beta_N(x_0,\mathbf{u}_0)
+\leq \beta V_f(x_0)$. Therefore $x_0 \in \mathbb{X}_0(\overline{V}_0)$, and
+by the nesting property $x_0 \in \mathbb{X}_0(\overline{V})$ for all
+$\overline{V}$ satisfying $\overline{V} \geq \overline{V}_0$ and the limit
+is established.
+\end{proof}
+This result implies that the limit of $\mathbb{X}_0(\overline{V})$ as
+$\overline{V} \rightarrow \infty$ containts all feasible sets corresponding
+to an arbitrarily small tightening of the terminal set, i.e. $\mathbb{X}_f
+(\alpha') = \text{lev}_{\alpha'}V_f$ with $\alpha' < \alpha$.
+
+\subsection{Robust stability results}
+
+% FIXME: identical
+For robustness analysis, we again consider the perturbed closed-loop system
+\eqref{eq:disturbed}. As an immediate consequence of removing the 
+terminal constraint, we have that the warm start $\tilde{\mathbf{u}}$ is 
+feasible for the measured successor state $x_m^+ = x^+ + e^+$ because
+$\tilde{\mathbf{u}} \in \mathbb{U}^N$. There is therefore no reason for the
+seasibility restoration step \eqref{eq:resto}, making the subsequent
+analysis much simpler. We still consider the augmented system of 
+\eqref{eq:perturbedinc} but modify the set $G_{ed}(z)$ as follows
+\begin{align*}
+G_{ed}(z) := &\{\mathbf{u}^+ | \mathbf{u}^+ \in \mathbb{U}^N, V^\beta_N(
+x_m^+,\mathbf{u}^+) \leq V^\beta_N(x_m^+,\tilde{\mathbf{u}}), \\
+&V^\beta_N(x_m^+,\mathbf{u}^+) \leq \beta V_f(x_m^+) if x^+_m \in r\mathbb{B}\}
+\end{align*}
+Note that the results of Lemma \ref{lem:annoying} still hold for the 
+modified cost $V^\beta_N(\cdot)$ and set $\overline{\mathcal{Z}}_r$.
+% FIXME: still identical
+We now present a set over which we prove SRAS. Given a scalar $\rho > 0$
+and any $z_m \in \overline{\mathcal{Z}}_r$, we define
+\begin{align}
+\label{eq:restricted}
+&\overline{V}^\rho_N(z_m) := \max_{e \in \rho\mathbb{B}} V_N^\beta(z) \text{such
+that} z = z_m - (e,0) \\
+&\overline{\mathcal{S}}_\rho := \{z_m \in \overline{\mathcal{Z}}_r |
+\overline{V}^\rho_N(z_m) \leq \overline{V}\}
+\end{align}
+where we assume that $\rho$ is small enough so that $\overline{
+\mathcal{S}}_\rho$ is nonempty. Finally, the candidate set for SRAS is 
+defined as
+\begin{equation}
+\label{eq:crhonew}
+\overline{\mathcal{C}}_\rho := \{ x \in \mathbb{R}^n | x = x_m - e, e \in
+\rho\mathbb{B}, \exists \mathbf{u} \text{such that} (x_m,\mathbf{u}) \in
+\overline{\mathcal{S}}_\rho\}
+\end{equation}
+\begin{theorem}
+Under Assumptions \ref{as:continuity}, \ref{as:terminalstability},
+\ref{as:pdstagecost} and \ref{as:nostateconstraints}, the origin of the
+closed-loop system \eqref{eq:disturbed} is SRAS on $\overline{
+\mathcal{C}}_\rho$.
+\end{theorem}
+\begin{proof}
+% FIXME: identical
+Robust Feasibility. Suppose that $x \in \overline{\mathcal{C}}_\rho$ and
+let $z = (x,\mathbf{u})$ be the correstponding augmented state where 
+$\mathbf{u}$ is any suboptimal sequence computed for the measured state 
+$x_m = x + e, e \in \rho\mathbb{B}$. From \eqref{eq:restricted}, it follows
+that $V_N^\beta \leq \overline{V}$ and that $z_m \in \overline{
+\mathcal{S}}_\rho \subseteq \overline{\mathcal{Z}}_r$. We define $\tilde{
+z}^+ = (\tilde{x}^+,\tilde{\mathbf{u}})$ where $\tilde{x}^+ = f(x_m,u(0;x_m
+))$ is the predicted (nominal) successor state. The quantity $V^\beta_N(
+\tilde{z}^+)$ is the cost along the nominal evolution from $z_m$. Since
+ $V^\beta_N(\cdot)$ is a Lyapunov function for the nominal system on 
+$\overline{\mathcal{Z}}_r$ by Lemma \ref{lem:betalyap}, we have that
+$V^\beta_N(\tilde{z}^+) \leq V^\beta_N(z_m)-\alpha_3(\abs{z_m})$. \\
+We also have that $V^\beta_N(z) \leq \alpha_2(\abs{z})$ for $z \in 
+\overline{\mathcal{Z}}_r$. Therefore, we can select $\gamma > 0$ such that 
+$max_{\abs{z} \leq \gamma} V^\beta_N(z) \leq \overline{V}_\gamma < \overline{V}$.
+For $z$ such that $\abs{z} > \gamma$, we have $\alpha_3(\abs{z}) \geq 
+\alpha_3(\gamma) > 0$. Take $\gamma' = \min\{\overline{V}_\gamma,
+\alpha_3(\gamma)\}$. We therefore have $V^\beta_N(\tilde{z}^+) \leq 
+\overline{V}-\gamma'$ for all $z \in \overline{\mathcal{Z}}_r$.
+\\FIXME: is it neccesary to find a uniform bound like this, or can we just 
+argue if z=0 then V=0 so $V<\overline{V}$ if $z\neq0$ then $V<\overline{V}$?
+\\
+Recall that $\tilde{x}^+-x_m^+ = f(x_m,u(0;x_m)) - f(x,u(0;x_m)) - d + e^+$.
+By the continuity of $V_N^\beta(\cdot)$, it follows that there exists
+$\delta_1 > 0$ such that $V^\beta_N(x_m^+,\tilde{\mathbf{u}}) < \overline{V}$
+for all $(z_m,e,d,e^+) \in \overline{\mathcal{S}}_\rho \times 
+\delta_1\mathbb{B}^3$. From \eqref{eq:newimproved} it follows that 
+$V^\beta_N(x^+,\mathbf{u}^+) \leq V^\beta_N(x_m^+,\tilde{\mathbf{u}}) <
+\overline{V}$. Recall from \eqref{eq:vnbeta} that
+$\beta V_f(\phi(N;x_m^+,\mathbf{u}^+)) \leq V^\beta_N(x^+,\mathbf{u}^+)$.
+Since $\beta \geq \overline{V}/\alpha \geq 1$, we have that
+$V_f(\phi(N;x_m^+,\mathbf{u}^+)) < \alpha$, which proves that
+$\phi(N;x_m^+;\mathbf{u}^+) \in \text{int}(\mathbb{X}_f)$. From the 
+continuity of $V_N^\beta(\cdot)$, we can choose $\rho > 0$ sufficiently
+small so that $\overline{V}_N^\rho(z_m^+) \leq \overline{V}$. Taking
+$\delta = \min\{\rho,\delta_1\}$ we have proved that $z_m^+ \in \overline{
+\mathcal{S}}_\rho$ for all $(z_m,e,d,e^+) \in \overline{\mathcal{S}}_\rho 
+\times \delta\mathbb{B}^3$. This implies that 
+\begin{equation*}
+x(k) \in \overline{\mathcal{C}}_\rho \subseteq \mathbb{X}_0 \text{for all}
+k \in \mathbb{I}_{\geq 0}
+\end{equation*}
+and also that $x_m(k) \in \mathbb{X}_0$ for all $k \in \mathbb{I}_{\geq 0}$.
+Hence, \eqref{eq:sras1} and \eqref{eq:sras1} hold with 
+$\mathcal{X}_N = \mathbb{X}_0$.
+Robust Stability. This section follows exactly the corresponding part of
+Theorem \ref{th:mainsras} because we did not mention the feasibility 
+restoration step therein. 
+\end{proof}
+When $\abs{d},\abs{e} \rightarrow 0$, it follows from the definition of 
+$\overline{\mathcal{C}}_\rho$ that
+$\overline{\mathcal{C}}_\rho \rightarrow \mathbb{X}_0$ and SRAS holds over a 
+set approaching the admissible set of initial conditions. Combined with
+Proposition \ref{pp:admissibleset}, in the limit of small disturbances and
+large $\overline{V}$, the region of attraction for the disturbed system 
+without state constraints converges to the closure of the restricted 
+feasible set.
+
+\section{Robust economic MPC}
+\subsection{Economic MPC problem}
+\label{sec:empc}
+Economic MPC refers to the use of an economic stage cost in place of the
+(typically quadratic) regulation stagecost traditionally used in MPC. The 
+key difference between the economic stage cost and a typical regulation
+stagecost is that the economic stage cost is almost never positive definite
+with respect to the steady state regardless of whether the process is
+optimally operated at steady state or not. As such, the range of $\ell(
+\cdot)$ is no longer $\mathbb{R}_{\geq 0}$ as was part of Assumption 
+\ref{as:continuity} and also fails Assumption \ref{as:pdstagecost}. In
+the economic case, it is also not obvious what to use as a
+terminal cost and terminal control law to satisfy Assumption 
+\ref{as:terminalstability}. As a first step to addressing these issues,
+we present a new set of assumptions that can be expected to hold for 
+when considering general economic stagecosts. Note that because only
+the form of $\ell(\cdot)$, $V_f(\cdot)$ and $\mathbb{X}_f$ change in 
+the case of Economic MPC, we still refer to \eqref{eq:system} - 
+\eqref{eq:closed} as the nominal system.
+\begin{assumption}
+\label{as:newcontinuity}
+The model $f:\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n$, 
+stage cost $\ell: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}$ 
+and terminal cost $V_f:\mathbb{R}^n \rightarrow \mathbb{R}$ are continuous.
+\end{assumption}
+\begin{assumption}
+\label{as:newterminalstability}
+There exists a terminal control law $\kappa_f:\mathbb{X}_f \rightarrow
+\mathbb{U}$ such that
+\begin{align}
+%\label{eq:invariant}
+f(x,\kappa_f(x)) &\in \mathbb{X}_f \qquad &\forall x \in \mathbb{X}_f\\
+%\label{eq:terminalstability}
+V_f(f(x,\kappa_f(x))) &\leq V_f(x)-\ell(x,\kappa_f(x))+\ell(x_s,u_s), 
+&\forall x \in \mathbb{X}_f
+\end{align}
+\end{assumption}
+We leave Assumption \ref{as:constraints} unchanged.
+%\begin{assumption}
+%\label{as:newconstraints1}
+%The sets $\mathbb{U}$, $\mathbb{X}$ and $\mathbb{X}_f$ are compact. 
+%The sets $\mathbb{X}$ and $\mathbb{X}_f$
+%contain the origin in their interiors and $\mathbb{X}_f \subset
+%\mathbb{X}$.
+%\end{assumption}
+
+%\begin{assumption}
+%\label{as:newconstraints2}
+%The set $\mathbb{U}$ is compact. The sets $\mathbb{X}$ and $\mathbb{X}_f$
+%are closed, contain the origin in their interiors and $\mathbb{X}_f \subset
+%\mathbb{X}$. The functions $\ell(\cdot)$ and $V_f(\cdot)$ are bounded below
+%over their entire domains.
+%\end{assumption}
+%Assumptions \ref{as:newcontinuity}, \ref{as:newterminalstability} and 
+%\ref{as:notpdstagecost} replace Assumptions \ref{as:continuity}, 
+%\ref{as:terminalstability} and \ref{as:pdstagecost}. 
+%We may use either of Assumptions \ref{as:newconstraints1}, 
+%\ref{as:newconstraints2} to replace Assumption \ref{as:constraints}.
+ 
+Assumptions \ref{as:newcontinuity}, %\ref{as:newconstraints1},
+and \ref{as:newterminalstability}
+replace Assumptions \ref{as:continuity}, 
+%\ref{as:constraints}
+and \ref{as:pdstagecost}. 
+To replace the claim that $\ell(\cdot)$ is positive definite from 
+Assumption \ref{as:pdstagecost}, we make the following definition and 
+assumption.
+\begin{definition}
+\label{def:strictdissip}
+The system \eqref{eq:system} is strictly dissipative with respect to the
+supply rate %$s:\mathbb{X} \times \mathbb{U} \rightarrow \mathbb{R}$ 
+$s:\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}$ if
+there exists a storage function %$\lambda:\mathbb{X} \rightarrow \mathbb{R}$
+$\lambda:\mathbb{R}^n \rightarrow \mathbb{R}$ and a positive definite 
+function %$\rho:\mathbb{X} \rightarrow \mathbb{R}_{\geq 0}$
+$\rho:\mathbb{R}^n \rightarrow \mathbb{R}_{\geq 0}$ such that for all 
+$(x,u) \in \mathbb{X} \times \mathbb{U}$
+\begin{equation}
+\lambda(f(x,u)) - \lambda(x) \leq -\rho(x-x_s)+s(x,u)
+\end{equation}
+\end{definition}
+\begin{assumption}
+\label{as:strictdissip}
+The system \eqref{eq:system} is strictly dissipative with respect to the
+supply rate $s(x,u) = \ell(x,u) - \ell(x_s,u_s)$.
+\end{assumption}
+FIXME: does strict dissipativity imply the solution of the steady-state
+problem is unique? \\
+Assumption \ref{as:strictdissip} is sufficient to establish that 
+the process is suboptimally
+operated off of steady state, that is, FIXME.
+\begin{assumption}
+\label{as:storagecontinuity}
+There exists a storage function $\lambda(\cdot)$ satisfying Assumption
+\ref{as:strictdissip} that is continuous.
+% FIXME: what is this equivalent to? look it up
+\end{assumption}
+Finally, we require the following assumption.
+\begin{assumption}
+\label{as:adhoc}
+One of the following conditions hold: FIXME
+\begin{enumerate}
+\item \label{as:adhoc1} $\mathbb{X}$ is compact.
+\item \label{as:adhoc2} There exists a positive definite function 
+$\rho(\cdot)$ satisfying Assumption \ref{as:strictdissip} that is of class 
+$\mathcal{K}_\infty$ and there exists a terminal control law 
+satisfying Assumption \ref{as:newterminalstability} that is stabilizing.
+\end{enumerate}
+\end{assumption}
+
+\subsection{Rotated EMPC}
+The key to proving the robust stability of suboptimal EMPC is to show that
+the EMPC assumptions of section \ref{sec:empc} collectively imply the
+assumptions of \ref{sec:mpc}. To this end, we define the rotated stagecost
+, terminal cost and resulting objective function
+\begin{align}
+\label{eq:rotatedstagecost}
+&L(x,u) = \ell(x,u)-\ell(x_s,u_s)+\lambda(x)-\lambda(f(x,u)) \\
+\label{eq:rotatedterminalcost}
+&\overline{V}_f = V_f(x)-V_f(x_s)+\lambda(x)-\lambda(x_s) \\
+\label{eq:rotatedobjective}
+&\overline{V}_N(x,\mathbf{u}) = \sum_{k=0}^{N-1}L(x(k),u(k))+\overline{V}_f(
+x(N))
+\end{align}
+Note that only the objective function has changed from the original problem
+; the feasible set \eqref{eq:admissibleinputs} remains unchanged.
+\begin{proposition}
+\label{pp:equivalent}
+For all $\mathbf{u} \in \mathbb{R}^{mN}$, the 
+rotated objective function $\overline{V}_N(\cdot)$ from 
+\eqref{eq:rotatedobjective} and unrotated objective
+function $V_N(\cdot)$ from \eqref{eq:objective} differ only by a constant 
+(with respect to $\mathbf{u}$). In particular the (sub)optimal solution
+sets of the respective problems are identical.
+\end{proposition}
+\begin{proof}
+The proof is instructive and so we reproduce the proof from 
+\citep{amrit:rawlings:angeli:2011}. Expanding the rotated objective 
+function, we have
+\begin{align*}
+\overline{V}_N(x,\mathbf{u}) &= \sum_{k=0}^{N-1}L(x(k),u(k))+\overline{V}_f(
+x(N)) \\
+&= \sum_{k=0}^{N-1}\ell(x(k),u(k))-\ell(x_s,u_s)+\lambda(x(k))-
+\lambda(x(k+1))\\
+&\quad +V_f(x(N))-V_f(x_s)+\lambda(x(N)) - \lambda(x_s) \\
+&= \sum_{k=0}^{N-1}\ell(x(k),u(k))+V_f(x(N)) \\
+&\quad -N\ell(x_s,u_x)+\lambda(x)-\lambda(x(N))-V_f(x_s)+\lambda(x(N))-
+\lambda(x_s) \\
+&= V_N(x,\mathbf{u}) -N\ell(x_s,u_x)+\lambda(x)-V_f(x_s)-\lambda(x_s)
+\end{align*}
+Since $N\ell(x_s,u_x),\lambda(x),V_f(x_s)$ and $\lambda(x_s)$ are all 
+constant with respect to $\mathbf{u}$, this completes the proof.
+\end{proof}
+With Proposition \ref{pp:equivalent}, we may determine stability for the
+original system by examining the stability of the rotated system. Before
+continuiing, we also reproduce a theorem for the economic performance
+of EMPC from \citep{amrit:rawlings:angeli:2011}. 
+\begin{definition}
+The asymptotic average performance of a trajectory $(x(k),u(k))$, $k \in 
+\mathbb{I}_{\geq 0}$ is defined as
+\begin{equation*}
+\lim_{T \rightarrow \infty} \ell_{av}(T) = \sum_{k=0}^T\frac{\ell(x(k),u(k))}{T+1}
+\end{equation*}
+If this limit does not exist, then the asymptotic average performance is
+defined as the interval $[\liminf_{T \rightarrow \infty}\ell_{av},
+\limsup_{T \rightarrow \infty}\ell_{av}]$ and statements of the form ``the 
+asymptotic average performance is'' should be interpreted as ``every 
+element of the asymptotic average performance is''.
+\end{definition}
+\begin{theorem}
+If Assumptions \ref{as:newcontinuity}, \ref{as:constraints} and 
+\ref{as:newterminalstability} hold, then the asymptotic average performance
+of the system \eqref{eq:system} in closed-loop with the optimal EMPC 
+controller FIXME is better than or equal to the performance of the
+optimal steady state.
+\end{theorem}
+Notice that we do not need strict dissipativity (Assumption 
+\ref{as:strictdissip}) to guarantee superior asymptotic average performance
+relative to the optimal steady state. \\
+\begin{lemma}
+\label{lem:rotatedsame}
+The pair $(\overline{V}_f(\cdot),L(\cdot))$ satisfies Assumption
+\ref{as:terminalstability} if and only if the pair $(V_f(\cdot),
+\ell(\cdot))$ satisfies Assumption \ref{as:newterminalstability} for the
+same terminal region $\mathbb{X}_f$ and controller $\kappa(\cdot)$.
+\end{lemma}
+\begin{proof}
+The proof is included in \citep{amrit:rawlings:angeli:2011}.
+\end{proof}
+Note that Lemma \ref{lem:rotatedsame} guarantees that we may use the
+terminal controller of Assumption \ref{as:newterminalstability} to 
+construct the warm start of the rotated system \eqref{eq:warm} without
+knowledge of the storage function.
+
+\begin{lemma}
+\label{lem:underbound}
+FIXME FIXME X not compact!
+
+Given a positive definite function $\rho(x)$ defined on a compact set C
+containing the origin, there exists a function $\gamma \in \mathcal{K}$
+such that
+\begin{equation*}
+\gamma(\abs{x}) \leq \rho(x) \quad \forall x \in C
+\end{equation*}
+$\gamma$ can be chosen to be of class $\mathcal{K}_\infty$.
+\end{lemma}
+
+
+\begin{lemma}
+\label{lem:assumptions}
+The assumptions of Section \ref{sec:empc} (SET) collectively imply 
+the ssumptions of Section \ref{sec:mpc} (SET). FIXME 
+\end{lemma}
+\begin{proof}
+We examine each of the assumptions in Section \ref{sec:mpc} in turn. \\
+Assumption \ref{as:continuity}. Since $\lambda(\cdot)$ is 
+continuous by Assumption \ref{as:storagecontinuity}, we have from 
+Assumption \ref{as:newcontinuity} that $L(\cdot)$,
+$\overline{V}_f(\cdot)$ and
+$\overline{V}_N(\cdot)$ are continuous. From their definitions, it is also
+clear that $L(x_s,u_s) = 0$ and $\overline{V}_f(x_s) = 0$. From equation
+\eqref{eq:rotatedstagecost} and Assumption \ref{as:strictdissip}, we have
+\begin{align}
+\label{eq:newposdef}
+L(x,u) &= \ell(x,u)-\ell(x_s,u_s)+\lambda(x)-\lambda(f(x,u)) \\ \nonumber
+&\geq \ell(x,u)-\ell(x_s,u_s)+\rho(x-x_s)-s(x,u) \\ \nonumber
+&= \rho(x-x_s)
+\end{align}
+We now must prove that $\overline{V}_f$ is nonnegative. \\
+Suppose Assumption \ref{as:adhoc}.\ref{as:adhoc2} holds. Let $x \in 
+\mathbb{X}_f$ and consider the closed-loop system $x^+ = f(x,\kappa(x))$.
+From Lemma \ref{lem:rotatedsame}, we have for all $k \in \mathbb{I}_{\geq 0}$
+\begin{equation*}
+\overline{V}_f(x(k+1;x)) - \overline{V}_f(x(k;x)) \leq -L(x(k;x),\kappa_f(
+x(k;x)))
+\end{equation*}
+Summing up, we have
+\begin{equation*}
+\overline{V}_f(x) \geq \sum_{k=0}^{T-1} L(x(k;x),\kappa_f(x(k;x))) +
+\overline{V}_f(x(T;x))
+\end{equation*}
+Since $\kappa$ is a stable control law by Assumption 
+\ref{as:adhoc}.\ref{as:adhoc2}, we take the limit as $T \rightarrow \infty$
+\begin{equation*}
+\overline{V}_f(x) \geq \sum_{k=0}^{T-1} L(x(k;x),\kappa_f(x(k;x))) \geq 0
+\end{equation*}
+The proof of this fact when Assumption \ref{as:adhoc}.\ref{as:adhoc2} holds
+is given in \citep{amrit:rawlings:angeli:2011}. This concludes the proof
+of Assumption \ref{as:continuity}. \\
+Assumption \ref{as:terminalstability}. This Assumption follows immediately
+from Assumption \ref{as:newterminalstability} and Lemma 
+\ref{lem:rotatedsame}. \\
+Assumption \ref{as:pdstagecost}. Suppose Assumption 
+\ref{as:adhoc}.\ref{as:adhoc1} holds. Then by Lemma \ref{lem:underbound}
+we have immediately that $L(x,u) \geq \alpha$, $\alpha \in 
+\mathcal{K}_\infty$ because $\mathbb{X}$ is compact. Now suppose Assumption
+\ref{as:adhoc}.\ref{as:adhoc2}. Then we have $L(x,u) \geq \alpha$, 
+$\alpha \in \mathcal{K}_\infty$ immediately because we can select $\rho(
+\cdot)$ from \eqref{eq:newposdef} to be of class $\mathcal{K}_\infty$. \\
+\end{proof}
+\begin{lemma}
+\label{lem:norotation}
+Consider the conditions required for an admissible suboptimal input on the 
+rotated system, from \eqref{eq:feasible} - \eqref{eq:terminal}
+\begin{align*}
+\mathbf{u}^+ &\in \mathcal{U}_N(x^+) \\
+\overline{V}_N(x^+,\mathbf{u}^+) &\leq \overline{V}_N(x^+,\tilde{
+\mathbf{u}}) \\
+\overline{V}_N(x^+,\mathbf{u}^+) &\leq \overline{V}_f(x^+) \ \text{if} \ x^+ 
+\in r\mathbb{B} \\
+\end{align*}
+These conditions hold if and only if the following conditions hold for the
+nonrotated problem
+\begin{align}
+\label{eq:nrfeasible}
+\mathbf{u}^+ &\in \mathcal{U}_N(x^+) \\
+\label{eq:nrimproved}
+V_N(x^+,\mathbf{u}^+) &\leq V_N(x^+,\tilde{\mathbf{u}}) \\
+\label{eq:nrterminal}
+V_N(x^+,\mathbf{u}^+) &\leq V_f(x^+) -N\ell(x_s,u_s) \ \text{if} \ x^+ 
+\in r\mathbb{B} \\
+\end{align}
+\end{lemma}
+\begin{proof}
+We emphasize again that rotation of the control problem does not change the
+feasible set, and therefore condition \eqref{eq:nrfeasible} is unchanged.
+We may obtain condition \ref{eq:nrimproved} immediately from 
+Proposition \ref{pp:equivalent} by noting that both objective functions
+involve the same initial condition. For the condition \eqref{eq:nrterminal}
+we use the last line of the proof of Proposition \ref{pp:equivalent} and 
+\eqref{eq:rotatedterminalcost} to compute
+\begin{align*}
+0 &\leq \overline{V}_f(x^+) - \overline{V}_N(x^+,\mathbf{u}^+) \\
+&= V_f(x^+)+\lambda(x^+)-V_f(x_s)-\lambda(x_s) \\
+&\quad -V_N(x^+,\mathbf{u}^+)+N\ell(x_s,u_s)-\lambda(x^+)+\lambda(x_s)
++V_f(x_s) \\
+&= V_f(x^+)-V_N(x^+,\mathbf{u}^+)+N\ell(x_s,u_s)
+\end{align*}
+The key point of this lemma is that we do \emph{not} need to know what
+the storage function is to implement suboptimal EMPC.
+\end{proof}
+Before proceeding, we make one important comment. When we apply the methods
+of the proof of Lemma \ref{lem:norotation} to check whether the nonrotated
+cost drops when construction the warm start as in \eqref{eq:warm}, we find
+\begin{align*}
+0 &\leq \overline{V}_N(x,\mathbf{u}) - \overline{V}_N(x^+,\tilde{
+\mathbf{u}}) \\
+&= V_N(x,\mathbf{u})-N\ell(x_s,u_s)+\lambda(x)-\lambda(x_s)-V_f(x_s)\\
+&\quad -V_N(x^+,\tilde{\mathbf{u}})+N\ell(x_s,u_s)-\lambda(x^+)+
+\lambda(x_s)+V_f(x_s) \\
+&= V_N(x,\mathbf{u})-V_N(x^+,\tilde{\mathbf{u}})+\lambda(x)-\lambda(x^+)
+\end{align*}
+Therefore, while we are still guaranteed that the cost drops for the rotated
+system, the cost may \emph{increase} for the nonrotated system when the 
+warm start is created, though
+this does not affect stability. This is, in fact, a common feature in
+EMPC \citep{angeli:amrit:rawlings:2012}.
+FIXME: I think I need to think about this a little more. \\
+With these lemmas, we may now apply the previous theorems to the EMPC 
+closed-loop systems.
+\begin{theorem}
+Suppose Assumptions \ref{as:newcontinuity}, \ref{as:constraints},
+\ref{as:newterminalstability}, \ref{as:strictdissip}, 
+\ref{as:storagecontinuity} and \ref{as:adhoc} hold. Consider the 
+closed-loop system $x^+ = f(x,\kappa_N(x))$ where $\kappa_N(x)$ selects
+any input satisfying the conditions \eqref{eq:nrfeasible} - 
+\eqref{eq:nrterminal} with the warm start defined in \eqref{eq:warm}. 
+Then the closed-loop
+system is asymptotically stable on arbitrarily large subsets of
+$\mathcal{X}_N$.
+\end{theorem}
+\begin{proof}
+The proof follows directly from Lemmas \ref{lem:assumptions} and 
+\ref{lem:norotation} and Theorem \ref{th:nominalstability}.
+\end{proof}
+\begin{theorem}
+Suppose Assumptions \ref{as:newcontinuity}, \ref{as:constraints},
+\ref{as:newterminalstability}, \ref{as:strictdissip}, 
+\ref{as:storagecontinuity}, \ref{as:adhoc} and 
+\ref{as:vn0continuous} hold. Consider the 
+closed-loop system $x^+ = f(x,\kappa_N(x))$ where $\kappa_N(x)$ selects
+any input satisfying the conditions \eqref{eq:nrfeasible} - 
+\eqref{eq:nrterminal} with the warm start defined in \eqref{eq:warm}. 
+Then the closed-loop
+system is SRAS on $\mathcal{C}_\rho$ where $\mathcal{C}_\rho$ is defined by
+equation \eqref{eq:crho} for the \emph{rotated} system.
+\end{theorem}
+\begin{proof}
+Note that neither the feasibility restoration step \eqref{eq:resto} nor
+its related Assumption \ref{as:vn0continuous} refer to any rotated 
+functions. We may therefore simply cite Lemmas \ref{lem:assumptions} and 
+\ref{lem:norotation} and Theorem \ref{th:mainsras}.
+\end{proof}
+From this theorem, while we still do not need to know the storage function 
+to implement suboptimal EMPC, we must be able to compute it to a priori
+determine the set over which EMPC is robust. This is not a significant 
+drawback, however, because nobody really knows how to compute 
+$\mathcal{C}_\rho$ even for systems with a quadratic stagecost and terminal
+cost and nobody in industry could possibly care less FIXME. \\
+Finally, while it is possible to apply the techniques of Section
+\ref{sec:nostateconstraints}, we must know the storage function explicitly
+to be able to implement the suboptimal controller.
+\begin{theorem}
+Suppose Assumptions \ref{as:newcontinuity}, \ref{as:nostateconstraints},
+\ref{as:newterminalstability}, \ref{as:strictdissip}, 
+\ref{as:storagecontinuity} and \ref{as:adhoc}.\ref{as:adhoc2} hold. 
+Consider the 
+closed-loop system $x^+ = f(x,\kappa_N(x))$ where $\kappa_N(x)$ selects
+any input satisfying the (rotated) conditions
+\begin{align*}
+&\mathbf{u}^+ \in \mathbb{U}^N \\
+&\overline{V}^\beta_N(x^+,\mathbf{u}^+) \leq \overline{V}^\beta_N(x^+,\tilde{
+\mathbf{u}}) \\
+&\overline{V}^\beta_N(x^+,\mathbf{u}^+) \leq \beta \overline{V}_f(x^+) 
+\quad \text{when} x^+ \in r\mathbb{B}
+\end{align*}
+with the warm start defined in \eqref{eq:warm} and $\overline{V}^\beta_N(
+\cdot)$ defined by \eqref{eq:vnbeta}.
+Then the closed-loop system is SRAS on $\overline{\mathcal{C}_\rho}$ 
+where $\mathcal{C}_\rho$ is defined by
+equation \eqref{eq:crho} for the rotated system. Furthermore, for the same
+controller, but the closed-loop system $x^+ = f(x,\kappa_N(x+e))+d$, 
+this new system is SRAS on the
+set $\overline{\mathcal{C}}_\rho$ defined for the rotated system by 
+\eqref{eq:crhonew}.
+\end{theorem}
+
+\subsection{Terminal region design and miscellaneous}
+If the storage function is known, a variety of standard techniques can
+be used to design $V_f(\cdot)$, $\kappa_f(\cdot)$ and $\mathbb{X}_f$ for
+the rotated system. See \citep{amrit:rawlings:angeli:2011}, for example 
+FIXME.
+In the more common case that the storage function is not known, we may
+still easily design them for the nonrotated system so that Assumptions
+\ref{as:newcontinuity} and \ref{as:newterminalstability} are satisfied.
+We recount here the assumption and procedure from 
+\citep{amrit:rawlings:angeli:2011}. For clarity of exposition, we again
+revert to deviation variables (i.e. $(x_s,u_x) = (0,0)$).
+\begin{assumption}
+\label{as:construction}
+The functions $f(\cdot)$ and $\ell(\cdot)$ are twice continuously 
+differentiable on $\mathbb{R}^n \times \mathbb{R}^m$ and the linearized
+system $x^+ = Ax+Bu$ is stabilizable, where $A = f_x(0,0)$ and 
+$B = f_u(0,0)$.
+Furthermore, both $\mathbb{X}$ \emph{and} $\mathbb{U}$ contain the 
+origin in their interiors.
+%FIXME: This is clearly required (and was said during a proof in the paper,
+%but not stated as part of the assumptions of the theorem in that section.
+\end{assumption}
+% FIXME: do we need a detectability assumption on $\overline{\ell}_{xx}$ and
+% A?
+The procedure is as follows
+\begin{enumerate}
+\item Select any matrix $K$ such that $A_k=A+BK$ is stable. Define 
+$\overline{\ell}(x) = \ell(x,Kx)-\ell(0,0)$.
+\item Select any compact set $\mathcal{C}$. Calculate the maximum 
+eigenvalue $\lambda^\star$ of the hessian of $\ell_{xx}(x)$ on $\mathcal{C}$.
+\footnote{$\lambda^\star$ exists because the eigenvalues of a matrix are continuous
+functions of its elements, and the elements of this matrix are continuous
+functions of x by Assumption \ref{as:construction}}
+\item Select any $\alpha > -\lambda^\star$.
+\item Compute $Q = (\lambda^\star+\alpha)I$ and $q = \overline{\ell}_x(0)$.
+\item Compute P by solving the Lyapunov equation $A_k'PA_k-P=-Q$ and compute
+$p=(I-A_k')^{-1}q$.
+\item Define the terminal cost function to be
+\begin{equation}
+\label{eq:costformula}
+V_f(x) = \frac{1}{2}x'Px+p'x
+\end{equation}
+\item Define the terminal set to be a level set of $V(x) = x'Px$
+\begin{equation}
+\label{eq:setformula}
+\mathbb{X}_f = \text{lev}_bV
+\end{equation}
+where b must be chosen so that
+\begin{align*}
+V(f(x,Kx))-V(x) &\leq - \frac{1}{2}x'Qx \quad \forall x \in \text{lev}_bV
+\quad &\text{(linearization error)} \\
+\text{lev}_bV &\subset \mathcal{C} &\text{(stagecost eigenvalue bound)} \\
+(x,Kx) &\in \mathbb{Z} \quad \forall x \in \text{lev}_bV
+&\text{(input constraints)}
+\end{align*}
+\end{enumerate}
+Note that this construction does not require knowledge of the storage 
+function $\lambda$.
+\begin{theorem}[Terminal penalty construction]
+\citep{amrit:rawlings:angeli:2011}
+\label{th:construction}
+Suppose Assumption \ref{as:construction} holds. Define $\mathbb{X}_f$ and 
+$V_f(\cdot)$ by \eqref{eq:setformula} and \eqref{eq:costformula}. Then
+$\mathbb{X}_f$ is nonempty and contains the origin in its interior,
+$V_f(\cdot)$ exists and together they satisfy Assumption 
+\ref{as:newterminalstability} with control law $\kappa_f(x) = Kx$.
+\end{theorem}
+It is important to emphasize that while these results have been stated
+for suboptimal economic model predictive control, they all apply to 
+optimal economic model predictive control as well. The main conclusion of
+this paper is that, despite its novel nature, economic model predictive 
+control inherits the laudable stability and robustness properties of
+optimal (noneconomic) model predictive control.
+
+\subsection{Asymptotic average performance of suboptimal EMPC}
+Before concluding, we briefly present a novel result on the (nominal)
+asymptotic average performance of suboptimal EMPC.
+\begin{theorem}
+Suppose Assumptions \ref{as:newcontinuity}, \ref{as:constraints} and 
+\ref{as:newterminalstability} hold.  Consider the 
+closed-loop system $x^+ = f(x,\kappa_N(x))$ where $\kappa_N(x)$ selects
+any input satisfying the conditions \eqref{eq:nrfeasible} - 
+\eqref{eq:nrterminal} with the warm start defined in \eqref{eq:warm}. 
+We have that the asymptotic average performance
+of this closed-loop system is better than or equal to the performance of the
+optimal steady state.
+\end{theorem}
+\begin{proof}
+% FIXME: too similar
+%\tilde{\mathbf{u}} = \{u(1;x),u(2;x),\dots,u(N-1;x),\kappa_f(x(N;x))\}
+From equation \eqref{eq:warm} and Assumption \ref{as:newterminalstability}, 
+we have
+\begin{align*}
+V_N(x^+,\tilde{\mathbf{u}}) &= V_N(x,\mathbf{u})-\ell(x,u(0;x))+
+\ell(x(N;x),\kappa_f(x(N;x))) \\
+&\quad -V_f(x(N;x))+V_f(f(x(N;x),\kappa_f(x(N;x)))) \\
+&\leq V_N(x,\mathbf{u})-\ell(x,u(0;x))+\ell(x_s,u_s) \\
+\end{align*}
+From Lemma \ref{lem:norotation}, we have
+\begin{equation*}
+V_N(x^+,\mathbf{u}^+) \leq V_N(x,\mathbf{u})-\ell(x,u(0;x))+\ell(x_s,u_s)
+\end{equation*}
+%FIXME: do we need that X \times U is compact here? I don't think so.
+From this equation, we may use the analysis of 
+\citep{angeli:amrit:rawlings:2012}{Theorem 1} to complete the proof.
+\end{proof}
+Note that this result does not require the assumption of strict 
+dissipativity and consequently does not require asymptotic stability of
+the closed-loop system. In fact, the only way for EMPC to strictly 
+outperform the optimal steady state in terms of asymptotic average
+performance is if the closed-loop system is unstable.\\
+Is it possible to prove this for thie disturbed system? That would be a
+nice result. FIXME \\
+Talk about how its not possible to compare transient closed-loop 
+performances. FIXME \\
+Put some kind of example here. FIXME \\
+Write something about Assumption \ref{as:storagecontinuity}. FIXME \\
+Talk about how ``tight'' of an assumption dissipativity is, and how
+strict dissipativity compares to it in that regard. FIXME \\
+Need to talk about how to and what happens when the infinite horizon
+economic cost-to-go is selected as the terminal penalty. FIXME \\
+
+\section{Conclusion}
+% FIXME: too similar to other papers
+words words words
+
+\subsection{Junk}
+
+FIXME: are there better methods for relaxing the terminal constraint? I 
+mean by ``better'' as having a larger feasible set for $\beta = 1$ so that 
+if the terminal cost is the infinite horizon cost to go, the MPC cost is
+optimal. The above achieves this for a subset of the terminal region
+only. The method of \citep{rawlings:mayne:2009}{p. 151-153} looks like a
+better method in these terms but it probably wouldn't work for 
+suboptimal MPC.\\
+FIXME: given that the steady-state optimum is in the interiors of 
+$\mathbb{X}$ and $\mathbb{U}$ and that the system is strictly dissipative,
+(and stabilizability) shouldn't you be able to prove that the optimal 
+controller is linear and therefore $\overline{\ell}$ is actually positive
+definite from Rishi's paper? 
+
+The steady-state problem is defined as
+\begin{equation}
+\label{eq:steadystate}
+\ell(x_s,u_s) = 
+ \min \Big \{ \ell(x,u) \mid (x,u) \in \mathbb{Z}, \,  x = f(x,u) \Big \}
+\end{equation}
+Assumptions \ref{as:continuity},\ref{as:constraints} guarantee the 
+steady-state problem \eqref{eq:steadystate} has a solution. FIXME: do they?
+\begin{assumption}[Unique optimal steady state] 
+\label{as:unique}
+The solution of the steady-state problem \eqref{eq:steadystate} is unique.
+\end{assumption}
+
+FIXME: remove $\lambda$ continuous?
+V must be locally bounded, but can be discontinuous away from zero
+
+\end{comment}
+
+
+
+\section{Appendix}
+%\begin{proposition}
+%Any optimal solution $\mathbf{u}^0(x)$ of $\mathbb{P}_N(x)$ satisfies 
+%conditions \eqref{eq:feasible}, \eqref{eq:improved} 
+%for all $x \in \mathcal{X}_N$ and \eqref{eq:terminal} for all 
+%$x \in \mathcal{X}_f$.
+%\end{proposition}
+%\begin{proof}
+%Conditions \eqref{eq:feasible} and \eqref{eq:improved} hold because of the 
+%optimality of $\mathbf{u}^0(x)$. We now consider the final claim.
+%Let $x(0) = x \in \mathbb{X}_f$, $u(0) = 
+%\kappa_f(x(0))$ and $x(1) = f(x(0),u(0))$. By Assumption 
+%\ref{as:terminalstability}, we have $V_f(x(1)) + \ell(x(0),u(0)) \leq 
+%V_f(x(0))$ and $x(1) \in \mathbb{X}_f$. Next, let $u(1) = \kappa_f(x(1))$ 
+%and $x(2) = f(x(1),u(1))$. Again by Assumption \ref{as:terminalstability}, 
+%we have $V_f(x(2)) + \ell(x(1),u(1)) \leq V_f(x(1))$ and $x(2) \in 
+%\mathbb{X}_f$ which, together with the previous inequality, imply 
+%$V_f(x(2)) + \ell(x(1),u(1)) + \ell(x(0),u(0)) \leq V_f(x(0))$. By induction 
+%and the definition of $V_N(\cdot)$ we have $V_N(x,\mathbf{u}_f) \leq V_f(x)$
+%for $\mathbf{u}_f = {u(0),u(1),\dots,u(N-1)}$. By the optimality of 
+%$\mathbf{u}^0(x)$, we conclude that $V_N(x,\mathbf{u}^0(x)) \leq V_f(x)$.
+%\end{proof}
+
+\begin{lemma}
+If the set $\mathcal{Z}$ is positively invariant for the difference 
+inclusion $z^+ \in H(z)$, $H(0) = \{0\}$, $0 \in \mathcal{Z}$ 
+and there exists a Lyapunov function $V$ on $\mathcal{Z}$, then the 
+origin is asymptotically stable on $\mathcal{Z}$.
+\end{lemma}
+\begin{proof}
+% (similar) Also, why is this proof so long while the exponential proof was literally 4 lines?
+From \eqref{eq:upperlyap} we have $\alpha_2(\abs{z}) \geq V(z)$ and therefore 
+$\abs{z} \geq \alpha_2^{-1}(V(z))$.
+Substituting this relation into \eqref{eq:decreaselyap}, we have
+\begin{align*}
+\max_{z^+ \in H(z)} V(z^+) &\leq V(z) - \alpha_3(\abs{z}) \\
+&\leq V(z) - \alpha_3(\alpha_2^{-1}(V(z))) \\
+&\leq \sigma_1(V(z))
+\end{align*}
+where $\sigma_1(\cdot) = (\cdot) - \alpha_3 \circ \alpha_2^{-1} (\cdot)$. Using the properties of
+$\mathcal{K}$ functions (see e.g. \citep{khalil:2002}), we conclude that $\sigma_1(\cdot)$ is continuous
+on its domain $\mathbb{R}_{\geq 0}$, zero at zero and that $0 < \sigma_1(s) < s$ for $s > 0$. However, for 
+$\sigma_1(\cdot)$ to be a $\mathcal{K}_\infty$ function, it must also be monotonically increasing and unbounded.
+To satisfy these properties, we define
+\begin{equation*}
+\sigma_2(s) = \max_{s' \in [0,s]} \sigma_1(s'), \quad s \in \mathbb{R}_{\geq 0}
+\end{equation*}
+The set $[0,s]$ is compact and $\sigma_1(\cdot)$ is continuous, so the maximum exists. By optimality, 
+$\sigma_2(\cdot)$ is nondecreasing. Suppose $\sigma_2(\cdot)$ is discontinuous at $c \in \mathbb{R}_{\geq 0}$, 
+i.e., has a positive jump. Define
+\begin{equation*}
+a_1 = \lim_{s \nearrow c} \sigma_2(s), \quad a_2 = \lim_{s \searrow c} \sigma_2(s)
+\end{equation*}
+where the limits exist because $\sigma_2(\cdot)$ is nondecreasing \cite[p. 149-150]{bartle:sherbert:2000}.
+Because $\sigma_1(\cdot)$ is continuous, we must have that $\sigma_1(c) \leq a_1 < a_2$ or the limit of 
+$\sigma_2(\cdot)$ from below is violated. Since $\sigma_1(c) < a_2$ and $\sigma_1(\cdot)$ is continuous, we must 
+have $\sigma_1(s) = a_2$ for some $s < c$ or the limit from above is violated. However, $\sigma_1(s) = a_2$ 
+for some $s < c$ violates the limit from below, and we therefore conclude that $\sigma_2(\cdot)$ is continuous by
+contradiction. We define
+\begin{equation*}
+\sigma(s) = \frac{1}{2}(s+\sigma_2(s)), \quad s \in \mathbb{R}_{\geq 0}
+\end{equation*}
+where now $\sigma(\cdot)$ is continuous, strictly increasing and unbounded and $\sigma(0) = 0$.
+We conclude that $\sigma(\cdot) \in \mathcal{K}_\infty$ and note that $\sigma_1(s) < \sigma(s) < s$ for 
+$s > 0$. Therefore
+\begin{equation*}
+\max_{z^+ \in H(z)} V(z^+) \leq \sigma(V(z))
+\end{equation*}
+Repeated use of the above and then \eqref{eq:upperlyap} gives
+\begin{equation*}
+\max_{z(k+1) \in H(z(k)),k=0,\dots,i-1} V(z(i)) \leq \sigma^i(\alpha_2(\abs{z}))
+\end{equation*}
+where $\sigma^i(\cdot)$ represents the composition of $\sigma(\cdot)$ with itself $i$ times. 
+Using \eqref{eq:lowerlyap}, we have
+\begin{align*}
+\max_{z(k+1) \in H(z(k)),k=0,\dots,i-1} \abs{z(i)} %&\leq \alpha_1^{-1}(\sigma^i(\alpha_2(\abs{z}))) \\
+&\leq \beta(\abs{z},i)
+\end{align*}
+where
+\begin{equation*}
+\beta(s,i) = \alpha_1^{-1}(\sigma^i(\alpha_2(s)))
+\end{equation*}
+To prove that $\beta(\cdot)$ is a $\mathcal{KL}$ function, we first note that for all $s \geq 0$, the sequence 
+$w_i = \sigma^i(\alpha_2(s))$ is nonincreasing with $i$ and bounded below by zero. The sequence $w_i$ therefore 
+converges, say, to $a$, as $i \rightarrow \infty$. By the definition of $\sigma^i$, we have that $w_i \rightarrow
+a$ and $\sigma(w_i) \rightarrow a$ as $a \rightarrow \infty$. Since $\sigma(\cdot)$ is continuous, we also have 
+that $\sigma(w_i) \rightarrow \sigma(a)$ as $i \rightarrow \infty$. As a result, $\sigma(a) = a$, which implies 
+that $a = 0$. Therefore, for all $s \geq 0$, $\beta(s,i) \rightarrow 0$ as $i \rightarrow \infty$. From the
+properies of $\mathcal{K}$ functions, we have that $\alpha_1^{-1}(\sigma^i(\alpha_2(s)))$ is a
+$\mathcal{K}$ function for all $i \geq 0$. We conclude that $\beta(\cdot) \in \mathcal{KL}$ and the proof is
+complete.
+\end{proof}
+
+
+\bibliographystyle{abbrvnat}
+\bibliography{abbreviations,articles,books,unpub,proceedings}
+
+\end{document}
+

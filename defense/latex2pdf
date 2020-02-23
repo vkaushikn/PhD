@@ -1,0 +1,106 @@
+#! /bin/sh
+
+# This is a fairly simple-minded attempt at automatically running
+# pdflatex, bibtex, and makeindex enough times to get everything
+# resolved.  It should mostly work, but # it's not intended to be
+# a general solution.
+
+# The default value of PDFLATEX is pdflatex, but if PDFLATEX is set
+# in the environment before running this script, we will use that
+# instead.  This allows you to do things like
+#
+#   PDFLATEX=/my/special/version/pdflatex latex2pdf
+
+: ${PDFLATEX=pdflatex}
+: ${PDFLATEX_FLAGS=} ## you might want --shell-escape if you use epstopdf.sty
+
+PDFLATEX_CMD="$PDFLATEX $PDFLATEX_FLAGS"
+
+max_latex_runs=4
+
+if [ $# -ne 1 ]; then
+  echo "usage: latex2pdf file"
+  exit 1
+fi
+
+file=`echo $1 | sed 's/\.tex$//'`
+log=$file.log
+
+# Run latex once to start things off.
+
+$PDFLATEX_CMD $file
+
+# If there are any index entries, run makeindex.
+
+if [ -f $file.idx ]; then
+  makeindex $file
+fi
+
+# Look in the log file for a list of .aux files and things to do.
+
+aux_files=`grep '\.aux' $log | \
+	egrep -v '(\\openout|^No file)' | \
+	sed -e 's/(//g' -e 's/)//g' -e 's/^ *//' -e 's/ *$//' \
+	    -e 's/\[[0-9][^]]*\]//g' -e 's/\[//g' -e 's/\]//g' | sort -u`
+
+if [ -n "$aux_files" ]; then
+  for f in $aux_files; do
+    if grep '\\bibdata' $f > /dev/null; then
+      aux_bib_files="$aux_bib_files $f"
+    fi
+  done
+fi
+
+if grep 'LaTeX Warning:.*Rerun to get cross' $log > /dev/null \
+  || grep 'Warning:.*Citation(s) may have changed' $log > /dev/null; then
+  labels_changed_p=true
+else
+  labels_changed_p=false
+fi
+
+if grep 'Warning:.*There were undefined \(references\|citations\)' $log > /dev/null; then
+  undef_refs_p=true
+else
+  undef_refs_p=false
+fi
+
+count=0
+
+while $labels_changed_p || $undef_refs_p; do
+
+  if [ $count -ge $max_latex_runs ]; then
+    echo "error: LaTeX errors persist after $count runs" 1>&2
+    exit 1;
+  fi
+
+  if [ -n "$aux_bib_files" ]; then
+    echo "running bibtex to generate bibliography lists"
+    for f in $aux_bib_files; do
+      bibtex `echo $f | sed 's/.aux$//'`
+    done
+  fi
+
+  if [ -f $file.idx ]; then
+    makeindex $file
+  fi
+
+  $PDFLATEX_CMD $file
+  
+  if grep 'LaTeX Warning:.*Rerun to get cross' $log > /dev/null \
+    || grep 'Warning:.*Citation(s) may have changed' $log > /dev/null; then
+    labels_changed_p=true
+  else
+    labels_changed_p=false
+  fi
+
+  if grep 'LaTeX Warning:.*There were undefined ref' $log > /dev/null; then
+    undef_refs_p=true
+  else
+    undef_refs_p=false
+  fi
+
+  count=`expr $count + 1`
+
+done
+
+exit 

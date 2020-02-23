@@ -1,0 +1,770 @@
+\documentclass{beamer}
+%<--uncomment this section for a handout 
+% \documentclass[handout]{beamer}
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{2 on 1}[letterpaper,portrait,border shrink=5mm]
+% \pgfpagesuselayout{4 on 1}[letterpaper,landscape,border shrink=5mm]
+%-->
+
+\usetheme{Madison}
+
+%highlighting; to be used mainly when passing through an itemized list
+\def\highlight<#1>{%
+  \temporal<#1>{\color{black}}{\color{blue}}{\color{black}}}
+
+% Package Lists
+\usepackage{colortbl}
+\usepackage{url}
+\usepackage[authoryear,round,longnamesfirst]{natbib}
+% \RequirePackage{underbracket}
+% \RequirePackage{overbracket}
+
+% Packages
+\usepackage{hyperref} % clickable links
+\usepackage{url}
+\usepackage{graphicx,color,amsmath,amssymb}
+%\usepackage{mathptmx}
+%\usepackage{times}
+\usepackage{cases}
+\usepackage{subfig}
+\usepackage{setspace}
+\usepackage{booktabs}
+\usepackage{balance}
+\usepackage{verbatim} % \begin and \end {comment}
+
+% Environments
+% \newtheorem{theorem}{Theorem} 
+\newtheorem{assumption}{Assumption}
+% \newtheorem{definition}{Definition}
+% \newtheorem{lemma}{Lemma}
+% \newtheorem{proposition}{Proposition}
+% \newtheorem{remark}{Remark}
+% \newtheorem{corollary}{Corollary}
+% \newtheorem{algorithm}{Algorithm}
+% \newenvironment{proof}{\noindent {\em Proof}.\ }{\hspace*{\fill}$\Box$\medskip\\}
+
+% Commands
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\norm}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\smax}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbZ}{\mathbb{Z}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\useq}{\mathbf{u}}
+\newcommand{\bb}{(\cdot)}
+\newcommand{\mc}{\mathcal}
+
+% \title[Inherent robustness of suboptimal MPC]{On the Inherent
+%   Robustness of Suboptimal Model Predictive Control} 
+
+% \author[Rawlings/Pannocchia/Wright/Bates]{James B. Rawlings, Gabriele
+%   Pannocchia, Stephen   J. Wright, and Cuyler N. Bates}
+% \institute[UW/Pisa]{Department of Chemical and Biological Engineering and\\
+% Computer Sciences Department\\[1ex] 
+% \pgfuseimage{uw-logo}
+% \and
+% Department of Civil and Industrial Engineering (DICI),\\
+% University of Pisa, Italy}
+
+%\date{2013 SIAM Conference on Control and Its Applications}
+
+\title[Inherent robustness of suboptimal MPC]{On the Inherent
+  Robustness of Suboptimal Model Predictive Control} 
+
+\author[Rawlings/Pannocchia/Wright/Bates]{James B. Rawlings, Gabriele
+  Pannocchia, Stephen   J. Wright, and Cuyler N. Bates}
+\institute[UW/Pisa]{
+\begin{minipage}{0.6\textwidth}
+\begin{center}
+Department of Chemical \& Biological Engineering \\
+Computer Sciences Department
+\end{center}
+\end{minipage}
+\begin{minipage}{0.2\textwidth}
+\pgfuseimage{uw-logo}
+\end{minipage}
+\and
+Department of Civil and Industrial Engineering, Univ. of Pisa, Italy}
+
+\date{OMPC 2013 SADCO Summer School and Workshop on Optimal and Model
+  Predictive Control}
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\section*{Outline}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+
+\subsection{Optimal and Suboptimal MPC (nominal)}
+
+\begin{frame}{The basic nonlinear, constrained MPC problem}
+
+\begin{itemize}
+\item The (nonlinear) system model is
+\begin{equation}\label{eq:nominal}
+x^+ = f(x, u)
+\end{equation}
+
+\item Only the input is subject to constraints (state constraints are soft)
+\begin{equation*}
+u(k)\in \bbU \qquad \text{for all } k\in\bbI_{\geq 0}
+\end{equation*}
+
+\item Given an integer $N$ (referred to as the finite horizon), and an
+  input sequence $\useq$ of length $N$,  
+$\useq = \{ u(0), u(1), \ldots, u(N-1) \}$
+
+\item Let $\phi(k;x,\useq)$
+denote the solution of \eqref{eq:nominal} 
+at time $k$ for a given initial state $x(0) = x$.
+
+\item Terminal state constraint (and penalty)
+\begin{equation*}
+\phi(N; x, \useq) \in \bbX_f
+\end{equation*}
+
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Feasible sets}
+
+\begin{itemize}
+
+\item The set of feasible initial states and associated
+control sequences
+\begin{equation*}
+\bbZ_N = \{ (x,\useq) \mid u(k) \in \bbU , %\, \phi(k; x,\useq) \in \bbX \text{ for all } k\in\bbI_
+%{0:N-1} ,  \\
+\text{ and } \phi(N; x,\useq) \in \bbX_f \}
+\end{equation*}
+
+and $\bbX_f$ is the feasible terminal set.
+
+\item The set of feasible initial states is
+\begin{equation}
+\mc{X}_N = \{ x \in \bbR^n \mid \exists \useq \in \bbU^N \text{ such that } (x,\useq) \in \bbZ_N \}
+\label{eq:feasibleset}
+\end{equation}
+
+\item For each $x\in\mc{X}_N$, the corresponding set of feasible input
+sequences is
+\begin{equation*}
+ \mc{U}_N (x) = \{ \useq \mid (x,\useq) \in \bbZ_N \} 
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cost function and control problem}
+\begin{itemize}
+\item For any state $x \in \bbR^n$ and input sequence $\useq \in \bbU^N$, we define% 
+
+\begin{equation*}
+V_N(x,\useq) = \sum_{k=0}^{N-1} \ell (\phi(k;x,\useq),u(k)) + V_f (\phi(N;x,\useq))
+\end{equation*}
+
+\item $\ell(x,u)$ is the stage cost; $V_f(x(N))$ is the terminal cost
+
+\item Consider the finite horizon optimal control problem
+\begin{equation*}
+\bbP_N (x): \qquad \min_{\useq \in \mc{U}_N} V_N(x,\useq) 
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Suboptimal MPC}
+
+\begin{itemize}
+\item May not be able to solve online $\bbP_N(x)$ \alert{exactly}, so
+  we consider using \alert{any} 
+suboptimal algorithm having the following properties.
+
+\item Let $\useq\in\mc{U}_N(x)$ denote the (suboptimal) control sequence for
+the initial state $x$, and let $\tilde{\useq}$ denote a \alert{warm
+start} for the successor initial state $x^+ = f(x,u(0; x))$, obtained
+from $(x,\useq)$ by
+\begin{equation}\label{eq:warm}
+ \tilde{\useq} := \{u(1; x),u(2; x), \ldots, u(N-1; x), u_+\}
+\end{equation}
+
+\item  $u_+ \in\bbU$ is any input that satisfies the
+invariance conditions of Assumption~\ref{as:terminalstability} for  
+$x = \phi(N;x, \useq) \in \bbX_f$, i.e., $u_+ \in \kappa_f(\phi(N;x, \useq))$. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Suboptimal MPC}
+
+\begin{itemize}
+
+\item The warm start satisfies $\tilde{\useq} \in \mc{U}_N
+(x^+)$. 
+
+\item The suboptimal input sequence for any given $x^+ \in
+\mc{X}_N$ is defined as \alert{any} $\useq^+ \in  \bbU^N$ that 
+satisfies:
+\begin{subequations}\label{eq:sub}
+\begin{align}
+ \useq^+ &\in \mc{U}_N(x^+) & & \label{eq:sub:feas} \\
+ V_N(x^+,\useq^+) &\leq V_N(x^+,\tilde{\useq}) & &  \label{eq:sub:cost} \\
+% |\useq^+| \leq c |x^+| \text{ for all } x^+ \in r\bbB \label{eq:sub:ball} 
+ V_N(x^+,\useq^+) &\leq V_f(x^+) & & \text{when } x^+ \in r\bbB \label{eq:sub:ball}
+\end{align}
+\end{subequations}
+in which $r$ is a positive scalar sufficiently small that $r\bbB
+\subseteq \bbX_f$.  
+
+% \item Notice that constraint \eqref{eq:sub:ball} is
+% required to hold only if $x^+ \in r\bbB$, and it implies that
+% $|\useq^+| \to 0$ as $|x^+|\to 0$.
+
+\item Condition \eqref{eq:sub:cost} ensures that the computed suboptimal
+cost is no larger than that of the warm start.
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{Suboptimal MPC}
+
+% \begin{itemize}
+% \item For any $x^+\in\mc{X}_N$, there exists a
+%   $\useq^+\in\mc{U}_N(x^+)$ satisfying all conditions \eqref{eq:sub}
+%   for all $\tilde{\useq} \in \mc{U}_N (x^+)$. 
+% %\end{cor}
+
+% \item We now observe that $\useq^+$ is a set-valued map of the state $x^+$, and so is 
+% the associated first component $u(0; x^+)$.
+
+% \item If we, again, denote the latter map as $\kappa_N(\cdot)$, we can write the evolution of the closed-loop 
+% system as 
+% the following difference inclusion:
+% \begin{equation}
+% x^+ \in \{ f(x,u) \mid u \in \kappa_N (x) \}
+% \label{eq:nonext}
+% \end{equation}
+% \end{itemize}
+
+% \end{frame}
+
+
+% \begin{frame}{Control law and closed-loop system}
+
+% \begin{itemize}
+% % \item The control law is
+% % \begin{equation*}
+% % \kappa_N(x) = u^0(0; x)
+% % \end{equation*}
+% % For suboptimal MPC (or nonunique optimal MPC),  $\kappa_N\bb$ is a point-to-set map
+
+% \item Closed-loop system
+% \begin{equation*} 
+% x^+ = f(x, \kappa_N(x))\qquad \text{difference equation} 
+% \end{equation*}
+% \begin{equation*}
+% x^+ \in f(x, \kappa_N(x)) \qquad \text{difference inclusion}
+% \end{equation*}
+
+% \item Nominal closed-loop stability. 
+% Both optimal and suboptimal systems are recursively feasible, and the
+% origin is asymptotically stable. 
+
+% \item The  region of attraction is the feasible set $\mc{X}_N$.
+
+% \item The cost function $V_N(x,\useq)$ is a Lyapunov function for
+%   the system in the extended state $z=(x,\tilde{\useq})$.
+
+% \end{itemize}
+% \end{frame}
+
+
+\begin{frame}{Extended state}
+
+\begin{itemize}
+\item Since the suboptimal algorithm requires a measured state and warm start
+pair, we define the extended state by 
+\begin{equation*}
+z = (x,\tilde{\mathbf{u}})
+\end{equation*}
+
+\item The procedure to generate the next warm start is
+\begin{equation}
+\tilde{\mathbf{u}} = \{u(1),u(2),\dots,u(N-1),\kappa_f(\phi(N;x,\mathbf{u}))\}
+\label{eq:pwarm}
+\end{equation}
+
+\item The extended system evolves as
+\begin{multline}
+z^+ \in H(z) = \{(x^+,\tilde{\mathbf{u}}^+) \ | \ x^+ =
+f(x,u(0)), \\
+\tilde{\mathbf{u}}^+ = \zeta(x,\mathbf{u}), \mathbf{u} \in \mathcal{U}_r(z)\}
+%\label{eq:perturbedinc}
+\end{multline}
+where $\zeta(\cdot)$ is the mapping corresponding to \eqref{eq:pwarm} 
+\end{itemize}
+
+\end{frame}
+
+% \begin{frame}{Inherent robustness of the nominal controller}
+
+% \begin{itemize}
+% \item Consider a process disturbance $d$, $x^+=f(x,\kappa_N(x)) + d$
+% \item A measurement disturbance $x_m= x+e$ 
+% \item Nominal controller with disturbance
+% \begin{align*}
+% x^+ &\in f(x, \kappa_N(x_m)) +d  \\
+% x^+ & \in f(x, \kappa_N(x + e )) +d  \\
+% x^+ &\in F(x, w) \qquad w=(d,e)
+% \end{align*}
+
+% Robust stability; is the system $x^+\in F(x,w)$ input-to-state stable
+% considering $w=(d,e)$ as the input.
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{Stability definitions}
+
+\begin{definition}[]\mbox{}
+\begin{itemize}
+\item   A function $\sigma:\bbR_{\geq 0} \rightarrow \bbR_{\geq 0}$ belongs to
+  class $\mc{K}$ if it is continuous, zero at zero, and strictly
+  increasing; 
+% \item $\sigma: \bbR_{\geq 0} \rightarrow \bbR_{\geq 0}$ belongs to
+%   class $\mc{K}_\infty$ if it is a class $\mc{K}$ and unbounded
+%   ($\sigma(s) \rightarrow \infty$ as $s \rightarrow \infty$).  
+\item A function
+  $\beta:\bbR_{\geq 0}\times \bbI_{\geq 0} \rightarrow \bbR_{\geq 0}$
+  belongs to class $\mc{KL}$ if it is continuous and if, for each
+  $t \ge 0$, $\beta(\cdot,t)$ is a class $\mc{K}$ function and for
+  each $s\ge 0$, $\beta(s,\cdot)$ is nonincreasing and satisfies
+  $\lim_{t \rightarrow \infty}\beta(s,t)=0$.  
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Asymptotic stability]
+\label{def:as}
+We say the origin of the difference inclusion $z^+ \in H(z)$ is 
+asymptotically stable on the positive invariant set $\mathcal{Z}$ if there exists a function
+$\beta \in \mathcal{KL}$ such that for any $z \in \mathcal{Z}$, all solutions
+$\psi(k;z)$ satisfy
+\begin{equation*}
+%\psi(k;z) \in \mathcal{Z} \quad \text{and} \quad \abs{\psi(k;z)} \leq 
+\abs{\psi(k;z)} \leq \beta(\abs{z},k) \quad \forall k \in \mathbb{I}_{\geq 0}
+\end{equation*}
+\end{definition}
+\end{frame}
+
+\begin{frame}{Lyapunov function}
+\begin{definition}[Lyapunov function]
+\label{def:lyap}
+V is a Lyapunov function on the positive invariant set $\mathcal{Z}$ for the difference 
+inclusion $z^+ \in H(z)$ if there exists functions $\alpha_1,\alpha_2,\alpha_3
+\in \mathcal{K}_\infty$ such that for all $z \in \mathcal{Z}$
+\begin{align*}
+\alpha_1(\abs{z}) &\leq V(z) \leq \alpha_2(\abs{z}) \\
+\max_{z^+ \in H(z)} V(z^+) &\leq V(z) - \alpha_3(\abs{z})
+\end{align*}
+\end{definition}
+\end{frame}
+
+
+\begin{frame}{Basic assumptions for MPC}
+\begin{assumption}[1---Continuity of system and stage cost]
+\label{as:continuity}
+The model $f:\mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n$, 
+stage cost $\ell: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}_
+{\geq 0}$ and terminal cost $V_f:\mathbb{R}^n \rightarrow \mathbb{R}_{\geq 0}$
+are continuous. Furthermore, for some steady state $(x_s,u_s)$, we have $\ell(x_s,u_s)=0$
+and $V_f(x_s) = 0$.
+\end{assumption}
+We assume without loss of generality that 
+$(x_s,u_s) = (0,0)$.
+\begin{assumption}[2---Stage cost bound]
+\label{as:pdstagecost}
+There exists a function $\alpha_\ell \in \mathcal{K}_\infty$ such that
+\begin{equation*}
+%\label{eq:pdstagecost}
+\alpha_\ell(\abs{(x,u)}) \leq \ell(x,u) \qquad \forall (x,u) \in \mathbb{Z}
+\end{equation*}
+\end{assumption}
+\end{frame}
+
+% \begin{frame}{}
+%  we can write the control law 
+% \eqref{eq:mpclaw} and closed-loop system \eqref{eq:closed}
+% \begin{align}
+% u &= \kappa_N(x) := u^0(0;x) \label{eq:mpclaw} \\
+% x^+ &= f(x,\kappa_N(x)) \label{eq:closed}
+% \end{align}
+% \end{frame}
+
+
+\begin{frame}{Constraint sets, terminal control law, and terminal region}
+\begin{assumption}[3---Properties of constraint set]
+\label{as:constraints}
+The set $\mathbb{U}$ is compact and contains the origin. 
+The set $\mathbb{X}_f$ is defined by  $\mathbb{X}_f= \text{lev}_\alpha V_f = \{x \in \mathbb{R}^n \ | \ 
+V_f(x) \leq \alpha\}$, with $\alpha > 0$.
+\end{assumption}
+
+\begin{assumption}[4---Stability assumption]
+\label{as:terminalstability}
+There exists a terminal control law $\kappa_f:\mathbb{X}_f \rightarrow
+\mathbb{U}$ such that
+\begin{align*}
+%\label{eq:invariant}
+f(x,\kappa_f(x)) &\in \mathbb{X}_f \qquad &\forall x \in \mathbb{X}_f\\
+%\label{eq:terminalstability}
+V_f(f(x,\kappa_f(x))) &\leq V_f(x)-\ell(x,\kappa_f(x))  
+&\forall x \in \mathbb{X}_f
+\end{align*}
+\end{assumption}
+
+\end{frame}
+
+
+\begin{frame}{Nominal stability result}
+\begin{theorem}[Nominal Asymptotic Stability of Suboptimal MPC]
+\label{th:nominalstability}
+Under Assumptions \ref{as:continuity} -- \ref{as:terminalstability}, there exists
+$\beta(\cdot) \in \mathcal{KL}$ such that 
+\begin{equation*}
+\abs{\phi(k;z)} \leq \beta(\abs{x},k)
+\end{equation*}
+for any initial extended state $z = (x,\tilde{\mathbf{u}}) \in \mathcal{Z}_r$.
+% There is no state evolution equation in x alone, therefore you can't claim anything is ``asymptotically
+% stable'' in terms of x alone because a.s. applies only to evolution equations
+\end{theorem}
+
+Outline of proof: Establish that $V_N(x,\tilde{\useq})$ is a Lyapunov
+function for the extended system $z^+ \in H(z)$.
+
+\end{frame}
+
+\subsection{Disturbances and Robustness}
+
+\begin{frame}{So far so good; now is the stability robust?}
+
+\begin{itemize}
+\item Consider disturbances to the process ($d$) and state measurement
+($e$). 
+\begin{alignat*}{2}
+x^+ &= f(x, \kappa_N(x)) &\qquad &\text{nominal system} \\
+x^+ &= f(x, \kappa_N(x+e)) + d &\qquad &\text{nominal controller with disturbances}
+\end{alignat*}
+
+\item Study of \textit{inherent} robustness motivated by \cite{teel:2004} who
+showed examples for which \alert{arbitrarily small perturbations} can
+\alert{destabilize} the nominally stabilizing controller.
+
+\item \cite{kellet:teel:2004a} establish that for $x^+=f(x)$ with $f$
+  locally bounded, a compact invariant set is robustly asymptotically
+  stable if and only if the system admits a \alert{continuous} global
+  Lyapunov function.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Effect of disturbances}
+
+\begin{itemize}
+
+\item The closed-loop state and measurement evolutions are
+\begin{align*}
+x^+ &= f(x,\kappa_N(x+e)) + d \\
+x_m^+ &= f(x_m-e, \kappa_N(x_m)) + d + e^+
+\end{align*}
+where $x_m = x+e$ is the measured state and $d$ is the additive
+process disturbance. 
+
+\item Note that the suboptimal control 
+law is now calculated based on the measured state $u =
+\kappa_N(x_m,\tilde{\mathbf{u}})$. 
+
+\item The results are simpler to state using the measurement system evolution
+
+\item The perturbed extended system then evolves as
+\begin{multline}
+z_m^+ \in H_{ed}(z_m) = \{(x_m^+,\tilde{\mathbf{u}}^+) \ | \ x_m^+ =
+f(x_m-e,u(0))+d+e^+, \\
+\tilde{\mathbf{u}}^+ = \zeta(x_m,\mathbf{u}), \mathbf{u} \in \mathcal{U}_r(z_m)\}
+\label{eq:perturbedinc}
+\end{multline}
+where $\zeta(\cdot)$ is the mapping corresponding to \eqref{eq:pwarm} 
+
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Desired robustness property}
+\begin{definition}[Robust asymptotic stability \cite{teel:2004}]
+\label{def:ras}
+The origin of the closed-loop system \eqref{eq:perturbedinc} is
+robustly asymptotically stable (RAS) on $\mathcal{C}$
+if there exists $\delta > 0$, 
+$\beta \in \mathcal{KL}$, and $\sigma_d,\sigma_e \in \mathcal{K}$ such that
+for each $x_m \in \mathcal{C}$ and for all $\tilde{\mathbf{u}} \in
+\tilde{\mathcal{U}}_r(x_m)$,  and for all disturbance sequences
+$\mathbf{d}$ and $\mathbf{e}$ 
+satisfying $\smax{\mathbf{d}},\smax{\mathbf{e}} \leq \delta$, 
+we have that
+\begin{equation}
+\label{eq:ras}
+%\abs{\phi_{ed}(k;x,\tilde{\mathbf{u}},\mathbf{d}_i,\mathbf{e}_i)} \leq \beta(\abs{x},k) + \sigma_d(\norm{
+%\mathbf{d}_{i-1}})+ \sigma_e(\norm{\mathbf{e}_i})
+\abs{\phi_{ed}(k;x_m,\tilde{\mathbf{u}})} \leq \beta(\abs{x_m},k) + \sigma_d(\smax{
+\mathbf{d}_{k-1}})+ \sigma_e(\smax{\mathbf{e}_k})
+\end{equation}
+for all $k \in \mathbb{I}_{\geq 0}$.
+\end{definition}
+\end{frame}
+
+\begin{frame}{Behavior with and without disturbances}
+
+\begin{columns}[t]
+\onslide<1->
+\begin{column}{0.45\textwidth}
+\centerline{\resizebox{0.7\textwidth}{!}{\input{nomcl}}}
+\begin{block}{Nominal System}
+\begin{align*}
+x^+ &= f(x, u)\\
+u   &= \kappa_N(x)
+\end{align*}
+\end{block}
+\end{column}
+
+\onslide<2->
+\begin{column}{0.45\textwidth}
+\centerline{\resizebox{0.7\textwidth}{!}{\input{robcl}}}
+\begin{block}{System with Disturbance}
+\begin{align*}
+x^+ &= f(x, u) + d\\
+u   &= \kappa_N(x + e)
+\end{align*}
+$d$ is the process disturbance\\
+$e$ is the measurement disturbance
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+\section{New Results on Inherent Robustness}
+
+\begin{frame}{New result}
+\begin{theorem}[Robust Asymptotic Stability of Suboptimal MPC]
+\label{th:mainiss}
+Under Assumptions \ref{as:continuity}--\ref{as:terminalstability}
+the origin of the perturbed closed-loop system 
+\eqref{eq:perturbedinc} is RAS on any compact subset
+of $\mathcal{X}_N$
+\end{theorem}
+\begin{itemize}
+\item This result is an improvement on
+  \cite{pannocchia:rawlings:wright:2011}. 
+\item The nominal controller is completely unchanged here.
+\item For the optimal case, we have not (explicitly) assumed anything
+  about continuity of $V_N^0(x)$ here.
+\item \cite{yu:reble:chen:allgower:2011} first to point out continuity
+  of $V_N^0(x)$ not required.
+\item See also \cite{lazar:heemels:2009} for 
+  robustness of suboptimal MPC on hybrid systems.
+\end{itemize}
+
+
+\end{frame}
+
+\section{Analysis of a Troublesome Example}
+
+\begin{frame}{A troublesome example}
+
+\begin{align*}
+x^+ &= f(x,u) \\
+\begin{bmatrix}  x_1 \\ x_2 \end{bmatrix}^+ &= 
+\begin{bmatrix}  x_1 \\ x_2 \end{bmatrix} + 
+\begin{bmatrix}  u \\ u^3 \end{bmatrix}
+\end{align*}
+
+\begin{itemize}
+\item Two state, single input example. The origin is the desired
+  steady state: $u=0$ at $x=0$.
+\item Cannot be stabilized with continuous feedback $u=\kappa(x)$. 
+
+\item Because $(u,u^3)$ have the same sign, must use negative $u$ to
+stabilize first quadrant. 
+\item Must use positive $u$ to stabilize third
+quadrant.  
+
+\item But $u$ cannot pass through zero or that point is a closed-loop
+steady state. 
+\item Therefore \alert{discontinuous} feedback.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{And its troubled history}
+\begin{itemize}
+\item Introduced by \cite{meadows:henson:eaton:rawlings:1995}
+  to show MPC control law and optimal cost can be discontinuous. 
+
+\item Based on a CT example by \cite{coron:1990}.
+
+\item \cite{grimm:messina:tuna:teel:2005} established robustness for
+  MPC with horizon $N \geq 4$ with a terminal cost and no terminal region constraint.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{MPC with terminal equality constraint}
+
+\begin{itemize}
+\item Because we do \alert{not} know even a \alert{local controller}, we try a terminal
+constraint $x(N)=0$ in the MPC controller. 
+\item For what initial $x$ is this constraint feasible?
+\begin{align*}
+(x_1(1), x_2(1)) &= (x_1(0), x_2(0)) + (u_0, u^3_0) \\
+(x_1(2), x_2(2)) &= (x_1(1),x_2(1)) + (u_1, u_1^3) \\
+(x_1(3), x_2(3)) &= (x_1(2), x_2(2)) + (u_2, u_2^3)
+\end{align*}
+
+\item  For $N=1$, the feasible set $\mathcal{X}_1$ is only the line $x_2 = x_1^3$. 
+\item For $N=2$, to have real roots $u_0, u_1$, we require 
+$−3x_1^4 + 12x_1x_2 \geq 0$ which defines $\mathcal{X}_2$
+\item For $N=3$, we have $\mathcal{X}_3$ is all of $\bbR^2$. 
+\item So the shortest horizon that can globally stabilize the system
+  is $N=3$.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Feasibility sets $\mathcal{X}_1$, $\mathcal{X}_2$, and
+  $\mathcal{X}_3$}
+\centerline{\resizebox{0.8\textwidth}{!}{\input{feasibility_set}}}
+
+\end{frame}
+
+
+\begin{frame}{Optimal MPC with $N=3$}
+
+The control constraint set $\mathcal{U}_N(x)$  and optimal
+control $\kappa_N(x)$ for $x$ on the unit
+circle is given by the following \citep[p. 105]{rawlings:mayne:2009} 
+
+\centerline{\resizebox{0.8\textwidth}{!}{\input{feasible}}}
+
+\end{frame}
+
+
+\begin{frame}{Optimal cost function with $N=3$}
+
+The discontinuity in the optimal cost for $x$ on  the unit circle
+
+\centerline{\resizebox{0.8\textwidth}{!}{\input{circle_phi}}}
+
+\end{frame}
+
+\begin{frame}{Where is $V_N^0$ discontinuous?}
+
+\begin{itemize}
+\item From the theory of cubic equations, we know that changes in the number
+of real roots to the equation $au^3+bu^2+cu+d=0$ are determined by the
+sign of the discriminant 
+\begin{equation*}
+\Delta = 18 abcd - 4b^3d + b^2c^2 -4ac^3 -27 a^2 d^2
+\end{equation*}
+
+\item For our system, substituting $a=3$, $b=-3x_1$, $c=-3x_1^2$, and
+$d=-x_1^3+4x_2$ into the expression for the discriminant and factoring
+gives 
+\begin{align*}
+\Delta &= 432 (-x_1^6 + 10 x_1^3x_2 - 9 x_2^2)\\
+       &= -432 (x_1^3 - 9 x_2)(x_1^3 -x_2)
+\end{align*}
+
+\item Setting $\Delta=0$ gives two $(x_1, x_2)$ lines at which the number
+of real roots changes from one to three. The line that generates a discontinuity in
+$V_3^0(x)$ corresponds to setting the first factor to zero giving
+\begin{equation*}
+x_2 = (1/9) x_1^3
+\end{equation*}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Where is $V_N^0$ discontinuous? Set $\bbD$.}
+
+%\item The set $\bbD$, points of discontinuity in cost $V_3^0(\cdot)$,
+%  and invariant set $\mathcal{X}_2$. 
+
+\centerline{\resizebox{0.75\textwidth}{!}{\input{discontinuities}}}
+\begin{itemize}
+
+\item Note that invariant set $\mathcal{X}_2$ and discontinuity set
+  $\bbD$   do not intersect (the origin is not an element of
+  $\bbD$). But they approach each other at the origin.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Robustness result for troublesome example}
+
+\begin{block}{}
+\begin{itemize}
+\item RGAS follows because the nominal invariant set and set of
+  discontinuities of $V_N^0(x)$ do not intersect
+
+\item Outline of proof: For $x$ large, $\mathcal{X}_2$ is far from
+  $\bbD$, and (continuous) Lyapunov function argument applies. 
+
+\item For $x$ small, cost \alert{can increase} due to interaction of
+  discontinuity in $V_N^0(x)$ and nonzero disturbance. But cost
+  increase is small because $x$ and hence $V_N^0(x)$ are  small.
+
+\item These two together give an asymptotic robust invariant set that shrinks to
+  zero with the size of disturbances.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+
+\begin{block}{}
+\begin{itemize}
+\item \alert{Suboptimal} MPC with a well chosen warm start has the same
+  inherent robustness properties as \alert{optimal} MPC. \pause
+\item Robust stability of nominal MPC extended to compact subset of
+  feasible set ($\mathcal{X}_N$) with \textit{no changes} to the MPC
+  controller. \pause 
+  Recall:   no state constraints. \pause
+\item The control law and optimal cost may be \alert{discontinuous} on
+  $\mathcal{X}_N$. \pause 
+\item Still no general analysis tools for discontinuous optimal cost
+  and terminal \alert{equality constraint}.  But the example shows robustness
+  for even this case. \pause Exploits \alert{empty} intersection of invariant set
+  $\mathcal{X}_{N-1}$ (not $\mathcal{X}_N$) and discontinuous set. \pause
+\item Future work: extend robustness results to \alert{economic} MPC.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Further reading}
+
+\renewcommand{\refname}{}
+\scriptsize
+\bibliographystyle{abbrvnat}
+%\bibliography{abbreviations,articles,books,proceedings,unpub}
+\bibliography{siam}
+\end{frame}
+
+\end{document}

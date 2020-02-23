@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2010)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: ./talk.aux
+The style file: abbrvnat.bst
+Database file #1: abbreviations.bib
+Database file #2: articles.bib
+I was expecting a `,' or a `}'---line 34147 of file articles.bib
+ :   
+ :   year={2012},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 34336 of file articles.bib
+ :   
+ :   volume={20},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Database file #3: proceedings.bib
+Database file #4: books.bib
+Database file #5: unpub.bib
+You've used 13 entries,
+            2773 wiz_defined-function locations,
+            1481 strings with 17983 characters,
+and the built_in function-call counts, 6152 in all, are:
+= -- 554
+> -- 341
+< -- 7
++ -- 116
+- -- 102
+* -- 511
+:= -- 937
+add.period$ -- 40
+call.type$ -- 13
+change.case$ -- 72
+chr.to.int$ -- 12
+cite$ -- 26
+duplicate$ -- 270
+empty$ -- 514
+format.name$ -- 121
+if$ -- 1286
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 12
+newline$ -- 74
+num.names$ -- 52
+pop$ -- 139
+preamble$ -- 1
+purify$ -- 60
+quote$ -- 0
+skip$ -- 206
+stack$ -- 0
+substring$ -- 281
+swap$ -- 27
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 138
+warning$ -- 0
+while$ -- 58
+width$ -- 0
+write$ -- 177
+(There were 2 error messages)

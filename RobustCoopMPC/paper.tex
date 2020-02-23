@@ -1,0 +1,383 @@
+\documentclass{article}
+\usepackage{url}
+\usepackage{color,graphicx}
+\usepackage{amssymb,amsmath,amsthm,subfigure}
+\usepackage[numbers]{natbib}
+\usepackage{algorithm2e}
+\usepackage{almostfull}
+
+%%% Environment for notation and a symbol command to go along with it.
+%%% The argument should be the widest symbol which is expected if 
+%%% \sym will be used to make the list.
+%%%
+\newenvironment{notation}[1]{%
+\begin{list}{}{\small
+\settowidth{\labelwidth}{{#1}\quad}%
+\setlength{\itemsep}{1.5pt plus 0.5pt minus 0.2pt}%
+\setlength{\parsep}{0ex}%
+\setlength{\rightmargin}{0em}%
+\setlength{\leftmargin}{\labelwidth}%
+\addtolength{\leftmargin}{\labelsep}%
+\addtolength{\leftmargin}{1em}}}{\end{list}}
+
+\newcommand{\sym}[1]{\item[${#1}$\hfill{}]}
+
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\norm}[1]{\vert #1 \vert}
+\newcommand{\set}[1]{\left\lbrace #1 \right\rbrace}
+\newcommand{\SetAlgoLined}{}
+
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\BO}{\textrm{BO}}
+\newcommand{\IP}{\textrm{Ip}}
+\newcommand{\UP}{\textrm{Up}}
+\newcommand{\DN}{\textrm{Dn}}
+\newcommand{\Inv}{\textrm{Iv}}
+\newcommand{\Dem}{\textrm{Dm}}
+\newcommand{\ulambda}{\underline{\lambda}}
+\newcommand{\olambda}{\overline{\lambda}}
+\newcommand{\eig}{\text{eig}}
+\newcommand{\diag}{\text{diag}}
+
+\newtheorem{assumption}{Assumption}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{algo}{Algorithm}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\title{Cooperative  model predictive control: Current status and  limitations }
+\author{Kaushik Subramanian \thanks{Department of Chemical and Biological
+     Engineering, University of Wisconsin-Madison, U.S.A.}  \and James
+  B. Rawlings\footnotemark[1] \thanks{Corresponding author: rawlings@engr.wisc.edu}}  
+\begin{document}
+\maketitle
+\section{Introduction}
+\label{sec:introduction}
+{\em{TODO : write the first part}}
+
+In Section \ref{sec:suboptimal}, we briefly overview suboptimal MPC
+theory which is the base upon which cooperative MPC is built. We then describe two flavors of cooperative MPC:
+(i) Using Kalman decomposition of the state space (\ref{sec:substate})
+and (ii) Using a relaxation of the terminal region
+(\ref{sec:relaxation}). In Section \ref{sec:tube}, we present the
+tube-based cooperative MPC algorithm for robust cooperative
+control. Finally, in Section \ref{sec:related}, we briefly outline
+related work in cooperative MPC before concluding in Section
+\ref{sec:conclusions}.
+
+\section{Suboptimal MPC}
+Model predictive control is a rolling horizon control optimization
+based control algorithm. In MPC, at each sampling time, an on-line
+optimization problem is solved to find the control actions over a
+finite prediction horizon that minimizes the control objective. Only
+the first of these control actions (that corresponds to the control
+action at the current sampling instance) is injected to the plant and
+the whole process is repeated again at the next sampling time. Thus,
+to study the controller, we need to focus, not only on the
+optimization problem solved at each sampling time, but also on the
+dynamics of the system with the injected move. Lyapunov theory is an
+convenient tool to study the stability and convergence properties of
+dynamic systems and MPC design procedures using Lyapunov theory has
+been widely studied. In Optimal MPC \citep[Chapter
+  2]{rawlings:mayne:2009}, the on-line optimization problem needs to
+be solved to optimality to ensure closed-loop properties like
+stability and asymptotic convergence. In Suboptimal MPC
+\citep{pannocchia:rawlings:wright:2011,scokaert:mayne:rawlings:1999},
+the same closed-loop properties can be ensured but without requiring
+the on-line problems to be solved to optimality. In the following
+section, we briefly review the design procedure for ensuring
+closed-loop stability in suboptimal MPC and introduce the paralel
+optimization algorithm that we use in cooperative MPC so that
+cooperative MPC is a special case of suboptimal MPC.
+ 
+\subsection{Preliminaries}
+Consider a system comprising of two subsystems described by the following linear dynamcs:
+\begin{equation}
+\label{eq:model}
+x^+ = Ax + B_1 u_1 + B_2 u_2
+\end{equation}
+The states of the system are descibed by $x$, while $x^+$ denotes the
+state at the next sampling instance. The input is given by $u =
+(u_1,u_2)$. The input $u_1$ is manipulated by subsystem-1 while $u_2$
+is manipulated by subsystem-2.
+
+The states are constrained to lie in the set $\mathbb{X}$ while the
+inputs are constrained to lie in the set $\mathhb{U} = \mathbb{U}_1
+\times \mathbb{U}_2$. 
+
+The MPC objective function is defined as:
+\begin{equation}
+\label{eq:VN0}
+V_N(x,\bu) = \sum_{i=0}^{N-1}\ell(x(i),u(i)) + V_f(x(N))
+\end{equation}
+
+in which $N$ is the control horizon, $\bu = (u(0),u(1),\ldots,u(N-1))$
+is the input vector and $x(i)$ is the short-hand notation for the
+state evolution under the input $\bu$. That is,
+ \[x(i) = \phi(i;x,\bu)=  A^{i-1}x +\sum_{j=0}^{i-1} A^jBu(i-1-j)\]
+
+The cost function $V_N(x,\bu)$ consists of the stage cost
+$\ell(x(i),u(i)$ and the terminal cost $V_f(x(N))$. For linear
+systems, the costs are usually chosen to be a positive definite
+quadratic cost :
+
+\begin{equation}
+\label{eq:costs}
+\ell(x,u) = x'Qx + u'Ru \qquad V_f(x) = x'Px 
+\end{equation}
+in which $R>0, P>0,Q \geq 0$.
+
+We define the terminal region as the set $\mathbb{X}_f$.
+
+The on-line optimization problem that is solved is:
+
+\begin{align}
+
+\mathbb{P}_N(x): & \min_{\bu}V_N(x,\bu) \nonumber \\
+& \text{s.t~} x(i+1) = Ax(i) + Bu(i) \nonumber\\
+& x(i) \in \mathbb{X},\qquad u(i) \in \mathbb{U} \label{eq:PNx} \\
+& \qquad \for i \in 0,1,\ldot,N-1 \nonumber\\
+& x(0) = x \nonumber \\
+& x(N) \in \mathbb{X}_f \nonumber
+\end{align}
+
+
+\subsection{Closed-loop properties of suboptimal MPC}
+The following assumptions are made on the system:
+\begin{assumption}
+\label{ass:stab}
+The centralized system $(A,\begin{bmatrix}B_1 & B_2 \end{bmatrix})}$ is stabilizable. 
+\end{assumption}
+
+\begin{assumption}
+\label{ass:psd}
+The cost functions $\ell(x,u)$ and $V_f(x)$ are positive
+semi-definite.
+\end{assumption}
+\begin{assumption}
+The set $\mathbb{X}_f$ and the  costs $\ell(x,u),V_f(x)$ are chosen
+such that there exists a controller $u = \kappa_f(x)$ that satisfies:
+\begin{gather}
+\label{eq:bsa}
+V_f(Ax+B\kappa_f(x)) -V_f(x) \leq -\ell(x,\kappa_f(x)) \qquad \forall x
+\in \mathbb{X}_f \\
+Ax + B\kappa_f(x) \in \mathbb{X}_f, \kappa_f(x) \in \mathbb{U} \qquad
+\forall x \in \mathbb{X}_f
+\end{gather}
+\end{assumption}
+
+\begin{assumption}
+\label{ass:closed}
+The set $\mathbb{U}$ is closed and compact and contains the origin in
+its interior. The set $\mathbb{X}$ is closed and contains the origin
+in its interior. The set $\mathbb{X}_f$ is closed and compact and
+contains the origin in its interior.
+\end{assumption}
+
+\begin{remark}
+The choice of quadratic stage and terminal costs with $Q \geq 0, P >0,
+R>0$ automatically satisfies Assumption \ref{ass:psd}.
+\end{remark} 
+
+\begin{remark}
+From Assumption \ref{ass:stab}, we know that there exists a linear
+feedback $K$ such that $(A+BK)$ is stable. In other words, the
+closed-loop $x^+ = (A+BK)x$ is stable. We choose such a $K$ as the
+terminal controller $\kaapa_f(x)$. The terminal penalty $V_f(x) = x'Px$ is chosen as
+the solution to the Lyapunov equation (which exists as a consequence
+of Assumption \ref{ass:psd}):
+\[ (A+BK)'P(A+BK) + (Q+K'RK) = P \]
+
+For the pair $(P,K)$, we can define the control invariant region in
+the state-space in which $u=Kx$ does not activate any constraints as:
+\[ \mathbb{X}_f := \set{x \mid x^+= (A+BK)x \in \mathbb{X}_f \subseteq
+  \mathbB{X}, Kx \in \mathbb{U}}
+\]
+
+For linear systems, such sets can be easily constructed. See
+\citet{gilbert:tan:1991} for an algorithm. 
+\end{remark}
+
+As the name suggests, we wish to inject {\emph{some}} feasible input
+to the plant. In order to ensure that despite injecting suboptimal
+inpts to the plant, we maintain the desirable closed-loop properties,
+we define the warm start and the successor input set as follows. We
+denote $\kappa_s(x)$ as the first input in the suboptimal input
+sequence.
+
+\begin{definition}[Warm Start]
+\label{def:warmstart}
+Let $(x,\bu)$ be a state-input vector pair such that $\bu$ is feasible for $\mathbb{P}(x)$. Then the warm start for the successor initial state
+$x^+ = Ax+B\kappa_s(x)$ is defined as:
+\begin{equation*}
+%\label{eq:warmstart}
+\tilde{\bu} = \left (\bu(1;x),\bu(2;x),\ldots,\bu(N;x),u_+\right)
+\end{equation*}
+in which  $u_+ = K\phi(N;x,\bu)$.
+\end{definition}
+\begin{definition}[Successor input set]
+\label{def:G}
+Consider $(x,\bu)$ such that $\bu$ is feasible for $\mathbb{P}(x)$. For the  successor state
+$x^+ = Ax+B\kappa_s(x)$, we define the set $G(x,\bu)$
+\begin{multline*}
+G(x,\bu) = \lbrace \bu^+ \mid \bu^+ \in
+\mathcal{U}(x^+), V(x^+,\bu^+)\leq V(x,\tilde{\bu}), \\
+V(x^+,\bu^+) \leq V_f(x^+) \text{~if~} x\in r\mathbb{B} \rbrace
+\end{multline*}
+in which $\tilde{\bu}$ is the warm start given by Definition 
+\ref{def:warmstart} and $r\mathbb{B}$ is a ball of radius $r>0$. We choose $r$ sufficiently small such that $r\mathbb{B}$ is a subset of the terminal region. We can show that this constraint is equivalent to  $\bu \leq d \norm{x}, x \in r\mathbb{B},d >0$.  
+\end{definition}
+
+\begin{theorem}
+\label{thm:suboptimal}
+Let Assumptions \ref{ass:stab} and \ref{ass:closed}
+hold. Choose optimization problem $\mathbb{P}(x) \in \set{
+  \mathbb{P}_N^{\mathbb{T}}(x), \mathbb{P}_N^{\mathbb{F}}(x),
+  \mathbb{P}_N^{\mathbb{E}}(x)}$ and the appropriate terminal
+regions. For any $x$ for which  $\mathcal{U}(x)$  is not empty, choose $\bu \in \mathcal{U}(x)$. Then, the origin of the closed-loop system
+\begin{align*}
+x^+ &= Ax+ B\kappa_s(x) \\
+\bu^+ &\in G(x,\bu)
+\end{align*}
+is asymptotically stable on (arbitrarily large) compact  subsets of
+the feasible region $\mathcal{X}_N :=\set{x\mid \exists u \in
+  \mathbf{U}^N, \text{~s.t~} \mathcal{U}_N(x) \neq \varnothing}$. 
+\end{theorem}
+
+The proof of Theorem \ref{thm:suboptimal} is presented in
+\citep{pannocchia:rawlings:wright:2011}.
+
+Observe that for the nominal system, the warm start is a member of the set $G(x,\bu)$. Therefore, if we have a feasible $(x,\bu)$ pair, we can construct an asymptotically stable closed loop without any optimizations. However, if we wish to improve performance by optimizations, we need the optimization algorithm to have the following properties:
+\begin{definition}
+\label{thm:propO}
+The optimization algorithm $\mathbb{O}$ applied to $\mathbb{P}(x)$ has the following properties:
+\begin{enumerate}
+\item It is an iterative algorithm starting from a feasible point $(x,\tilde{\bu})$.
+\item Every iteration $\bu$ decreases the objective function. 
+\item Every iteration is feasible.
+\end{enumerate}
+\end{definition}
+Properties (2) and (3) ensure that {\em{any intermediate iterate}}
+generated by algorithm $\mathbb{O}$ belongs to the set
+$G(x,\bu)$. Hence, we need not  wait for the optimizations to converge
+and can inject the suboptimal input from any iterate to the plant
+without compromising the closed-loop properties.
+
+
+\begin{remark} The properties of the optimizer given by Definition
+\ref{thm:propO} means that not all optimization algorithms is suitable
+for suboptimal MPC. For example, optimizers minimizing an augmented
+Lagrangian function achieve feasibility only at convergence and hence
+the intermediate iterates are infeasible. Such optimizers are not
+suitable for suboptimal MPC.
+\end{remarK}
+
+In the following section, we present the
+Jacobi parallel optimization algorithm and tailor it to
+cooperative MPC.
+\end{remark}
+
+\subsection{Cooperative MPC}
+
+In Cooperative MPC, we assume that each subsystem knows (i) The
+overall system model \eqref{eq:model} and (ii) The overall system
+objective function \eqref{eq:VN0}. With the knowledge of the systemwide model and objective
+function, each subsystem then minimizes the systemwide or centralized
+MPC problem \eqref{eq:PNx}. Each subsystem shares (i) its current
+decision variable $\bu_i$ with all the other subsystems, (ii)
+optimizes the centralized problem over its decision variables having
+fixed the decision variables of the other sub-systems at the shared
+value, and (iii) makes the control move. 
+
+
+
+%WRITE ALGORITHM
+
+The convergence properties of cooperative MPC descirbed in Algorithm
+\ref{alg:coopMPC} is based on the following observations:
+
+\begin{itemize}
+\item 
+\item algorithm is discussed in \citet[Section
+3.3.5]{bertsekas:tsitsiklis:1989}.
+\end{itemize}
+
+\begin{remark}
+\label{rem:performance}
+Algorithm \ref{alg:jordan} satisfies requirements in \ref{thm:prop0}
+for convex optimization problems. In addition, if there are no coupled
+constraints between the subsystems, then we can ensure that that the
+iterates generated by the algorithm converge to the centralized
+optimal solution. Therfore, it is important to note that Algorithm
+\ref{alg:jordan}
+\begin{itemize}
+\item Satisfies the requirements in \ref{thm:prop0} for any convex
+  optimization problem.
+\item Guarantees convergence to the centralized optimal solution only
+  in the constraints are uncoupled.
+\end{itemize}
+\end{remark} 
+
+
+The on-line optimization problem in MPC for linear systems given by
+$\mathbb{P}_N(x)$ \eqref{eq:PNx} is a convex optimization problem with
+coupled constraints between subsystems. The coupled constraints are:
+\begin{itemize}
+\item The state constraints, as $x(i) \in \mathbb{X}$ implies that
+\[ A^{i-1}x +\sum_{j=0}^{i-1} A^jB_1u_1(i-1-j)+A^JB_2u_2(i-1-j) \in
+\mathbb{X} \]
+\item The state dynamics $x(i+1) = x(i) + B_1u_1(i) + B_2u_2(i)$
+\item The terminal constraint $x(N) \in \mathbb{X}_f$
+\item The input constraints $(u_1,u_2) \in \mathbb{U}$.
+\end{itemize}
+
+Cosed-loop stability and asymptotic stability  guarantees for
+cooperative MPC are ensured by Theorem \ref{thm:suboptimal} if we use
+Algortihm \ref{alg:jordan} as the cooperative MPC parallel
+optimization algorithm. However,
+we cannot guarantee performance, that is, we cannot conclude that if
+$p_{\text{max}} \rightarrow \infty$, then the solution obtained by
+cooperative MPC is the cetnralized optimal solution. To do so, we have
+to remove the coupled constraints in the on-line MPC problem. Hence,
+we make the following assumptions for cooperative MPC:
+
+\begin{assumption}
+\label{ass:noX}
+There are no state constraints. State constraints are enforced as
+soft-penalties by tuning the $Q$ matrix in the stage cost.
+\end{assumption}
+
+\begin{assumption}
+\label{ass:uncoupledU}
+The input constraint space is uncoupled. That is, the input constraint
+set $\mathbb{U}$ is the cartesian product of the input constraint sets
+of each subsystem. 
+\[ \mathbb{U} = \mathbb{U}_1 \times \mathbb{U}_2 \times \ldots \times
+\mathbb{U}_M
+\]
+\end{assumption}
+
+The only remaining coupled constraint is the terminal region
+constraint which needs to be enforced to guarantee stability and
+asymptotic convergence. In the next two sections, we briefly review
+two techniques to ``uncouple'' the terminal region constraint.
+
+\subsection{
+
+
+
+
+
+
+
+
+
+
+
+
+
+

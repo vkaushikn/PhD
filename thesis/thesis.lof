@@ -1,0 +1,41 @@
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Rolling horizon optimization.\relax }}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The two-tank system.\relax }}{25}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces State and input profiles for two-tank system under distributed MPC (ncoop: noncooperative, coop: cooperative, cent: centralized).\relax }}{27}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Two tank system\relax }}{32}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces (Left) Closed-loop response (Right) Warm start rendered infeasible for actual state because of disturbance. The warm start is infeasible if $V_N^\beta (x,\mathaccentV {tilde}003{\mathbf {v}})> \mathaccentV {bar}009{V}$\relax }}{33}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces (Left) Closed-loop response. Notice that we reset the state around t = 15 (Right) Warm start rendered infeasible for actual state because of disturbance\relax }}{34}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Simple scheduling problem\relax }}{43}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Scheduling solution\relax }}{44}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Rescheduling leads to infeasibility when no backorders are allowed\relax }}{51}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Periodic solution for the example in the absence of disturbances\relax }}{52}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Recursive feasibility with terminal constraints}}{53}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Closed-loop solution solving \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 3}.29\hbox {}\unskip \@@italiccorr )}} with $N=24h$\relax }}{54}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Recursive feasibility with terminal constraints for $N=12h$}}{54}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Closed-loop solution solving \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 3}.29\hbox {}\unskip \@@italiccorr )}} with $N=12h$\relax }}{55}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Rescheduling in the presence of disturbances\relax }}{57}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Closed-loop with disturbances}}{58}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Closed-loop for terminal constraint formulation with disturbances}}{58}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Supply chain as nodes and arcs.\relax }}{71}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Tank analogy for modeling a node.\relax }}{72}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Two-stage supply chain.\relax }}{75}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Inventories and orders placed in the supply chain: Order-up-to policy (dec: decentralized, ncoop: noncooperative, coop: cooperative, cent: centralized).\relax }}{79}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Inventories and orders placed in the supply chain: Inventory position control (dec: decentralized, ncoop: noncooperative, coop: cooperative, cent: centralized).\relax }}{80}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces (Left) Closed-loop response (Right) Warm start rendered infeasible for actual state because of disturbance\relax }}{82}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces (Left) Closed-loop response. Notice that we reset the state t = 14, t = 24 when the cost is such that the warm start is feasible for the actual state (Right) Warm start rendered infeasible for actual state because of disturbance\relax }}{82}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Multi-echelon supply chain studied\relax }}{84}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Convergence of various parallel optimization algorithms for the supply chain example\relax }}{85}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Open-loop prediction cost for cooperative MPC optimizations with 1 iteration\relax }}{85}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Inventories in Retailer nodes 1 and 2 when cooperative MPC is initialized with centralized optimal input at $t=0$.\relax }}{86}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Inventories in Retailer nodes 1 and 2 when cooperative MPC is initialized with suboptimal input at $t=0$\relax }}{86}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Backorder in the retailer for rolling horizon optimization without stability constraints.\relax }}{92}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Closed loop evolution using stabilizing MPC.\relax }}{92}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Steady-state as a function of the relative weighting between tracking and economics\relax }}{97}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Projection of the terminal region onto the Inventory-plane for $\omega = 0.4$\relax }}{100}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Closed-loop response for $\omega = 0.2$ (top), $\omega = 0.4$ (middle) and $\omega = 0.8$ (bottom)\relax }}{101}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Multi-product, Multi-echelon supply chain studied\relax }}{105}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Bullwhip effect\relax }}{108}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Ordering profile at $R3$\relax }}{108}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces Inventory and Backorder profile at $R3$\relax }}{109}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces Periodic production schedule to respond to nominal demands\relax }}{112}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces Production schedule for the MPC without terminal constraints that optimized \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 5}.34\hbox {}\unskip \@@italiccorr )}} (Top) compared with production schedule for the MPC with terminal constraints that optimized \textup {\hbox {\mathsurround \z@ \normalfont (\ignorespaces {\rm 5}.36\hbox {}\unskip \@@italiccorr )}}. Note how larger batches are made for the problem with terminal constraints\relax }}{112}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces Combined backorder at all the retailer nodes\relax }}{113}
